@@ -78,8 +78,8 @@ export function Navbar() {
         <Image
           width={200}
           height={300}
-          className="w-40 h-10"
-          alt="Material Tailwind"
+          className="w-30 h-11"
+          alt="Hima Technologies"
           src={isScrolling ? "/logos/hima2-black.png" : "/logos/hima2-white.png"}
         />
           {/* Hima Technologies        */}

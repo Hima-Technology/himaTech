@@ -4,38 +4,38 @@ import React from "react";
 import { Typography } from "@material-tailwind/react";
 
 import {
-  CursorArrowRaysIcon,
-  HeartIcon,
+  ComputerDesktopIcon,
+  DevicePhoneMobileIcon,
   LightBulbIcon,
-  LockClosedIcon,
+  BriefcaseIcon,
 } from "@heroicons/react/24/solid";
 
 import FeatureCard from "../components/feature-card";
 
 const FEATURES = [
   {
-    icon: CursorArrowRaysIcon,
-    title: "Expert Instructors",
+    icon: ComputerDesktopIcon,
+    title: "Web Development ",
     children:
-      "Learn from the best. Our instructors are industry experts, academics, and seasoned professionals dedicated to helping you.",
+      "From sleek and responsive websites to robust web applications, our web development services are tailored to help you establish a strong online presence and drive engagement.",
   },
   {
-    icon: HeartIcon,
-    title: "Interactive Learning",
+    icon: DevicePhoneMobileIcon,
+    title: "Mobile App Development",
     children:
-      "Engage with interactive quizzes, hands-on exercises, and discussion forums to reinforce your understanding and connect.",
+      "Unlock the power of mobile with our custom mobile app development services. Whether you're looking to build an iOS, Android, or cross-platform app, we have the expertise to bring your vision to life.",
   },
   {
-    icon: LockClosedIcon,
-    title: "Achievement Unlocked",
+    icon: BriefcaseIcon,
+    title: "Digital Marketing Solutions",
     children:
-      "Earn certificates and badges as you complete courses, showcasing your newfound skills to the world.",
+      "Elevate your online presence and reach your target audience effectively with our digital marketing services. From search engine optimization (SEO) and pay-per-click (PPC) advertising to social media marketing and email campaigns, we help you attract, engage, and convert customers.",
   },
   {
     icon: LightBulbIcon,
-    title: "Personalized Progress Tracking",
+    title: "IT Consulting, Strategy, and Training",
     children:
-      "Stay on top of your learning journey with progress tracking and personalized recommendations to keep you motivated.",
+      "Gain a competitive edge and empower your team with our comprehensive IT consulting, strategy, and training services. Whether you need help aligning your technology initiatives with your business goals, optimizing your IT infrastructure, or navigating digital transformation, our expert consultants provide strategic guidance and support. Additionally, our training programs are designed to equip individuals and teams with the skills and knowledge they need to succeed in today's fast-paced digital landscape, covering topics ranging from IT best practices to emerging technologies.",
   },
 ];
 
@@ -43,19 +43,16 @@ export function Features() {
   return (
     <section className="py-28 px-4">
       <div className="container mx-auto mb-20 text-center">
-        <Typography color="blue-gray" className="mb-2 font-bold uppercase">
-          Your Learning App
-        </Typography>
         <Typography variant="h1" color="blue-gray" className="mb-4">
-          Diverse Learning Resources
+          What We Do
         </Typography>
         <Typography
           variant="lead"
           className="mx-auto w-full px-4 !text-gray-500 lg:w-11/12 lg:px-8 "
         >
-          Access your learning materials on the go. Whether you&apos;re
-          commuting, waiting for a friend, or just have a few minutes to spare,
-          our app fits seamlessly into your busy life.
+          At Hima Technologies, we offer a comprehensive suite of technology
+          services designed to help our clients thrive in the digital age. Our
+          core services include:
         </Typography>
       </div>
       <div className="container mx-auto grid max-w-6xl grid-cols-1 gap-4 gap-y-12 md:grid-cols-2">

@@ -18,7 +18,6 @@ export default function Campaign() {
       <Feature />
       <MobileConvenience />
       <Testimonials />
-      <Faqs />
       <Footer />
     </>
   );
