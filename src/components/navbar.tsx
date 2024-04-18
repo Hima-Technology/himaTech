@@ -23,6 +23,9 @@ function NavItem({ children, href }: NavItemProps) {
         target={href ? "_blank" : "_self"}
         variant="small"
         className="font-medium"
+        placeholder={undefined}
+        onPointerEnterCapture={undefined}
+        onPointerLeaveCapture={undefined}
       >
         {children}
       </Typography>
@@ -66,6 +69,9 @@ export function Navbar() {
       blurred={false}
       color={isScrolling ? "white" : "transparent"}
       className="fixed top-0 z-50 border-0"
+      placeholder={undefined}
+      onPointerEnterCapture={undefined}
+      onPointerLeaveCapture={undefined}
     >
       <div className="container mx-auto flex items-center justify-between">
         <Typography
@@ -74,14 +80,19 @@ export function Navbar() {
           target="_blank"
           variant="h6"
           color={isScrolling ? "gray" : "white"}
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
         >
-        <Image
-          width={200}
-          height={300}
-          className="w-30 h-11"
-          alt="Hima Technologies"
-          src={isScrolling ? "/logos/hima2-black.png" : "/logos/hima2-white.png"}
-        />
+          <Image
+            width={200}
+            height={300}
+            className="w-25 h-11"
+            alt="Hima Technologies"
+            src={
+              isScrolling ? "/logos/hima2-black.png" : "/logos/hima2-white.png"
+            }
+          />
           {/* Hima Technologies        */}
         </Typography>
         <ul
@@ -101,6 +112,9 @@ export function Navbar() {
             variant="text"
             color={isScrolling ? "gray" : "white"}
             size="sm"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
           >
             <i className="fa-brands fa-twitter text-base" />
           </IconButton>
@@ -108,6 +122,9 @@ export function Navbar() {
             variant="text"
             color={isScrolling ? "gray" : "white"}
             size="sm"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
           >
             <i className="fa-brands fa-facebook text-base" />
           </IconButton>
@@ -115,11 +132,20 @@ export function Navbar() {
             variant="text"
             color={isScrolling ? "gray" : "white"}
             size="sm"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
           >
             <i className="fa-brands fa-instagram text-base" />
           </IconButton>
           <a href="https://www.material-tailwind.com/blocks" target="_blank">
-            <Button color={isScrolling ? "gray" : "white"} size="sm">
+            <Button
+              color={isScrolling ? "gray" : "white"}
+              size="sm"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
               Blocks
             </Button>
           </a>
@@ -129,6 +155,9 @@ export function Navbar() {
           color={isScrolling ? "gray" : "white"}
           onClick={handleOpen}
           className="ml-auto inline-block lg:hidden"
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
         >
           {open ? (
             <XMarkIcon strokeWidth={2} className="h-6 w-6" />
@@ -143,25 +172,46 @@ export function Navbar() {
             <NavItem>Home</NavItem>
             <NavItem>About Us</NavItem>
             <NavItem>Contact Us</NavItem>
-            <NavItem href="https://www.material-tailwind.com/docs/react/installation">
+            {/* <NavItem href="https://www.material-tailwind.com/docs/react/installation">
               Docs
-            </NavItem>
+            </NavItem> */}
           </ul>
           <div className="mt-4 flex items-center gap-2">
-            <IconButton variant="text" color="gray" size="sm">
+            <IconButton
+              variant="text"
+              color="gray"
+              size="sm"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
               <i className="fa-brands fa-twitter text-base" />
             </IconButton>
-            <IconButton variant="text" color="gray" size="sm">
+            <IconButton
+              variant="text"
+              color="gray"
+              size="sm"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
               <i className="fa-brands fa-facebook text-base" />
             </IconButton>
-            <IconButton variant="text" color="gray" size="sm">
+            <IconButton
+              variant="text"
+              color="gray"
+              size="sm"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
               <i className="fa-brands fa-instagram text-base" />
             </IconButton>
-            <a href="https://www.material-tailwind.com/blocks" target="_blank">
+            {/* <a href="https://www.material-tailwind.com/blocks" target="_blank">
               <Button color="gray" size="sm" className="ml-auto">
                 Blocks
               </Button>
-            </a>
+            </a> */}
           </div>
         </div>
       </Collapse>
