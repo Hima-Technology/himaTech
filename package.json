@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "author": "Hima Tech",
-  "license": "HIma Teche",
+  "license": "HIma Tech",
   "homepage": "HIma Tech",
   "scripts": {
+    "prebuild": "rimraf out",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
