@@ -14,10 +14,10 @@ export default function Campaign() {
     <>
       <Navbar />
       <Hero />
-      <VideoIntro />
+      {/* <VideoIntro /> */}
       <Feature />
       <MobileConvenience />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Patners/>
       <Footer />
     </>
