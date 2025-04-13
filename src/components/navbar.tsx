@@ -13,14 +13,15 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 interface NavItemProps {
   children: React.ReactNode;
   href?: string;
+  target?: string;
 }
-function NavItem({ children, href }: NavItemProps) {
+function NavItem({ children, href, target }: NavItemProps) {
   return (
     <li>
       <Typography
         as="a"
         href={href || "#"}
-        target={href ? "_blank" : "_self"}
+        target={target ? "_blank" : "_self"}
         variant="small"
         className="font-medium"
         placeholder={undefined}
@@ -103,6 +104,8 @@ export function Navbar() {
           <NavItem>Home</NavItem>
           <NavItem>About Us</NavItem>
           <NavItem>Contact Us</NavItem>
+          <NavItem href="pages/Our-Products" >Our Products</NavItem>
+
         </ul>
         <div className="hidden gap-2 lg:flex lg:items-center">
           <IconButton
@@ -158,6 +161,9 @@ export function Navbar() {
             <NavItem>Home</NavItem>
             <NavItem>About Us</NavItem>
             <NavItem>Contact Us</NavItem>
+            <NavItem>Our Products</NavItem>
+            <NavItem href="pages/Our-Products" >Our Products</NavItem>
+
           </ul>
           <div className="mt-4 flex items-center gap-2">
             <IconButton
