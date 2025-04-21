@@ -5,7 +5,7 @@ import { Navbar, Footer } from "@/components";
 import Hero from "./hero";
 import VideoIntro from "./video-intro";
 import Feature from "./feature";
-import MobileConvenience from "./mobile-convenience";
+import AtGlance from "./at-glance";
 import Patners from "./patners";
 import Testimonials from "./testimonials";
 
@@ -16,9 +16,9 @@ export default function Campaign() {
       <Hero />
       {/* <VideoIntro /> */}
       <Feature />
-      <MobileConvenience />
+      <AtGlance />
       {/* <Testimonials /> */}
-      <Patners/>
+      <Patners />
       <Footer />
     </>
   );
