@@ -119,8 +119,8 @@ const members = [
       "Versatile developer specializing in robust mobile applications and scalable backend systems. Creates seamless solutions that bridge user experience with technical excellence.",
   },
   {
-    img: `/image/abubakar.jpg`,
-    name: "Abubakar Yussuf Omar",
+    img: `/image/seif.jpg`,
+    name: "Hussein Ali Abdulrahman",
     title: "Senior Data Analyst & Advisor",
     description:
       "Experienced data analyst with remarkable insight and strategic thinking. Provides critical guidance to the team while transforming complex data into actionable intelligence.",
