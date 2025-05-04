@@ -56,13 +56,13 @@ function Hero() {
               </Button>
             </div>
           </div>
-          <Image
+          {/* <Image
             width={470}
             height={576}
             src="/image/laptop.png"
             alt="team work"
             className="col-span-1 my-20 h-full max-h-[30rem] -translate-y-32 md:max-h-[36rem] lg:my-0 lg:ml-auto lg:max-h-[40rem] lg:translate-y-0"
-          />
+          /> */}
         </div>
       </header>
       <div className="mx-8 lg:mx-16 -mt-24 rounded-xl bg-white p-5 md:p-14 shadow-md">

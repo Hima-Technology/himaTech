@@ -1,99 +1,130 @@
-// app/products/page.tsx
-import { FiShield, FiCpu, FiDatabase, FiCode, FiCloud } from 'react-icons/fi';
+"use client";
+import { useState, useEffect } from 'react';
+import { Navbar, Footer } from '@/components';
+import CTA from '@/components/sections/CTA';
+import { Button } from "@material-tailwind/react";
+import { FiExternalLink, FiHeart, FiClock } from 'react-icons/fi';
+import Image from 'next/image';
+import ProductWebsiteCard from '@/components/products/ProductWebsiteCard';
+
+type Product = {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  features: string[];
+  url: string;
+  author?: string;
+  timeToComplete?: string;
+  screenshotUrl?: string;
+  fallbackImage: string;
+};
+
+type MetaData = {
+  title: string;
+  description: string;
+  colors: {
+    primary: string;
+    secondary: string;
+    accent: string;
+  };
+};
+
 
 export default function ProductsPage() {
-  const products = [
-    {
-      icon: <FiShield className="text-hima-green" size={32} />,
-      title: "Cybersecurity Suite",
-      description: "End-to-end protection for businesses with real-time threat detection and Zanzibar-specific compliance solutions.",
-      features: ["Firewall Config", "Penetration Testing", "Incident Response"]
-    },
-    {
-      icon: <FiCpu className="text-hima-purple" size={32} />,
-      title: "AI Solutions",
-      description: "Custom AI models optimized for East African markets, from Swahili NLP to predictive analytics.",
-      features: ["Chatbots", "Fraud Detection", "Data Forecasting"]
-    },
-    {
-      icon: <FiDatabase className="text-hima-blue" size={32} />,
-      title: "Data Analytics",
-      description: "Turn Zanzibar's tourism and trade data into actionable insights with our visualization tools.",
-      features: ["Custom Dashboards", "API Integrations", "Market Reports"]
-    },
-    {
-      icon: <FiCode className="text-hima-orange" size={32} />,
-      title: "Custom Software",
-      description: "Bespoke applications built for Zanzibar's unique business environment and regulations.",
-      features: ["Web Apps", "Mobile Apps", "Legacy System Modernization"]
-    },
-    {
-      icon: <FiCloud className="text-hima-blue" size={32} />,
-      title: "Cloud Solutions",
-      description: "Secure cloud migration and hybrid solutions tailored for Tanzanian infrastructure.",
-      features: ["AWS/GCP Setup", "Local Server Sync", "Disaster Recovery"]
+  const [products, setProducts] = useState<Product[]>([]);
+  const [meta, setMeta] = useState<MetaData>({
+    title: 'Our Products',
+    description: 'Innovative solutions tailored to your business needs',
+    colors: {
+      primary: '#2563eb',
+      secondary: '#7c3aed',
+      accent: '#10b981'
     }
-  ];
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data/products.json`);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        setProducts(data.products || []);
+        setMeta(data.meta || {
+          title: 'Our Products',
+          description: 'Innovative solutions tailored to your business needs',
+          colors: {
+            primary: '#2563eb',
+            secondary: '#7c3aed',
+            accent: '#10b981'
+          }
+        });
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <Navbar />
+        <div className="container mx-auto px-6 py-20 text-center">
+          <div className="animate-pulse">
+            <div className="h-12 bg-gray-300 rounded w-1/2 mx-auto mb-4"></div>
+            <div className="h-6 bg-gray-300 rounded w-3/4 mx-auto"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="bg-hima-sand min-h-screen">
+    <div className="min-h-screen bg-gray-50">
+      <Navbar />
+      
       {/* Hero Section */}
-      <section className="bg-hima-blue text-white py-20">
+      <section className="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-20">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Products</h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            Cutting-edge solutions designed for Zanzibar and beyond
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{meta.title}</h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            {meta.description}
           </p>
         </div>
       </section>
 
       {/* Products Grid */}
       <section className="container mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {products.map((product, index) => (
-            <div 
-              key={index}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-            >
-              <div className="p-8">
-                <div className="mb-6">
-                  {product.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-hima-blue mb-3">{product.title}</h3>
-                <p className="text-hima-charcoal mb-4">{product.description}</p>
-                <ul className="space-y-2">
-                  {product.features.map((feature, i) => (
-                    <li key={i} className="flex items-center">
-                      <span className="bg-hima-orange/10 text-hima-orange rounded-full p-1 mr-3">
-                        ✓
-                      </span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="px-8 pb-8">
-                <button className="bg-hima-orange hover:bg-hima-orange-dark text-white px-6 py-2 rounded-lg transition-colors">
-                  Learn More
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+        {products.length > 0 ? (
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {products.map((product) => (
+              <ProductWebsiteCard key={product.id} product={product} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <h3 className="text-xl font-medium text-gray-700">No products available at the moment</h3>
+            <p className="text-gray-500 mt-2">Please check back later</p>
+          </div>
+        )}
       </section>
 
       {/* CTA Section */}
-      <section className="bg-hima-blue/5 py-16">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-hima-blue mb-6">Need a custom solution?</h2>
-          <p className="text-xl text-hima-charcoal mb-8 max-w-3xl mx-auto">
-            We specialize in tailoring technology to Zanzibar&apos;s unique business landscape.
-          </p>
-          <button className="bg-hima-orange hover:bg-hima-orange-dark text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
-            Get in Touch
-          </button>
-        </div>
-      </section>
+      <CTA 
+        title="Ready to transform your business?"
+        buttonText="Schedule Consultation"
+      />
+      
+      <Footer />
     </div>
   );
 }
