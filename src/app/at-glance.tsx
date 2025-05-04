@@ -31,7 +31,7 @@ export function AtGlance() {
         <Image
           width={256}
           height={256}
-          src="/image/team.png"
+          src="/image/team.webp"
           className="col-span-1 w-1/2 mx-auto lg:w-10/12"
           alt="iphone-photo"
         />

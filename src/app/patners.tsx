@@ -105,28 +105,28 @@ function TeamCard({ img, name, title, description }: TeamCardPropsType) {
 
 const members = [
   {
-    img: `/image/usamah.jpg`,
+    img: `/image/usamah.webp`,
     name: "Usama Talib Juma",
     title: "Team Leader & Full Stack Developer",
     description:
       "Visionary team leader with exceptional expertise in full stack development. Drives innovation while empowering team members to achieve their highest potential.",
   },
   {
-    img: `/image/seif.jpg`,
+    img: `/image/seif.webp`,
     name: "Seif Mwita Mgeni",
     title: "Mobile & Backend Developer",
     description:
       "Versatile developer specializing in robust mobile applications and scalable backend systems. Creates seamless solutions that bridge user experience with technical excellence.",
   },
   {
-    img: `/image/seif.jpg`,
+    img: `/image/hussein.webp`,
     name: "Hussein Ali Abdulrahman",
     title: "Senior Data Analyst & Advisor",
     description:
       "Experienced data analyst with remarkable insight and strategic thinking. Provides critical guidance to the team while transforming complex data into actionable intelligence.",
   },
   {
-    img: `/image/ahmad.jpg`,
+    img: `/image/ahmad.webp`,
     name: "Ahmad Sadri Abdullah",
     title: "Technical Director & System Architect",
     description:

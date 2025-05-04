@@ -40,7 +40,7 @@ const FEATURES = [
     title: "IT Consulting, Strategy, and Training",
     children:
       "Gain a competitive edge and empower your team with our comprehensive IT consulting, strategy, and training services. Whether you need help aligning your technology initiatives with your business goals, optimizing your IT infrastructure, or navigating digital transformation, our expert consultants provide strategic guidance and support. Additionally, our training programs are designed to equip individuals and teams with the skills and knowledge they need to succeed in today's fast-paced digital landscape, covering topics ranging from IT best practices to emerging technologies.",
-    image: "/image/team.png",
+    image: "/image/team.webp",
   },
 ];
 

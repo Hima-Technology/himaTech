@@ -2,8 +2,37 @@
 
 import Image from "next/image";
 import { Button, Typography } from "@material-tailwind/react";
+import { HexagonalGrid } from "@/components/hexagonal-tile";
 
 function Hero() {
+  // Hexagonal tiles data for the hero section
+  const heroTiles = [
+    {
+      image: "/image/team.webp",
+      alt: "Team Collaboration",
+    },
+    {
+      image: "/image/laptop.png",
+      alt: "Development",
+    },
+    {
+      image: "/image/Background.png",
+      alt: "Technology Background",
+    },
+    {
+      image: "/image/iphones.png",
+      alt: "Mobile Solutions",
+    },
+    {
+      image: "/logos/hima2-black.png",
+      alt: "Hima Brand",
+    },
+    {
+      image: "/image/iphone.png",
+      alt: "iPhone App",
+    },
+  ];
+
   return (
     <div className="relative min-h-screen w-full">
       <header className="grid !min-h-[49rem] bg-gray-900 px-8">
@@ -56,13 +85,9 @@ function Hero() {
               </Button>
             </div>
           </div>
-          {/* <Image
-            width={470}
-            height={576}
-            src="/image/laptop.png"
-            alt="team work"
-            className="col-span-1 my-20 h-full max-h-[30rem] -translate-y-32 md:max-h-[36rem] lg:my-0 lg:ml-auto lg:max-h-[40rem] lg:translate-y-0"
-          /> */}
+          <div className="col-span-1 w-full max-w-md lg:max-w-full mt-10 lg:mt-0">
+            <HexagonalGrid tiles={heroTiles} />
+          </div>
         </div>
       </header>
       <div className="mx-8 lg:mx-16 -mt-24 rounded-xl bg-white p-5 md:p-14 shadow-md">

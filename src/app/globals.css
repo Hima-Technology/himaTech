@@ -1,3 +1,105 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hexagonal Grid Styles */
+.hexagon-grid-container {
+  width: 100%;
+  max-width: 900px; /* Decreased from 1200px */
+  margin: 0 auto;
+  padding: 1.5rem 0; /* Decreased from 2rem */
+  perspective: 1000px; /* Add perspective for 3D effect */
+}
+
+.hexagon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Changed from 2 to 3 columns */
+  grid-auto-rows: minmax(120px, auto); /* Slightly decreased height for better proportions */
+  gap: 1.5rem 0.75rem; /* Decreased from 2rem 1rem */
+  padding: 0.75rem; /* Decreased from 1rem */
+  transform-style: preserve-3d; /* Maintain 3D space for children */
+}
+
+.hexagon-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 110%; /* Adjusted for aspect ratio */
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d; /* Maintain 3D space for children */
+}
+
+.hexagon-wrapper:hover {
+  transform: translateY(-5px) translateZ(20px); /* Added Z-axis movement */
+}
+
+.hexagon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background-color: #f3f4f6;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hexagon:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transform: rotateX(10deg) rotateY(5deg);
+}
+
+.hexagon-image-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.hexagon-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+
+.hexagon:hover .hexagon-image {
+  transform: scale(1.05) translateZ(10px);
+}
+
+.hexagon-content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0.75rem; /* Decreased from 1rem */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  text-align: center;
+  transform: translateZ(15px); /* Makes text appear above the surface */
+}
+
+/* Responsive adjustments */
+@media (min-width: 640px) {
+  .hexagon-grid {
+    grid-template-columns: repeat(3, 1fr); /* Changed from 2 to 3 columns */
+    gap: 1.25rem 0.75rem; /* Decreased from 1.5rem 1rem */
+  }
+}
+
+@media (min-width: 768px) {
+  .hexagon-grid {
+    grid-template-columns: repeat(3, 1fr); /* Changed from 2 to 3 columns */
+    gap: 1.5rem 1rem; /* Decreased from 2rem 1.5rem */
+  }
+}
+
+@media (min-width: 1024px) {
+  .hexagon-grid {
+    grid-template-columns: repeat(3, 1fr); /* Changed from 2 to 3 columns */
+    gap: 1.75rem 1.25rem; /* Adjusted horizontal gap for 3 columns */
+  }
+  
+  .hexagon-grid-container {
+    perspective: 1200px; /* Enhanced perspective for larger screens */
+  }
+}
