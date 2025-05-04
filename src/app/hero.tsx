@@ -47,7 +47,6 @@ function Hero() {
                 size="lg"
                 color="white"
                 className="flex justify-center items-center gap-3"
-                
                 placeholder={undefined}
                 onPointerEnterCapture={undefined}
                 onPointerLeaveCapture={undefined}
@@ -57,13 +56,13 @@ function Hero() {
               </Button>
             </div>
           </div>
-          <Image
+          {/* <Image
             width={470}
             height={576}
             src="/image/laptop.png"
             alt="team work"
             className="col-span-1 my-20 h-full max-h-[30rem] -translate-y-32 md:max-h-[36rem] lg:my-0 lg:ml-auto lg:max-h-[40rem] lg:translate-y-0"
-          />
+          /> */}
         </div>
       </header>
       <div className="mx-8 lg:mx-16 -mt-24 rounded-xl bg-white p-5 md:p-14 shadow-md">
@@ -72,7 +71,6 @@ function Hero() {
             variant="h3"
             color="blue-gray"
             className="mb-3"
-            
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
@@ -82,17 +80,16 @@ function Hero() {
           <Typography
             variant="paragraph"
             className="font-normal !text-gray-500 lg:w-5/12"
-            
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           >
-            Founded by a team of visionary technologists, Hima Technologies
-            brings together expertise from diverse fields including software
-            development, artificial intelligence, data analytics, and
-            cybersecurity. Our team is dedicated to staying at the forefront of
-            technological advancements, ensuring that we consistently deliver
-            top-notch solutions that drive real-world impact.
+            Founded in Zanzibar by a team of forward-thinking innovators, Hima
+            Technologies combines expertise in software development, artificial
+            intelligence, data analytics, and cybersecurity. With a commitment
+            to technological excellence, we harness cutting-edge solutions to
+            drive meaningful impact across industries, ensuring businesses stay
+            ahead in an ever-evolving digital landscape.
           </Typography>
         </div>
       </div>
