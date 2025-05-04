@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { Button, Typography } from "@material-tailwind/react";
-import TechIcons from "@/components/Techicons";
 
 function Hero() {
   return (
