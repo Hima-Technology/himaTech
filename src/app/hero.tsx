@@ -1,36 +1,43 @@
 "use client";
-
+import React from "react";
 import Image from "next/image";
 import { Button, Typography } from "@material-tailwind/react";
 import { HexagonalGrid } from "@/components/hexagonal-tile";
 
-function Hero() {
+// Define the type for hero tiles
+interface HeroTile {
+  image: string;
+  alt: string;
+}
+
+const Hero: React.FC = () => {
   // Hexagonal tiles data for the hero section
-  const heroTiles = [
+  const heroTiles: HeroTile[] = [
     {
-      image: "/image/team.webp",
+      image: "/image/NextJS.webp",
       alt: "Team Collaboration",
     },
     {
-      image: "/image/laptop.png",
+      image: "/image/ReactJS.webp",
       alt: "Development",
     },
     {
-      image: "/image/Background.png",
+      image: "/image/Django.webp",
       alt: "Technology Background",
     },
     {
-      image: "/image/iphones.png",
-      alt: "Mobile Solutions",
+      image: "/image/MongoDB.webp",
+      alt: "MongoDB",
     },
     {
-      image: "/logos/hima2-black.png",
-      alt: "Hima Brand",
+      image: "/image/Typescript.webp",
+      alt: "Typescript",
     },
     {
-      image: "/image/iphone.png",
-      alt: "iPhone App",
+      image: "/image/Tailwind.webp",
+      alt: "Tailwind",
     },
+
   ];
 
   return (
@@ -120,5 +127,6 @@ function Hero() {
       </div>
     </div>
   );
-}
+};
+
 export default Hero;

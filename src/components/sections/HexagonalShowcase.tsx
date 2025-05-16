@@ -6,25 +6,25 @@ export function HexagonalShowcase() {
   // Example data for the hexagonal grid
   const hexagonTiles = [
     {
-      image: "/image/team.webp",
-      alt: "Team Collaboration",
+      image: "/image/NextJS.webp",
+      alt: "Next JS",
       title: "Our Team",
       description: "Dedicated professionals working together",
     },
     {
-      image: "/image/laptop.png",
+      image: "/image/ReactJS.webp",
       alt: "Development",
       title: "Development",
       description: "Creating innovative solutions",
     },
     {
-      image: "/public/image/Background.png",
+      image: "/public/image/python.webp",
       alt: "Background",
       title: "Technology",
       description: "Leveraging cutting-edge tech",
     },
     {
-      image: "/image/iphones.png",
+      image: "/image/tailwindCSS.webp",
       alt: "Mobile Solutions",
       title: "Mobile Apps",
       description: "Cross-platform development",

@@ -87,11 +87,10 @@ export function Navbar() {
         >
           <Image
             width={200}
-            height={300}
-            className="w-25 h-11"
+            height={100}
             alt="Hima Technologies"
             src={
-              isScrolling ? "/logos/hima2-black.png" : "/logos/hima2-white.png"
+              isScrolling ? "/logos/Hima-dark.webp" : "/logos/Hima-white.webp"
             }
           />
           {/* Hima Technologies        */}
@@ -101,11 +100,10 @@ export function Navbar() {
             isScrolling ? "text-gray-900" : "text-white"
           }`}
         >
-          <NavItem href="./" >Home</NavItem>
+          <NavItem href="./">Home</NavItem>
           <NavItem>About Us</NavItem>
           <NavItem>Contact Us</NavItem>
-          <NavItem href="pages/Our-Products" >Our Products</NavItem>
-
+          <NavItem href="pages/Our-Products">Our Products</NavItem>
         </ul>
         <div className="hidden gap-2 lg:flex lg:items-center">
           <IconButton
@@ -158,12 +156,11 @@ export function Navbar() {
       <Collapse open={open}>
         <div className="container mx-auto mt-4 rounded-lg border-t border-blue-gray-50 bg-white px-6 py-5">
           <ul className="flex flex-col gap-4 text-blue-gray-900">
-            <NavItem href="./" >Home</NavItem>
+            <NavItem href="./">Home</NavItem>
             <NavItem>About Us</NavItem>
             <NavItem>Contact Us</NavItem>
             <NavItem>Our Products</NavItem>
-            <NavItem href="pages/Our-Products" >Our Products</NavItem>
-
+            <NavItem href="./Our-Products">Our Products</NavItem>
           </ul>
           <div className="mt-4 flex items-center gap-2">
             <IconButton

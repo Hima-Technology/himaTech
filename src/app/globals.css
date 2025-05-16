@@ -4,57 +4,53 @@
 
 /* Hexagonal Grid Styles */
 .hexagon-grid-container {
+  position: relative;
   width: 100%;
-  max-width: 900px; /* Decreased from 1200px */
+  max-width: 900px; /* Adjust max-width for larger screens */
   margin: 0 auto;
-  padding: 1.5rem 0; /* Decreased from 2rem */
-  perspective: 1000px; /* Add perspective for 3D effect */
+  padding: 2rem 0;
+  perspective: 1000px;
 }
 
 .hexagon-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Changed from 2 to 3 columns */
-  grid-auto-rows: minmax(120px, auto); /* Slightly decreased height for better proportions */
-  gap: 1.5rem 0.75rem; /* Decreased from 2rem 1rem */
-  padding: 0.75rem; /* Decreased from 1rem */
-  transform-style: preserve-3d; /* Maintain 3D space for children */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the hexagons */
 }
 
 .hexagon-wrapper {
   position: relative;
-  width: 100%;
-  padding-bottom: 110%; /* Adjusted for aspect ratio */
-  transition: transform 0.3s ease;
-  transform-style: preserve-3d; /* Maintain 3D space for children */
+  width: 210px; /* Base width for desktop */
+  height: 239px; /* Height = width * 0.866 for regular hexagon */
+  margin: -40px 10px 20px; /* Overlap effect */
+  transition: all 0.3s ease;
+  z-index: 1;
+  cursor: pointer;
 }
 
 .hexagon-wrapper:hover {
-  transform: translateY(-5px) translateZ(20px); /* Added Z-axis movement */
+  transform: translateY(-8px) translateZ(10px);
+  z-index: 2;
 }
 
 .hexagon {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  background-color: #f3f4f6;
+  background-color: white;
   transition: all 0.3s ease;
   overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transform-style: preserve-3d;
-  backface-visibility: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.hexagon:hover {
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  transform: rotateX(10deg) rotateY(5deg);
-}
-
-.hexagon-image-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hexagon-image {
@@ -65,41 +61,46 @@
 }
 
 .hexagon:hover .hexagon-image {
-  transform: scale(1.05) translateZ(10px);
-}
-
-.hexagon-content {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 0.75rem; /* Decreased from 1rem */
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-  text-align: center;
-  transform: translateZ(15px); /* Makes text appear above the surface */
+  transform: scale(1.05);
 }
 
 /* Responsive adjustments */
-@media (min-width: 640px) {
-  .hexagon-grid {
-    grid-template-columns: repeat(3, 1fr); /* Changed from 2 to 3 columns */
-    gap: 1.25rem 0.75rem; /* Decreased from 1.5rem 1rem */
+@media (max-width: 1200px) {
+  .hexagon-wrapper {
+    width: 180px; /* Slightly smaller for medium screens */
+    height: 196px; /* Proportional height */
+    margin: -35px 8px 18px; /* Adjust overlap for medium screens */
   }
 }
 
-@media (min-width: 768px) {
-  .hexagon-grid {
-    grid-template-columns: repeat(3, 1fr); /* Changed from 2 to 3 columns */
-    gap: 1.5rem 1rem; /* Decreased from 2rem 1.5rem */
+@media (max-width: 992px) {
+  .hexagon-wrapper {
+    width: 150px; /* Smaller for tablets */
+    height: 160px; /* Proportional height */
+    margin: -30px 6px 15px; /* Adjust overlap for tablets */
   }
 }
 
-@media (min-width: 1024px) {
-  .hexagon-grid {
-    grid-template-columns: repeat(3, 1fr); /* Changed from 2 to 3 columns */
-    gap: 1.75rem 1.25rem; /* Adjusted horizontal gap for 3 columns */
+@media (max-width: 768px) {
+  .hexagon-wrapper {
+    width: 120px; /* Even smaller for small tablets */
+    height: 130px; /* Proportional height */
+    margin: -25px 4px 12px; /* Adjust overlap for small tablets */
   }
-  
-  .hexagon-grid-container {
-    perspective: 1200px; /* Enhanced perspective for larger screens */
+}
+
+@media (max-width: 576px) {
+  .hexagon-wrapper {
+    width: 100px; /* Small size for mobile devices */
+    height: 108px; /* Proportional height */
+    margin: -20px 3px 10px; /* Adjust overlap for mobile */
+  }
+}
+
+@media (max-width: 400px) {
+  .hexagon-wrapper {
+    width: 80px; /* Smallest size for very small screens */
+    height: 86px; /* Proportional height */
+    margin: -15px 2px 8px; /* Minimal overlap for tiny screens */
   }
 }

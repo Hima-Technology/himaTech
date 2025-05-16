@@ -1,84 +1,80 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { Typography } from "@material-tailwind/react";
+import { defineHex, Grid } from 'honeycomb-grid';
+import type { HexCoordinates } from 'honeycomb-grid';
+import Image from 'next/image';
+import React from 'react';
 
-interface HexagonalTileProps {
+interface Tile {
   image: string;
-  alt?: string;
-  title?: string;
-  description?: string;
-  onClick?: () => void;
+  alt: string;
 }
 
-export function HexagonalTile({
-  image,
-  alt = "Hexagon image",
-  title,
-  description,
-  onClick,
-}: HexagonalTileProps) {
+interface HexagonalGridProps {
+  tiles: Tile[];
+}
+
+const HexagonalTile: React.FC<Tile> = ({ image, alt }) => (
+  <div className="hexagon-wrapper">
+    <div className="hexagon">
+      <Image
+        src={image}
+        alt={alt}
+        width={200}
+        height={226}
+        className="hexagon-image"
+      />
+    </div>
+  </div>
+);
+
+export const HexagonalGrid: React.FC<HexagonalGridProps> = ({ tiles }) => {
+
+  function getHexSize() {
+    const width = window.innerWidth;
+  
+    if (width >= 1200) return 125;    // Desktop
+    if (width >= 992) return 100;     // Laptop
+    if (width >= 768) return 85;      // Tablet landscape
+    if (width >= 576) return 70;      // Tablet portrait
+    return 60;                        // Mobile
+  }
+
+  const CustomHex = defineHex({
+    dimensions: getHexSize(),
+    origin: 'topLeft',
+  });
+
+  const coordinates: HexCoordinates[] = [
+    [0, 0], [1, 0], [2, 0],
+    [0, 1], [1, 1], [2, 1],
+  ];
+
+  const grid = new Grid(CustomHex, coordinates);
+  const hexes = grid.toArray();
+
   return (
-    <div 
-      className="hexagon-wrapper cursor-pointer"
-      onClick={onClick}
-    >
-      <div className="hexagon">
-        <div className="hexagon-image-container">
-          <Image 
-            src={image} 
-            alt={alt} 
-            fill 
-            className="hexagon-image object-cover" 
-          />
-        </div>
-        {(title || description) && (
-          <div className="hexagon-content">
-            {title && (
-              <Typography 
-                variant="h6" 
-                color="white" 
-                className="mb-1 font-bold"
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-              >
-                {title}
-              </Typography>
-            )}
-            {description && (
-              <Typography 
-                variant="small" 
-                color="white"
-                className="opacity-80"
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-              >
-                {description}
-              </Typography>
-            )}
+    <div className="relative w-full h-[400px]">
+      {hexes.map((hex, index) => {
+        const tile = tiles[index];
+        if (!tile) return null;
+
+        // ✅ Use .x and .y directly
+        const { x, y } = hex;
+
+        return (
+          <div
+            key={`hex-${hex.q}-${hex.r}`}
+            className="absolute"
+            style={{
+              left: `${x}px`,
+              top: `${y}px`,
+            }}
+          >
+            <HexagonalTile {...tile} />
           </div>
-        )}
-      </div>
+        );
+      })}
     </div>
   );
-}
-
-export function HexagonalGrid({ 
-  tiles 
-}: { 
-  tiles: HexagonalTileProps[] 
-}) {
-  return (
-    <div className="hexagon-grid-container">
-      <div className="hexagon-grid">
-        {tiles.map((tile, index) => (
-          <HexagonalTile key={index} {...tile} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-export default HexagonalTile;
+};
