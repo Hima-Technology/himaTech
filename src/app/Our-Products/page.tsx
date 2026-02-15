@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { Navbar, Footer } from '@/components';
 import CTA from '@/components/sections/CTA';
 import { Button } from "@material-tailwind/react";
 import { FiExternalLink, FiHeart, FiClock } from 'react-icons/fi';
@@ -76,8 +75,7 @@ export default function ProductsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <Navbar />
+      <div className="page-transition min-h-screen bg-gray-50">
         <div className="container mx-auto px-6 py-20 text-center">
           <div className="animate-pulse">
             <div className="h-12 bg-gray-300 rounded w-1/2 mx-auto mb-4"></div>
@@ -89,8 +87,7 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
+    <div className="page-transition min-h-screen bg-gray-50">
       
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-20">
@@ -123,8 +120,6 @@ export default function ProductsPage() {
         title="Ready to transform your business?"
         buttonText="Schedule Consultation"
       />
-      
-      <Footer />
     </div>
   );
 }

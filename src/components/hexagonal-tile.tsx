@@ -3,7 +3,7 @@
 import { defineHex, Grid } from 'honeycomb-grid';
 import type { HexCoordinates } from 'honeycomb-grid';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface Tile {
   image: string;
@@ -29,19 +29,33 @@ const HexagonalTile: React.FC<Tile> = ({ image, alt }) => (
 );
 
 export const HexagonalGrid: React.FC<HexagonalGridProps> = ({ tiles }) => {
+  const [hexSize, setHexSize] = useState(100); // Default size for SSR
 
-  function getHexSize() {
-    const width = window.innerWidth;
-  
-    if (width >= 1200) return 125;    // Desktop
-    if (width >= 992) return 100;     // Laptop
-    if (width >= 768) return 85;      // Tablet landscape
-    if (width >= 576) return 70;      // Tablet portrait
-    return 60;                        // Mobile
-  }
+  useEffect(() => {
+    function getHexSize() {
+      const width = window.innerWidth;
+    
+      if (width >= 1200) return 125;    // Desktop
+      if (width >= 992) return 100;     // Laptop
+      if (width >= 768) return 85;      // Tablet landscape
+      if (width >= 576) return 70;      // Tablet portrait
+      return 60;                        // Mobile
+    }
+
+    // Set the hex size on client side
+    setHexSize(getHexSize());
+
+    // Optional: Add resize listener for responsive behavior
+    const handleResize = () => {
+      setHexSize(getHexSize());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const CustomHex = defineHex({
-    dimensions: getHexSize(),
+    dimensions: hexSize,
     origin: 'topLeft',
   });
 

@@ -2,11 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth Page Transitions */
+@layer utilities {
+  .page-transition {
+    animation: fadeInUp 0.6s ease-out;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth color transitions for all elements except navbar/footer */
+* :not(nav):not(nav *):not(footer):not(footer *) {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 /* Hexagonal Grid Styles */
 .hexagon-grid-container {
   position: relative;
   width: 100%;
-  max-width: 900px; /* Adjust max-width for larger screens */
+  max-width: 900px;
+  /* Adjust max-width for larger screens */
   margin: 0 auto;
   padding: 2rem 0;
   perspective: 1000px;
@@ -18,14 +43,18 @@
   height: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Center the hexagons */
+  justify-content: center;
+  /* Center the hexagons */
 }
 
 .hexagon-wrapper {
   position: relative;
-  width: 210px; /* Base width for desktop */
-  height: 239px; /* Height = width * 0.866 for regular hexagon */
-  margin: -40px 10px 20px; /* Overlap effect */
+  width: 210px;
+  /* Base width for desktop */
+  height: 239px;
+  /* Height = width * 0.866 for regular hexagon */
+  margin: -40px 10px 20px;
+  /* Overlap effect */
   transition: all 0.3s ease;
   z-index: 1;
   cursor: pointer;
@@ -67,40 +96,55 @@
 /* Responsive adjustments */
 @media (max-width: 1200px) {
   .hexagon-wrapper {
-    width: 180px; /* Slightly smaller for medium screens */
-    height: 196px; /* Proportional height */
-    margin: -35px 8px 18px; /* Adjust overlap for medium screens */
+    width: 180px;
+    /* Slightly smaller for medium screens */
+    height: 196px;
+    /* Proportional height */
+    margin: -35px 8px 18px;
+    /* Adjust overlap for medium screens */
   }
 }
 
 @media (max-width: 992px) {
   .hexagon-wrapper {
-    width: 150px; /* Smaller for tablets */
-    height: 160px; /* Proportional height */
-    margin: -30px 6px 15px; /* Adjust overlap for tablets */
+    width: 150px;
+    /* Smaller for tablets */
+    height: 160px;
+    /* Proportional height */
+    margin: -30px 6px 15px;
+    /* Adjust overlap for tablets */
   }
 }
 
 @media (max-width: 768px) {
   .hexagon-wrapper {
-    width: 120px; /* Even smaller for small tablets */
-    height: 130px; /* Proportional height */
-    margin: -25px 4px 12px; /* Adjust overlap for small tablets */
+    width: 120px;
+    /* Even smaller for small tablets */
+    height: 130px;
+    /* Proportional height */
+    margin: -25px 4px 12px;
+    /* Adjust overlap for small tablets */
   }
 }
 
 @media (max-width: 576px) {
   .hexagon-wrapper {
-    width: 100px; /* Small size for mobile devices */
-    height: 108px; /* Proportional height */
-    margin: -20px 3px 10px; /* Adjust overlap for mobile */
+    width: 100px;
+    /* Small size for mobile devices */
+    height: 108px;
+    /* Proportional height */
+    margin: -20px 3px 10px;
+    /* Adjust overlap for mobile */
   }
 }
 
 @media (max-width: 400px) {
   .hexagon-wrapper {
-    width: 80px; /* Smallest size for very small screens */
-    height: 86px; /* Proportional height */
-    margin: -15px 2px 8px; /* Minimal overlap for tiny screens */
+    width: 80px;
+    /* Smallest size for very small screens */
+    height: 86px;
+    /* Proportional height */
+    margin: -15px 2px 8px;
+    /* Minimal overlap for tiny screens */
   }
 }

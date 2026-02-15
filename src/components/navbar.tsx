@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 import {
   Navbar as MTNavbar,
@@ -15,21 +16,12 @@ interface NavItemProps {
   href?: string;
   target?: string;
 }
-function NavItem({ children, href, target }: NavItemProps) {
+function NavItem({ children, href = "/", target }: NavItemProps) {
   return (
     <li>
-      <Typography
-        as="a"
-        href={href || "#"}
-        target={target ? "_blank" : "_self"}
-        variant="small"
-        className="font-medium"
-        placeholder={undefined}
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      >
+      <Link href={href} target={target || "_self"} className="font-medium">
         {children}
-      </Typography>
+      </Link>
     </li>
   );
 }
@@ -75,16 +67,7 @@ export function Navbar() {
       onPointerLeaveCapture={undefined}
     >
       <div className="container mx-auto flex items-center justify-between">
-        <Typography
-          as="a"
-          href="#"
-          target="_blank"
-          variant="h6"
-          color={isScrolling ? "gray" : "white"}
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
+        <Link href="/">
           <Image
             width={200}
             height={100}
@@ -92,18 +75,18 @@ export function Navbar() {
             src={
               isScrolling ? "/logos/Hima-dark.webp" : "/logos/Hima-white.webp"
             }
+            className="cursor-pointer"
           />
-          {/* Hima Technologies        */}
-        </Typography>
+        </Link>
         <ul
           className={`ml-10 hidden items-center gap-6 lg:flex ${
             isScrolling ? "text-gray-900" : "text-white"
           }`}
         >
-          <NavItem href="./">Home</NavItem>
-          <NavItem>About Us</NavItem>
-          <NavItem>Contact Us</NavItem>
-          <NavItem href="pages/Our-Products">Our Products</NavItem>
+          <NavItem href="/">Home</NavItem>
+          <NavItem href="/about-us">About Us</NavItem>
+          <NavItem href="/contact-us">Contact Us</NavItem>
+          <NavItem href="/Our-Products">Our Products</NavItem>
         </ul>
         <div className="hidden gap-2 lg:flex lg:items-center">
           <IconButton
@@ -156,11 +139,10 @@ export function Navbar() {
       <Collapse open={open}>
         <div className="container mx-auto mt-4 rounded-lg border-t border-blue-gray-50 bg-white px-6 py-5">
           <ul className="flex flex-col gap-4 text-blue-gray-900">
-            <NavItem href="./">Home</NavItem>
-            <NavItem>About Us</NavItem>
-            <NavItem>Contact Us</NavItem>
-            <NavItem>Our Products</NavItem>
-            <NavItem href="./Our-Products">Our Products</NavItem>
+            <NavItem href="/">Home</NavItem>
+            <NavItem href="/about-us">About Us</NavItem>
+            <NavItem href="/contact-us">Contact Us</NavItem>
+            <NavItem href="/Our-Products">Our Products</NavItem>
           </ul>
           <div className="mt-4 flex items-center gap-2">
             <IconButton
