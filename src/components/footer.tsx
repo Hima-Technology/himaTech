@@ -66,13 +66,13 @@ export function Footer() {
               </div>
               <div className="flex items-start gap-3">
                 <FiPhone className="mt-1 flex-shrink-0 opacity-75" />
-                <a href="tel:+255777123456" className="hover:text-white transition-colors">
-                  +255 777 123 456
+                <a href="tel:+255628404865" className="hover:text-white transition-colors">
+                  +255 628 404 865
                 </a>
               </div>
               <div className="flex items-start gap-3">
                 <FiMapPin className="mt-1 flex-shrink-0 opacity-75" />
-                <span>Stone Town, Zanzibar</span>
+                <span>Zanzibar</span>
               </div>
             </div>
           </div>

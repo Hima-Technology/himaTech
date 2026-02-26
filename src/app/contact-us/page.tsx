@@ -57,7 +57,7 @@ export default function ContactUs() {
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             >
-              We'd love to hear from you. Get in touch with our team.
+              We&apos;d love to hear from you. Get in touch with our team.
             </Typography>
           </div>
         </div>
@@ -84,8 +84,8 @@ export default function ContactUs() {
                 onPointerEnterCapture={undefined}
                 onPointerLeaveCapture={undefined}
               >
-                Have a question or want to work together? We're here to help!
-                Fill out the form and we'll respond as soon as possible.
+                Have a question or want to work together? We&apos;re here to help!
+                Fill out the form and we&apos;ll respond as soon as possible.
               </Typography>
 
               <div className="space-y-6">

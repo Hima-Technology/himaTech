@@ -310,7 +310,7 @@ export default function AboutUs() {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  We've successfully delivered projects across various industries
+                  We&apos;ve successfully delivered projects across various industries
                   and scales.
                 </Typography>
               </div>
