@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { Badge } from "@/components/ui/Badge";
+import { TiltCard } from "@/components/ui/TiltCard";
 import { products as fallbackProducts } from "@/lib/products-data";
 import { getCmsProducts } from "@/sanity/queries";
 
@@ -25,22 +26,24 @@ export async function Work() {
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
           {highlights.map((product, idx) => (
             <RevealOnScroll key={product.title} delay={idx * 0.05}>
-              <a
-                href={product.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex h-full flex-col rounded-xl border border-white/10 bg-white/5 p-8 transition duration-250 hover:-translate-y-1 hover:border-accent-500/50"
-              >
-                <Badge tone="accent" className="w-fit">
-                  {product.category}
-                </Badge>
-                <h3 className="mt-4 font-display text-lg text-white">{product.title}</h3>
-                <p className="mt-2 flex-1 text-sm text-white/60">{product.description}</p>
-                <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-accent-400">
-                  Visit site
-                  <HiOutlineArrowUpRight className="transition duration-250 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </span>
-              </a>
+              <TiltCard className="h-full">
+                <a
+                  href={product.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-full flex-col rounded-xl border border-white/10 bg-white/5 p-8 transition-colors duration-250 hover:border-accent-500/50"
+                >
+                  <Badge tone="accent" className="w-fit">
+                    {product.category}
+                  </Badge>
+                  <h3 className="mt-4 font-display text-lg text-white">{product.title}</h3>
+                  <p className="mt-2 flex-1 text-sm text-white/60">{product.description}</p>
+                  <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-accent-400">
+                    Visit site
+                    <HiOutlineArrowUpRight className="transition duration-250 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </a>
+              </TiltCard>
             </RevealOnScroll>
           ))}
         </div>

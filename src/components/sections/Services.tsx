@@ -11,6 +11,7 @@ import type { IconType } from "react-icons";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { TiltCard } from "@/components/ui/TiltCard";
 import { getServices } from "@/sanity/queries";
 
 const ICONS: Record<string, IconType> = {
@@ -79,13 +80,18 @@ export async function Services() {
             const Icon = ICONS[service.icon] || HiOutlineSparkles;
             return (
               <RevealOnScroll key={service.title} delay={idx * 0.05}>
-                <div className="h-full rounded-xl border border-neutral-100 bg-white p-8 shadow-soft transition duration-250 hover:-translate-y-1 hover:shadow-soft-md">
-                  <div className="mb-5 grid h-12 w-12 place-content-center rounded-lg bg-accent-900 text-white">
-                    <Icon className="h-6 w-6" />
+                <TiltCard className="h-full rounded-xl border border-neutral-100 bg-white p-8 shadow-soft transition-shadow duration-250 hover:shadow-soft-md">
+                  <div className="flex items-start justify-between">
+                    <div className="grid h-12 w-12 place-content-center rounded-lg bg-accent-900 text-white">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <span className="font-display text-sm text-neutral-300">
+                      /{String(idx + 1).padStart(2, "0")}
+                    </span>
                   </div>
-                  <h3 className="font-display text-lg text-ink-950">{service.title}</h3>
+                  <h3 className="mt-5 font-display text-lg text-ink-950">{service.title}</h3>
                   <p className="mt-2 font-medium text-neutral-600">{service.description}</p>
-                </div>
+                </TiltCard>
               </RevealOnScroll>
             );
           })}
