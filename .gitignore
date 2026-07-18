@@ -39,3 +39,9 @@ pnpm-lock.yaml
 yarn.lock
 cache/*\n!cache/.gitkeep
 cache/*\n!cache/.gitkeep
+
+# Codev
+.agent-farm/
+.consult/
+codev/.update-hashes.json
+.builders/
