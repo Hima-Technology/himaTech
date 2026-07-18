@@ -4,8 +4,9 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
+import { getPricingTiers } from "@/sanity/queries";
 
-const TIERS = [
+const FALLBACK_TIERS = [
   {
     name: "Starter",
     description: "For a focused website or a first product prototype.",
@@ -36,7 +37,10 @@ const TIERS = [
   },
 ];
 
-export function Pricing() {
+export async function Pricing() {
+  const cmsTiers = await getPricingTiers();
+  const tiers = cmsTiers && cmsTiers.length > 0 ? cmsTiers : FALLBACK_TIERS;
+
   return (
     <section className="py-24">
       <Container>
@@ -47,7 +51,7 @@ export function Pricing() {
         />
 
         <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {TIERS.map((tier, idx) => (
+          {tiers.map((tier, idx) => (
             <RevealOnScroll key={tier.name} delay={idx * 0.05}>
               <div
                 className={cn(

@@ -2,15 +2,17 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import CTA from "@/components/sections/CTA";
 import ProductWebsiteCard from "@/components/products/ProductWebsiteCard";
-import productsData from "../../../public/data/products.json";
+import { products as fallbackProducts, productsMeta as meta } from "@/lib/products-data";
+import { getCmsProducts } from "@/sanity/queries";
 
 export const metadata: Metadata = {
   title: "Our Products | Hima Technologies",
   description: "Cutting-edge technology services designed to propel your business forward.",
 };
 
-export default function ProductsPage() {
-  const { products, meta } = productsData;
+export default async function ProductsPage() {
+  const cmsProducts = await getCmsProducts();
+  const products = cmsProducts && cmsProducts.length > 0 ? cmsProducts : fallbackProducts;
 
   return (
     <div className="page-transition">
@@ -26,7 +28,7 @@ export default function ProductsPage() {
           {products.length > 0 ? (
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {products.map((product) => (
-                <ProductWebsiteCard key={product.id} product={product} />
+                <ProductWebsiteCard key={product.title} product={product} />
               ))}
             </div>
           ) : (

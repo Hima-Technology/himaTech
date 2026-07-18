@@ -2,8 +2,11 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { getTeamMembers } from "@/sanity/queries";
 
-const MEMBERS = [
+const LOCAL_PHOTOS = ["/image/usamah.webp", "/image/seif.webp", "/image/hussein.webp", "/image/ahmad.webp"];
+
+const FALLBACK_MEMBERS = [
   {
     img: "/image/usamah.webp",
     name: "Usama Talib Juma",
@@ -15,8 +18,7 @@ const MEMBERS = [
     img: "/image/seif.webp",
     name: "Seif Mwita Mgeni",
     title: "Mobile & Backend Developer",
-    description:
-      "Versatile developer specializing in robust mobile applications and scalable backend systems.",
+    description: "Versatile developer specializing in robust mobile applications and scalable backend systems.",
   },
   {
     img: "/image/hussein.webp",
@@ -34,7 +36,21 @@ const MEMBERS = [
   },
 ];
 
-export function Team() {
+export async function Team() {
+  const cmsMembers = await getTeamMembers();
+  // Real headshots live locally and aren't uploaded by the seed script yet —
+  // pair CMS text with the matching local photo by seed order until photos
+  // are added directly in Sanity Studio.
+  const members =
+    cmsMembers && cmsMembers.length > 0
+      ? cmsMembers.map((m, idx) => ({
+          img: LOCAL_PHOTOS[idx] || LOCAL_PHOTOS[0],
+          name: m.name,
+          title: m.role,
+          description: m.bio,
+        }))
+      : FALLBACK_MEMBERS;
+
   return (
     <section className="py-24">
       <Container>
@@ -45,7 +61,7 @@ export function Team() {
         />
 
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {MEMBERS.map((member, idx) => (
+          {members.map((member, idx) => (
             <RevealOnScroll key={member.name} delay={idx * 0.05}>
               <div className="rounded-xl bg-white p-6 text-center shadow-soft">
                 <div className="relative mx-auto mb-6 h-28 w-28 overflow-hidden rounded-full ring-4 ring-neutral-50">

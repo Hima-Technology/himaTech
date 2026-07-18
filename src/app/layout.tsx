@@ -1,7 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
-import { Layout } from "@/components";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -60,9 +59,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
-      <body className="font-sans">
-        <Layout>{children}</Layout>
-      </body>
+      <body className="font-sans">{children}</body>
     </html>
   );
 }

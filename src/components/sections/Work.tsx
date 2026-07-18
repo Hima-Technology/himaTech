@@ -4,10 +4,13 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { Badge } from "@/components/ui/Badge";
-import productsData from "../../../public/data/products.json";
+import { products as fallbackProducts } from "@/lib/products-data";
+import { getCmsProducts } from "@/sanity/queries";
 
-export function Work() {
-  const highlights = productsData.products.slice(0, 3);
+export async function Work() {
+  const cmsProducts = await getCmsProducts();
+  const products = cmsProducts && cmsProducts.length > 0 ? cmsProducts : fallbackProducts;
+  const highlights = products.slice(0, 3);
 
   return (
     <section className="bg-brand-950 py-24">
@@ -21,7 +24,7 @@ export function Work() {
 
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
           {highlights.map((product, idx) => (
-            <RevealOnScroll key={product.id} delay={idx * 0.05}>
+            <RevealOnScroll key={product.title} delay={idx * 0.05}>
               <a
                 href={product.url}
                 target="_blank"

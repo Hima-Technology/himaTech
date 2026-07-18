@@ -3,7 +3,6 @@ import { HiCheck } from "react-icons/hi";
 import { Badge } from "@/components/ui/Badge";
 
 type Product = {
-  id: number;
   title: string;
   description: string;
   category: string;

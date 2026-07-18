@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker } from "react-icons/hi";
+import { getSiteSettings } from "@/sanity/queries";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -11,15 +12,22 @@ const QUICK_LINKS = [
   { href: "/contact-us", label: "Contact" },
 ];
 
-const SERVICES = [
-  "Software Development",
-  "AI Solutions",
-  "Data Analytics",
-  "Cybersecurity",
-  "IT Consulting",
-];
+const SERVICES = ["Software Development", "AI Solutions", "Data Analytics", "Cybersecurity", "IT Consulting"];
 
-export function Footer() {
+const FALLBACK_CONTACT = {
+  email: "info@himatech.co.tz",
+  phone: "+255 628 404 865",
+  location: "Zanzibar, Tanzania",
+};
+
+export async function Footer() {
+  const settings = await getSiteSettings();
+  const contact = {
+    email: settings?.email || FALLBACK_CONTACT.email,
+    phone: settings?.phone || FALLBACK_CONTACT.phone,
+    location: settings?.location || FALLBACK_CONTACT.location,
+  };
+
   return (
     <footer className="bg-brand-950 px-6 pt-16 text-white">
       <div className="container">
@@ -64,22 +72,22 @@ export function Footer() {
             </h4>
             <div className="space-y-3 font-medium text-white/70">
               <a
-                href="mailto:info@himatech.co.tz"
+                href={`mailto:${contact.email}`}
                 className="flex items-start gap-3 transition hover:text-accent-400"
               >
                 <HiOutlineMail className="mt-0.5 flex-shrink-0" />
-                info@himatech.co.tz
+                {contact.email}
               </a>
               <a
-                href="tel:+255628404865"
+                href={`tel:${contact.phone.replace(/\s/g, "")}`}
                 className="flex items-start gap-3 transition hover:text-accent-400"
               >
                 <HiOutlinePhone className="mt-0.5 flex-shrink-0" />
-                +255 628 404 865
+                {contact.phone}
               </a>
               <div className="flex items-start gap-3">
                 <HiOutlineLocationMarker className="mt-0.5 flex-shrink-0" />
-                Zanzibar, Tanzania
+                {contact.location}
               </div>
             </div>
           </div>

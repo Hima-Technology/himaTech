@@ -5,8 +5,12 @@ import Pricing from "@/components/sections/Pricing";
 import Work from "@/components/sections/Work";
 import Testimonials from "@/components/sections/Testimonials";
 import CTA from "@/components/sections/CTA";
+import { getSiteSettings, getTestimonials } from "@/sanity/queries";
 
-export default function Home() {
+export default async function Home() {
+  const [settings, testimonials] = await Promise.all([getSiteSettings(), getTestimonials()]);
+  const showTestimonials = Boolean(settings?.showTestimonials && testimonials && testimonials.length > 0);
+
   return (
     <>
       <Hero />
@@ -14,7 +18,7 @@ export default function Home() {
       <Process />
       <Pricing />
       <Work />
-      <Testimonials />
+      {showTestimonials && <Testimonials items={testimonials ?? []} />}
       <CTA
         title="Ready to build something great?"
         description="Tell us about your project and we'll get back to you within one business day."
