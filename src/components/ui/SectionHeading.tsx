@@ -1,11 +1,11 @@
 import { cn } from "@/lib/cn";
+import { ReactNode } from "react";
 
 interface SectionHeadingProps {
-  eyebrow?: string;
-  title: string;
-  description?: string;
+  eyebrow?: ReactNode;
+  title: ReactNode;
+  description?: ReactNode;
   align?: "left" | "center";
-  light?: boolean;
   className?: string;
 }
 
@@ -14,42 +14,26 @@ export function SectionHeading({
   title,
   description,
   align = "center",
-  light = false,
   className,
 }: SectionHeadingProps) {
   return (
     <div
       className={cn(
-        "max-w-2xl",
+        "max-w-3xl",
         align === "center" ? "mx-auto text-center" : "text-left",
         className
       )}
     >
       {eyebrow && (
-        <p
-          className={cn(
-            "mb-3 text-sm font-semibold uppercase tracking-widest",
-            light ? "text-accent-300" : "text-accent-600"
-          )}
-        >
+        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-neutral-500">
           {eyebrow}
         </p>
       )}
-      <h2
-        className={cn(
-          "text-display-md",
-          light ? "text-white" : "text-ink-950"
-        )}
-      >
+      <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl leading-[1.15]">
         {title}
       </h2>
       {description && (
-        <p
-          className={cn(
-            "mt-4 text-lg leading-relaxed",
-            light ? "text-white/80" : "text-neutral-600"
-          )}
-        >
+        <p className="mt-4 text-sm md:text-base text-neutral-400 leading-relaxed max-w-2xl mx-auto">
           {description}
         </p>
       )}

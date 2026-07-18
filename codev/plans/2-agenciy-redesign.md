@@ -1,0 +1,40 @@
+# Plan: Agenciy Template Redesign
+
+Same scope as `codev/specs/2-agenciy-redesign.md`.
+
+## Phase 1: Foundation (CSS & Design Tokens)
+- **Status**: pending
+- **Tasks**:
+  - Update `src/app/globals.css` base layer to default the body to a pure black background (`bg-black` or `bg-[#030303]`) and text-white.
+  - Clean up any legacy honeycomb-grid or non-dark classes from global utility layers.
+  - Set styling tokens for custom inputs and Radix UI primitives.
+
+## Phase 2: Layout Shell (Navbar & Footer)
+- **Status**: pending
+- **Tasks**:
+  - Rebuild `src/components/navbar.tsx` with a dark transparent background, glassmorphism blur, white links, and a glowing pill button.
+  - Rebuild `src/components/footer.tsx` to match the exact spacing, vertical stack list of links, location coordinates, and logo presentation.
+
+## Phase 3: Homepage Rebuild (All Sections)
+- **Status**: pending
+- **Tasks**:
+  - Rebuild `src/components/sections/Hero.tsx` using the "Create, *Impactful*" header structure, stats blocks, and stack marquee.
+  - Rebuild `src/components/sections/Services.tsx` with 4 card modules (Brand, UI/UX, Dev, Marketing) and detailed dark style styling.
+  - Rebuild `src/components/sections/Process.tsx` with numbered stages.
+  - Rebuild `src/components/sections/Work.tsx` to display products as showcase cards with category tag details.
+  - Rebuild `src/components/sections/Pricing.tsx` with glowing card modules.
+  - Rebuild `src/components/sections/Testimonials.tsx` with modern quotes grid.
+  - Rebuild `src/components/sections/CTA.tsx` with the "Let's Talk" bottom section form and accordion FAQs.
+
+## Phase 4: Secondary Pages
+- **Status**: pending
+- **Tasks**:
+  - Rebuild `/about-us` (`src/app/(site)/about-us/page.tsx`) with professional timelines, experience charts, and stats.
+  - Rebuild `/contact-us` (`src/app/(site)/contact-us/page.tsx`) with clean form elements.
+  - Rebuild `/Our-Products` (`src/app/(site)/Our-Products/page.tsx`) to show case studies or product items in dark grid.
+
+## Phase 5: Verification & Quality Assurance
+- **Status**: pending
+- **Tasks**:
+  - Run linting and typecheck (`npm run typecheck` and `npm run lint`).
+  - Perform production build (`npm run build`).

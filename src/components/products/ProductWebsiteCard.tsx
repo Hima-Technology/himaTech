@@ -13,35 +13,44 @@ type Product = {
 
 export function ProductWebsiteCard({ product }: { product: Product }) {
   return (
-    <article className="flex h-full flex-col rounded-xl bg-white p-6 shadow-soft transition duration-250 hover:-translate-y-1 hover:shadow-soft-md">
-      <Badge tone="accent" className="w-fit">
-        {product.category}
-      </Badge>
-      <h3 className="mt-4 font-display text-lg text-ink-950">
-        <a href={product.url} target="_blank" rel="noopener noreferrer" className="hover:text-accent-600">
+    <article className="group flex h-full flex-col rounded-3xl border border-white/10 bg-[#0c0c0c]/60 p-6 transition-all duration-300 hover:border-white/20 hover:bg-[#0c0c0c]/90">
+      <div>
+        <span className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-xs font-semibold text-neutral-300">
+          {product.category}
+        </span>
+      </div>
+      
+      {/* Mock image placeholder box that looks like a high-end UI mockup container */}
+      <div className="mt-6 aspect-[16/10] rounded-2xl bg-neutral-900 border border-white/5 overflow-hidden relative flex items-center justify-center group-hover:border-white/10 transition-colors">
+        <div className="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-white/5 opacity-40" />
+        <div className="text-[10px] font-mono tracking-widest text-neutral-600 uppercase">
+          UI/UX Showcase
+        </div>
+      </div>
+
+      <h3 className="mt-6 font-display text-xl font-bold text-white tracking-tight">
+        <a href={product.url} className="hover:underline decoration-white decoration-2 underline-offset-4">
           {product.title}
         </a>
       </h3>
-      <p className="mt-2 flex-1 text-neutral-600">{product.description}</p>
+      <p className="mt-2 flex-1 text-sm text-neutral-400 leading-relaxed font-medium">{product.description}</p>
 
-      <ul className="mt-4 space-y-2">
+      <ul className="mt-6 space-y-2">
         {product.features.map((feature) => (
-          <li key={feature} className="flex items-start gap-2 text-sm text-neutral-600">
-            <HiCheck className="mt-0.5 flex-shrink-0 text-accent-600" />
+          <li key={feature} className="flex items-start gap-2 text-sm text-neutral-300 font-medium">
+            <HiCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-white" />
             {feature}
           </li>
         ))}
       </ul>
 
-      <div className="mt-6 flex items-center justify-between border-t border-neutral-100 pt-4">
-        <span className="text-sm text-neutral-600">{product.author || "HimaTech Team"}</span>
+      <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-4 text-xs font-semibold text-neutral-500">
+        <span>{product.author || "HimaTech Team"}</span>
         <a
           href={product.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-sm font-semibold text-accent-600 hover:text-accent-700"
+          className="inline-flex items-center gap-1 text-white hover:underline underline-offset-2"
         >
-          Visit <HiOutlineArrowUpRight />
+          Visit <HiOutlineArrowUpRight className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       </div>
     </article>

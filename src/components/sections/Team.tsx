@@ -52,24 +52,36 @@ export async function Team() {
       : FALLBACK_MEMBERS;
 
   return (
-    <section className="py-24">
+    <section className="bg-black py-24 border-b border-white/10">
       <Container>
         <SectionHeading
-          eyebrow="Meet the Team"
-          title="Behind the success: our dedicated team"
+          eyebrow="Team Members"
+          title={
+            <>
+              Meet Our{" "}
+              <span className="font-serif italic text-neutral-400 font-light">
+                Team Members
+              </span>
+            </>
+          }
           description="From visionary leadership to technical execution, each team member plays a pivotal role in delivering exceptional solutions."
         />
 
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {members.map((member, idx) => (
             <RevealOnScroll key={member.name} delay={idx * 0.05}>
-              <div className="rounded-xl bg-white p-6 text-center shadow-soft">
-                <div className="relative mx-auto mb-6 h-28 w-28 overflow-hidden rounded-full ring-4 ring-neutral-50">
-                  <Image src={member.img} alt={member.name} fill className="object-cover" />
+              <div className="group rounded-3xl border border-white/10 bg-[#0c0c0c]/60 p-6 hover:bg-[#0c0c0c]/90 hover:border-white/20 transition-all duration-300">
+                <div className="relative aspect-square w-full mb-6 overflow-hidden rounded-2xl border border-white/5 bg-neutral-900">
+                  <Image
+                    src={member.img}
+                    alt={member.name}
+                    fill
+                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  />
                 </div>
-                <h3 className="font-display text-lg text-ink-950">{member.name}</h3>
-                <p className="mt-1 text-sm font-semibold text-accent-600">{member.title}</p>
-                <p className="mt-3 text-sm text-neutral-600">{member.description}</p>
+                <h3 className="font-display text-lg font-bold text-white tracking-tight">{member.name}</h3>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-neutral-400">{member.title}</p>
+                <p className="mt-3 text-sm text-neutral-500 leading-relaxed font-medium">{member.description}</p>
               </div>
             </RevealOnScroll>
           ))}

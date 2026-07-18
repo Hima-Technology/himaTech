@@ -29,25 +29,45 @@ export async function Footer() {
   };
 
   return (
-    <footer className="bg-ink-950 px-6 pt-16 text-white">
+    <footer className="bg-black border-t border-white/10 px-6 py-16 text-white">
       <div className="container">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3 lg:grid-cols-4">
-          <div className="space-y-4 lg:col-span-1">
-            <h3 className="font-display text-xl">Hima Technologies</h3>
-            <p className="leading-relaxed text-white/60">
-              Founded in Zanzibar. Software development, AI, data analytics
-              and cybersecurity for businesses across East Africa and beyond.
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
+          <div className="space-y-4 col-span-1 md:col-span-1">
+            <h3 className="font-display text-xl font-bold tracking-tight">Hima Technologies</h3>
+            <p className="leading-relaxed text-neutral-400 text-sm max-w-xs">
+              We Build Brands, websites and digital experiences with intention, clarity and care.
             </p>
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-display text-sm uppercase tracking-widest text-white/50">
-              Quick Links
+            <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-neutral-500">
+              Location
             </h4>
-            <ul className="space-y-2 font-medium text-white/70">
+            <div className="space-y-2 text-sm text-neutral-400 leading-relaxed font-medium">
+              <p>{contact.location}</p>
+              <a
+                href={`mailto:${contact.email}`}
+                className="block hover:text-white transition"
+              >
+                {contact.email}
+              </a>
+              <a
+                href={`tel:${contact.phone.replace(/\s/g, "")}`}
+                className="block hover:text-white transition"
+              >
+                {contact.phone}
+              </a>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-neutral-500">
+              Links
+            </h4>
+            <ul className="space-y-2 text-sm text-neutral-400 font-medium">
               {QUICK_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="transition hover:text-accent-400">
+                  <Link href={link.href} className="transition hover:text-white">
                     {link.label}
                   </Link>
                 </li>
@@ -56,47 +76,42 @@ export async function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-display text-sm uppercase tracking-widest text-white/50">
-              Services
+            <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-neutral-500">
+              Socials
             </h4>
-            <ul className="space-y-2 font-medium text-white/70">
-              {SERVICES.map((service) => (
-                <li key={service}>{service}</li>
-              ))}
+            <ul className="space-y-2 text-sm text-neutral-400 font-medium">
+              <li>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+                  X (Twitter)
+                </a>
+              </li>
+              <li>
+                <a href="https://behance.net" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+                  Behance
+                </a>
+              </li>
+              <li>
+                <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+                  Dribbble
+                </a>
+              </li>
             </ul>
-          </div>
-
-          <div className="space-y-4">
-            <h4 className="font-display text-sm uppercase tracking-widest text-white/50">
-              Contact
-            </h4>
-            <div className="space-y-3 font-medium text-white/70">
-              <a
-                href={`mailto:${contact.email}`}
-                className="flex items-start gap-3 transition hover:text-accent-400"
-              >
-                <HiOutlineMail className="mt-0.5 flex-shrink-0" />
-                {contact.email}
-              </a>
-              <a
-                href={`tel:${contact.phone.replace(/\s/g, "")}`}
-                className="flex items-start gap-3 transition hover:text-accent-400"
-              >
-                <HiOutlinePhone className="mt-0.5 flex-shrink-0" />
-                {contact.phone}
-              </a>
-              <div className="flex items-start gap-3">
-                <HiOutlineLocationMarker className="mt-0.5 flex-shrink-0" />
-                {contact.location}
-              </div>
-            </div>
           </div>
         </div>
 
-        <div className="mt-16 border-t border-white/10 py-8">
-          <p className="text-center text-sm text-white/50">
-            &copy; {CURRENT_YEAR} Hima Technologies. All rights reserved.
+        <div className="mt-16 border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-medium">
+          <p>
+            &copy; {CURRENT_YEAR} Hima Technologies. All Rights Reserved.
           </p>
+          <div className="flex gap-4">
+            <Link href="/" className="hover:text-white transition">Privacy Policy</Link>
+            <Link href="/" className="hover:text-white transition">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>

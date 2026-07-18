@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { HiOutlineLightBulb, HiOutlineEye, HiOutlineHeart, HiCheck } from "react-icons/hi";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
@@ -11,105 +10,127 @@ export const metadata: Metadata = {
     "Founded in Zanzibar, Hima Technologies combines expertise in software development, AI, data analytics, and cybersecurity.",
 };
 
-const VALUES = [
-  {
-    icon: HiOutlineLightBulb,
-    title: "Our Mission",
-    description:
-      "To empower businesses with innovative technology solutions that drive growth, efficiency, and success in the digital age.",
-  },
-  {
-    icon: HiOutlineEye,
-    title: "Our Vision",
-    description:
-      "To be a leading force in East African technology innovation, recognized for excellence, creativity, and transformative solutions.",
-  },
-  {
-    icon: HiOutlineHeart,
-    title: "Our Values",
-    description:
-      "Innovation, integrity, collaboration, and customer-centricity guide everything we do and every solution we create.",
-  },
+const STATS = [
+  { value: "100+", label: "Projects Launched" },
+  { value: "5+", label: "Years of Experience" },
+  { value: "25+", label: "Happy Clients" },
 ];
 
-const WHY_CHOOSE_US = [
+const EXPERIENCE = [
   {
-    title: "Expert Team",
-    description: "Our talented team brings years of experience and deep technical expertise to every project.",
+    role: "Senior Enterprise Solutions",
+    period: "2023 - Present",
+    company: "Zanzibar Digital Hub",
+    description: "Designing large-scale architecture, databases, and microservices for East African business growth.",
   },
   {
-    title: "Custom Solutions",
-    description: "We tailor our services to meet your unique business needs and goals.",
+    role: "Full Stack Engineering",
+    period: "2020 - 2023",
+    company: "Stone Town Tech Systems",
+    description: "Collaborated on web platforms, high-performance backends, and custom CMS integrations.",
   },
   {
-    title: "Proven Track Record",
-    description: "We've successfully delivered projects across various industries and scales.",
-  },
-  {
-    title: "Ongoing Support",
-    description: "We provide continuous support and maintenance to ensure your success.",
+    role: "Interface & UI Design",
+    period: "2018 - 2020",
+    company: "Island Creative Studio",
+    description: "Designed responsive user layouts, wireframes, and custom web vector illustrations.",
   },
 ];
 
 export default function AboutUs() {
   return (
-    <div className="page-transition">
-      <section className="bg-ink-950 pb-20 pt-40 text-center text-white">
-        <Container>
-          <h1 className="font-display text-display-lg">About Hima Technologies</h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
-            Innovating the future through cutting-edge technology solutions.
+    <div className="bg-black text-white min-h-screen pt-20">
+      {/* Hero */}
+      <section className="relative py-24 overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
+        <Container className="text-center relative z-10">
+          <span className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-300">
+            About Us
+          </span>
+          <h1 className="mt-6 font-display text-5xl font-bold tracking-tight md:text-7xl">
+            Who We Are |{" "}
+            <span className="font-serif italic text-neutral-400 font-light block sm:inline">
+              HimaTech
+            </span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg text-neutral-400 leading-relaxed font-medium">
+            We help ambitious brands and startups build digital products that stand out and scale. We believe in working smart, building fast, and designing with purpose.
           </p>
         </Container>
       </section>
 
-      <section className="py-20">
-        <Container className="max-w-3xl text-center">
-          <SectionHeading eyebrow="Who We Are" title="Founded in Zanzibar, built for East Africa" />
-          <p className="mt-6 text-lg leading-relaxed text-neutral-600">
-            Hima Technologies is a forward-thinking technology company dedicated to delivering
-            innovative solutions that transform businesses and empower organizations to achieve
-            their goals. Founded in Zanzibar by a team of forward-thinking innovators, we combine
-            expertise in software development, artificial intelligence, data analytics, and
-            cybersecurity — harnessing cutting-edge solutions to drive meaningful impact across
-            industries and ensure businesses stay ahead in an ever-evolving digital landscape.
-          </p>
-        </Container>
-      </section>
-
-      <section className="bg-neutral-50 py-20">
+      {/* Mission & Stats */}
+      <section className="py-24 border-b border-white/10 bg-[#030303]">
         <Container>
-          <div className="grid gap-8 md:grid-cols-3">
-            {VALUES.map((value, idx) => (
-              <RevealOnScroll key={value.title} delay={idx * 0.05}>
-                <div className="h-full rounded-xl bg-white p-8 shadow-soft">
-                  <div className="mb-4 grid h-14 w-14 place-content-center rounded-full bg-accent-900 text-white">
-                    <value.icon className="h-7 w-7" />
-                  </div>
-                  <h3 className="font-display text-lg text-ink-950">{value.title}</h3>
-                  <p className="mt-2 text-neutral-600">{value.description}</p>
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
+            <div>
+              <SectionHeading
+                align="left"
+                eyebrow="Our Mission"
+                title={
+                  <>
+                    Your Growth,{" "}
+                    <span className="font-serif italic text-neutral-400 font-light">
+                      Our Mission
+                    </span>
+                  </>
+                }
+              />
+              <p className="mt-6 text-sm md:text-base text-neutral-400 leading-relaxed font-medium">
+                We craft digital solutions that not only look good but perform exceptionally. Our team thrives on innovation and turning bold ideas into meaningful impact. Based in Zanzibar, we combine regional insights with global engineering standards.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 divide-y divide-white/10 border-t border-b border-white/10 py-6 sm:grid-cols-3 sm:divide-y-0 sm:divide-x align-middle my-auto">
+              {STATS.map((stat) => (
+                <div key={stat.label} className="text-center px-4 py-4 sm:py-0">
+                  <p className="font-display text-4xl font-bold text-white tracking-tight">{stat.value}</p>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-neutral-500">{stat.label}</p>
                 </div>
-              </RevealOnScroll>
-            ))}
+              ))}
+            </div>
           </div>
         </Container>
       </section>
 
-      <section className="py-20">
+      {/* Timeline Section */}
+      <section className="py-24 border-b border-white/10 bg-black">
         <Container>
-          <SectionHeading title="Why Choose Hima Technologies?" />
-          <div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-2">
-            {WHY_CHOOSE_US.map((item) => (
-              <div key={item.title} className="flex gap-4">
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-accent-50 text-accent-600">
-                  <HiCheck className="h-6 w-6" />
-                </div>
-                <div>
-                  <h3 className="font-display text-lg text-ink-950">{item.title}</h3>
-                  <p className="mt-1 text-neutral-600">{item.description}</p>
-                </div>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
+            <div className="lg:col-span-1">
+              <SectionHeading
+                align="left"
+                eyebrow="Our Experience"
+                title={
+                  <>
+                    Our Expertise That{" "}
+                    <span className="font-serif italic text-neutral-400 font-light block">
+                      Creatively Evolves
+                    </span>
+                  </>
+                }
+              />
+              <p className="mt-4 text-sm text-neutral-400 leading-relaxed font-medium max-w-sm">
+                We’ve grown through every challenge and collaboration. Each step has sharpened our skills and broadened our impact.
+              </p>
+            </div>
+
+            <div className="lg:col-span-2 space-y-12">
+              {EXPERIENCE.map((exp, idx) => (
+                <RevealOnScroll key={exp.role} delay={idx * 0.05}>
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pb-8 border-b border-white/10 last:border-b-0 last:pb-0">
+                    <div className="md:col-span-1 text-sm font-semibold text-neutral-500 uppercase tracking-wider">
+                      {exp.period}
+                    </div>
+                    <div className="md:col-span-3">
+                      <h3 className="font-display text-xl font-bold text-white tracking-tight">{exp.role}</h3>
+                      <p className="text-xs font-semibold text-neutral-400 mt-1 uppercase tracking-wider">{exp.company}</p>
+                      <p className="mt-3 text-sm text-neutral-400 leading-relaxed font-medium">{exp.description}</p>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </div>
           </div>
         </Container>
       </section>

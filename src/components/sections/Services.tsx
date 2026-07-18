@@ -67,12 +67,19 @@ export async function Services() {
   const services = cmsServices && cmsServices.length > 0 ? cmsServices : FALLBACK_SERVICES;
 
   return (
-    <section id="services" className="py-24">
+    <section id="services" className="py-24 bg-black border-b border-white/10">
       <Container>
         <SectionHeading
-          eyebrow="What We Do"
-          title="Technology services built to move your business forward"
-          description="A comprehensive suite of services designed to help our clients thrive in the digital age."
+          eyebrow="Our Services"
+          title={
+            <>
+              What{" "}
+              <span className="font-serif italic text-neutral-400 font-light">
+                We Do
+              </span>
+            </>
+          }
+          description="We craft digital experiences from idea to launch — blending strategy, design, and engineering to build products that performs."
         />
 
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -80,17 +87,17 @@ export async function Services() {
             const Icon = ICONS[service.icon] || HiOutlineSparkles;
             return (
               <RevealOnScroll key={service.title} delay={idx * 0.05}>
-                <TiltCard className="h-full rounded-xl border border-neutral-100 bg-white p-8 shadow-soft transition-shadow duration-250 hover:shadow-soft-md">
+                <TiltCard className="h-full rounded-2xl border border-white/10 bg-[#0c0c0c]/60 p-8 hover:bg-[#0c0c0c]/90 transition-all duration-300 hover:border-white/20">
                   <div className="flex items-start justify-between">
-                    <div className="grid h-12 w-12 place-content-center rounded-lg bg-accent-900 text-white">
+                    <div className="grid h-12 w-12 place-content-center rounded-xl bg-white text-black">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <span className="font-display text-sm text-neutral-300">
+                    <span className="font-display text-sm text-neutral-600 font-semibold">
                       /{String(idx + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <h3 className="mt-5 font-display text-lg text-ink-950">{service.title}</h3>
-                  <p className="mt-2 font-medium text-neutral-600">{service.description}</p>
+                  <h3 className="mt-6 font-display text-xl font-bold text-white tracking-tight">{service.title}</h3>
+                  <p className="mt-3 text-sm text-neutral-400 leading-relaxed font-medium">{service.description}</p>
                 </TiltCard>
               </RevealOnScroll>
             );
