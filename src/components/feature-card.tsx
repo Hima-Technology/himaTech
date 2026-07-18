@@ -25,10 +25,10 @@ export function FeatureCard({ icon: Icon, title, children, image, delay = 0 }: F
           />
         </div>
         <div className="p-6">
-          <div className="mb-4 grid h-12 w-12 place-content-center rounded-lg bg-brand-900 text-white">
+          <div className="mb-4 grid h-12 w-12 place-content-center rounded-lg bg-accent-900 text-white">
             <Icon className="h-6 w-6" />
           </div>
-          <h3 className="font-display text-lg text-brand-900">{title}</h3>
+          <h3 className="font-display text-lg text-ink-950">{title}</h3>
           <p className="mt-2 font-medium text-neutral-600">{children}</p>
         </div>
       </div>

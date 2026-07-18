@@ -27,8 +27,8 @@ export async function Process() {
           {steps.map((step, idx) => (
             <RevealOnScroll key={step.title} delay={idx * 0.05}>
               <div className="relative">
-                <p className="font-display text-4xl text-brand-100">{String(idx + 1).padStart(2, "0")}</p>
-                <h3 className="mt-2 font-display text-lg text-brand-900">{step.title}</h3>
+                <p className="font-display text-4xl text-accent-100">{String(idx + 1).padStart(2, "0")}</p>
+                <h3 className="mt-2 font-display text-lg text-ink-950">{step.title}</h3>
                 <p className="mt-2 font-medium text-neutral-600">{step.description}</p>
               </div>
             </RevealOnScroll>

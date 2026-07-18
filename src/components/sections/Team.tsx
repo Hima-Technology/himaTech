@@ -67,7 +67,7 @@ export async function Team() {
                 <div className="relative mx-auto mb-6 h-28 w-28 overflow-hidden rounded-full ring-4 ring-neutral-50">
                   <Image src={member.img} alt={member.name} fill className="object-cover" />
                 </div>
-                <h3 className="font-display text-lg text-brand-900">{member.name}</h3>
+                <h3 className="font-display text-lg text-ink-950">{member.name}</h3>
                 <p className="mt-1 text-sm font-semibold text-accent-600">{member.title}</p>
                 <p className="mt-3 text-sm text-neutral-600">{member.description}</p>
               </div>

@@ -2,10 +2,11 @@ import type { Config } from "tailwindcss";
 
 /**
  * Design tokens for the HimaTech relaunch.
- * `brand` (navy) is the trust/authority anchor for a software+cybersecurity
- * consultancy; `accent` (coral) carries CTAs/energy; `violet` is a tertiary
- * tag color used sparingly for AI-specific content only (avoids the generic
- * "AI purple gradient" anti-pattern by staying a small accent, not a theme).
+ * `ink`/`neutral` (near-black to light gray) and `danger`/`warning`/`success`
+ * come directly from the official hima-brand.css document stylesheet.
+ * `accent` is the single brand color layered on top — HimaTech's own
+ * pre-existing `hima-blue` (#0A2463), the only named brand color that
+ * predates this redesign. No gradients, no secondary hues.
  */
 const config: Config = {
   darkMode: "class",
@@ -23,7 +24,32 @@ const config: Config = {
     },
     extend: {
       colors: {
-        brand: {
+        ink: {
+          950: "#1A1A1A",
+          900: "#222222",
+          800: "#333333",
+          700: "#555555",
+          600: "#666666",
+          500: "#777777",
+          400: "#999999",
+          300: "#BBBBBB",
+        },
+        neutral: {
+          25: "#FFFFFF",
+          50: "#F5F5F5",
+          100: "#F0F0F0",
+          150: "#FAFAFA",
+          200: "#ECECEC",
+          300: "#DDDDDD",
+          400: "#BBBBBB",
+          500: "#999999",
+          600: "#666666",
+          700: "#555555",
+          800: "#333333",
+          900: "#222222",
+          950: "#1A1A1A",
+        },
+        accent: {
           50: "#EEF1FA",
           100: "#D7DEF2",
           200: "#AFBDE5",
@@ -36,45 +62,21 @@ const config: Config = {
           900: "#0A2463",
           950: "#071648",
         },
-        accent: {
-          50: "#FFF1F1",
-          100: "#FFE0E0",
-          200: "#FFC2C2",
-          300: "#FF9E9E",
-          400: "#FF8585",
-          500: "#FF6B6B",
-          600: "#E05A5A",
-          700: "#C24747",
-          800: "#9C3737",
-          900: "#7A2A2A",
+        danger: {
+          50: "#FFF5F5",
+          500: "#DC3545",
+          600: "#BD2130",
         },
-        violet: {
-          50: "#F3EFFF",
-          100: "#E6DBFF",
-          200: "#CDB8FF",
-          300: "#B18EFF",
-          400: "#9367FF",
-          500: "#6E44FF",
-          600: "#5A34DB",
-          700: "#4527AD",
+        warning: {
+          50: "#FFFDE6",
+          100: "#FFF9E6",
+          500: "#FFC107",
+          700: "#856404",
         },
         success: {
-          500: "#4CAF50",
-          600: "#3D8B40",
-        },
-        neutral: {
-          25: "#FDFDFB",
-          50: "#F7F7F2",
-          100: "#EDEDE7",
-          200: "#D9D9D2",
-          300: "#C0C0B8",
-          400: "#9E9E95",
-          500: "#7C7C73",
-          600: "#5F5F58",
-          700: "#48483F",
-          800: "#3A3A35",
-          900: "#2E2E2E",
-          950: "#1C1C1A",
+          50: "#F0FAF3",
+          500: "#2E9E4F",
+          600: "#25823F",
         },
       },
       fontFamily: {
@@ -95,10 +97,10 @@ const config: Config = {
         "2xl": "2rem",
       },
       boxShadow: {
-        soft: "0 2px 8px -2px rgb(10 36 99 / 0.08), 0 4px 16px -4px rgb(10 36 99 / 0.06)",
-        "soft-md": "0 8px 24px -8px rgb(10 36 99 / 0.12), 0 4px 12px -6px rgb(10 36 99 / 0.08)",
-        "soft-lg": "0 24px 48px -16px rgb(10 36 99 / 0.18), 0 8px 24px -8px rgb(10 36 99 / 0.1)",
-        "glow-accent": "0 8px 24px -6px rgb(255 107 107 / 0.35)",
+        soft: "0 2px 8px -2px rgb(0 0 0 / 0.08), 0 4px 16px -4px rgb(0 0 0 / 0.06)",
+        "soft-md": "0 8px 24px -8px rgb(0 0 0 / 0.12), 0 4px 12px -6px rgb(0 0 0 / 0.08)",
+        "soft-lg": "0 24px 48px -16px rgb(0 0 0 / 0.18), 0 8px 24px -8px rgb(0 0 0 / 0.1)",
+        "glow-accent": "0 8px 24px -6px rgb(10 36 99 / 0.35)",
       },
       transitionDuration: {
         DEFAULT: "250ms",

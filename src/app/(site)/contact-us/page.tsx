@@ -31,7 +31,7 @@ export default async function ContactUs() {
 
   return (
     <div className="page-transition">
-      <section className="bg-brand-950 pb-20 pt-40 text-center text-white">
+      <section className="bg-ink-950 pb-20 pt-40 text-center text-white">
         <Container>
           <h1 className="font-display text-display-lg">Contact Us</h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
@@ -44,7 +44,7 @@ export default async function ContactUs() {
         <Container>
           <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2">
             <div>
-              <h2 className="font-display text-2xl text-brand-900">Get in Touch</h2>
+              <h2 className="font-display text-2xl text-ink-950">Get in Touch</h2>
               <p className="mt-4 text-lg text-neutral-600">
                 Have a question or want to work together? Fill out the form and we&apos;ll respond
                 within one business day.
@@ -53,11 +53,11 @@ export default async function ContactUs() {
               <div className="mt-8 space-y-5">
                 {contactItems.map((item) => (
                   <div key={item.label} className="flex items-start gap-4 rounded-xl bg-neutral-50 p-5">
-                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-brand-900 text-white">
+                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-accent-900 text-white">
                       <item.icon className="h-5 w-5" />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-brand-900">{item.label}</p>
+                      <p className="text-sm font-semibold text-ink-950">{item.label}</p>
                       {item.href ? (
                         <a href={item.href} className="text-neutral-600 hover:text-accent-600">
                           {item.value}

@@ -32,7 +32,7 @@ export function ContactForm({ fallbackEmail }: { fallbackEmail: string }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl bg-white p-8 shadow-soft-lg">
-      <h2 className="font-display text-xl text-brand-900">Send us a Message</h2>
+      <h2 className="font-display text-xl text-ink-950">Send us a Message</h2>
       <div>
         <label htmlFor="name" className="text-sm font-semibold text-neutral-700">
           Your Name

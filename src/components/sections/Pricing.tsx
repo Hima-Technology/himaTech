@@ -57,7 +57,7 @@ export async function Pricing() {
                 className={cn(
                   "flex h-full flex-col rounded-2xl p-8",
                   tier.highlighted
-                    ? "bg-brand-900 text-white shadow-soft-lg"
+                    ? "bg-accent-900 text-white shadow-glow-accent"
                     : "border border-neutral-200 bg-white shadow-soft"
                 )}
               >

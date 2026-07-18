@@ -16,7 +16,7 @@ export default async function ProductsPage() {
 
   return (
     <div className="page-transition">
-      <section className="bg-brand-950 pb-20 pt-40 text-center text-white">
+      <section className="bg-ink-950 pb-20 pt-40 text-center text-white">
         <Container>
           <h1 className="font-display text-display-lg">{meta.title}</h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">{meta.description}</p>

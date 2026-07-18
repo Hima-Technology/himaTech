@@ -8,11 +8,11 @@
   }
 
   body {
-    @apply bg-white text-neutral-900 antialiased;
+    @apply bg-white text-neutral-800 antialiased;
   }
 
   h1, h2, h3, h4 {
-    @apply font-display text-brand-900;
+    @apply font-display text-ink-950;
   }
 
   :focus-visible {

@@ -14,10 +14,10 @@ type Product = {
 export function ProductWebsiteCard({ product }: { product: Product }) {
   return (
     <article className="flex h-full flex-col rounded-xl bg-white p-6 shadow-soft transition duration-250 hover:-translate-y-1 hover:shadow-soft-md">
-      <Badge tone="brand" className="w-fit">
+      <Badge tone="accent" className="w-fit">
         {product.category}
       </Badge>
-      <h3 className="mt-4 font-display text-lg text-brand-900">
+      <h3 className="mt-4 font-display text-lg text-ink-950">
         <a href={product.url} target="_blank" rel="noopener noreferrer" className="hover:text-accent-600">
           {product.title}
         </a>

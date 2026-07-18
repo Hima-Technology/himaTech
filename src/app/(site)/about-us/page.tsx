@@ -54,7 +54,7 @@ const WHY_CHOOSE_US = [
 export default function AboutUs() {
   return (
     <div className="page-transition">
-      <section className="bg-brand-950 pb-20 pt-40 text-center text-white">
+      <section className="bg-ink-950 pb-20 pt-40 text-center text-white">
         <Container>
           <h1 className="font-display text-display-lg">About Hima Technologies</h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
@@ -83,10 +83,10 @@ export default function AboutUs() {
             {VALUES.map((value, idx) => (
               <RevealOnScroll key={value.title} delay={idx * 0.05}>
                 <div className="h-full rounded-xl bg-white p-8 shadow-soft">
-                  <div className="mb-4 grid h-14 w-14 place-content-center rounded-full bg-brand-900 text-white">
+                  <div className="mb-4 grid h-14 w-14 place-content-center rounded-full bg-accent-900 text-white">
                     <value.icon className="h-7 w-7" />
                   </div>
-                  <h3 className="font-display text-lg text-brand-900">{value.title}</h3>
+                  <h3 className="font-display text-lg text-ink-950">{value.title}</h3>
                   <p className="mt-2 text-neutral-600">{value.description}</p>
                 </div>
               </RevealOnScroll>
@@ -105,7 +105,7 @@ export default function AboutUs() {
                   <HiCheck className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="font-display text-lg text-brand-900">{item.title}</h3>
+                  <h3 className="font-display text-lg text-ink-950">{item.title}</h3>
                   <p className="mt-1 text-neutral-600">{item.description}</p>
                 </div>
               </div>

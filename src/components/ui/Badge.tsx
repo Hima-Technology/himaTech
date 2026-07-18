@@ -1,17 +1,15 @@
 import type { HTMLAttributes } from "react";
 import { cn } from "@/lib/cn";
 
-type Tone = "brand" | "accent" | "violet" | "neutral";
+type Tone = "accent" | "neutral";
 
 const tones: Record<Tone, string> = {
-  brand: "bg-brand-50 text-brand-700",
   accent: "bg-accent-50 text-accent-700",
-  violet: "bg-violet-50 text-violet-700",
   neutral: "bg-neutral-100 text-neutral-700",
 };
 
 export function Badge({
-  tone = "brand",
+  tone = "accent",
   className,
   ...props
 }: HTMLAttributes<HTMLSpanElement> & { tone?: Tone }) {

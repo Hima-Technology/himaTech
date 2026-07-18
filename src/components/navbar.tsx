@@ -82,10 +82,10 @@ export function Navbar() {
             </button>
           </Dialog.Trigger>
           <Dialog.Portal>
-            <Dialog.Overlay className="fixed inset-0 z-50 bg-brand-950/60 backdrop-blur-sm" />
+            <Dialog.Overlay className="fixed inset-0 z-50 bg-ink-950/60 backdrop-blur-sm" />
             <Dialog.Content className="fixed right-0 top-0 z-50 h-full w-full max-w-sm bg-white p-8 shadow-soft-lg">
               <div className="flex items-center justify-between">
-                <Dialog.Title className="font-display text-lg text-brand-900">
+                <Dialog.Title className="font-display text-lg text-ink-950">
                   Menu
                 </Dialog.Title>
                 <Dialog.Close asChild>
@@ -94,7 +94,7 @@ export function Navbar() {
                   </button>
                 </Dialog.Close>
               </div>
-              <ul className="mt-10 flex flex-col gap-6 text-lg font-semibold text-brand-900">
+              <ul className="mt-10 flex flex-col gap-6 text-lg font-semibold text-ink-950">
                 {NAV_LINKS.map((link) => (
                   <li key={link.href}>
                     <Link href={link.href} onClick={() => setOpen(false)}>

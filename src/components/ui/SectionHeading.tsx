@@ -38,7 +38,7 @@ export function SectionHeading({
       <h2
         className={cn(
           "text-display-md",
-          light ? "text-white" : "text-brand-900"
+          light ? "text-white" : "text-ink-950"
         )}
       >
         {title}

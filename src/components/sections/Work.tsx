@@ -13,7 +13,7 @@ export async function Work() {
   const highlights = products.slice(0, 3);
 
   return (
-    <section className="bg-brand-950 py-24">
+    <section className="bg-ink-950 py-24">
       <Container>
         <SectionHeading
           eyebrow="Our Work"

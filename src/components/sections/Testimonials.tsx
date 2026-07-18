@@ -18,7 +18,7 @@ export function Testimonials({ items = [] }: { items?: Testimonial[] }) {
           {items.map((item) => (
             <blockquote key={item.name} className="rounded-xl bg-neutral-50 p-8">
               <p className="text-neutral-700">&ldquo;{item.quote}&rdquo;</p>
-              <footer className="mt-4 text-sm font-semibold text-brand-900">
+              <footer className="mt-4 text-sm font-semibold text-ink-950">
                 {item.name}
                 <span className="block font-normal text-neutral-600">{item.role}</span>
               </footer>

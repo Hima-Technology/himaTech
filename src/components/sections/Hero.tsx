@@ -13,15 +13,15 @@ const STATS = [
 export function Hero() {
   return (
     <div className="relative w-full">
-      <header className="relative flex min-h-screen items-center justify-center overflow-hidden bg-brand-950">
+      <header className="relative flex min-h-screen items-center justify-center overflow-hidden bg-ink-950">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/video/intro-ezgif.com-video-to-webp-converter.webp"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover opacity-60"
+          className="absolute inset-0 h-full w-full object-cover opacity-50"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/80 via-brand-950/70 to-brand-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/85 via-ink-950/70 to-ink-950/95" />
 
         <div className="relative z-10 mx-auto max-w-4xl px-6 pt-20 text-center">
           <motion.div
@@ -29,13 +29,13 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-accent-400">
+            <span className="mb-4 inline-block rounded-full bg-accent-900 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-white">
               Founded in Zanzibar
-            </p>
+            </span>
             <h1 className="text-display-lg text-white">
               Software, AI &amp; security
               <br />
-              built for what&apos;s next
+              built for what&apos;s <span className="text-accent-300">next</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
               Hima Technologies combines expertise in software development,
@@ -65,7 +65,7 @@ export function Hero() {
       <div className="mx-6 -mt-14 grid grid-cols-1 gap-8 rounded-2xl bg-white p-8 shadow-soft-lg sm:grid-cols-3 md:mx-16 md:p-12">
         {STATS.map((stat) => (
           <div key={stat.label} className="text-center sm:text-left">
-            <p className="font-display text-display-md text-brand-900">{stat.value}</p>
+            <p className="font-display text-display-md text-ink-950">{stat.value}</p>
             <p className="mt-1 font-medium text-neutral-600">{stat.label}</p>
           </div>
         ))}

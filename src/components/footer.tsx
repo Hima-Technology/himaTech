@@ -29,7 +29,7 @@ export async function Footer() {
   };
 
   return (
-    <footer className="bg-brand-950 px-6 pt-16 text-white">
+    <footer className="bg-ink-950 px-6 pt-16 text-white">
       <div className="container">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3 lg:grid-cols-4">
           <div className="space-y-4 lg:col-span-1">

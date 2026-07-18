@@ -8,7 +8,7 @@ interface InfoCardProps {
 export function InfoCard({ title, children }: InfoCardProps) {
   return (
     <div>
-      <p className="font-display text-display-sm text-brand-900">{title}</p>
+      <p className="font-display text-display-sm text-ink-950">{title}</p>
       <p className="mt-1 font-medium text-neutral-600">{children}</p>
     </div>
   );
