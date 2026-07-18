@@ -37,6 +37,10 @@ export function Hero() {
           className="absolute inset-0 h-full w-full object-cover opacity-50"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ink-950/85 via-ink-950/70 to-ink-950/95" />
+        <div
+          aria-hidden="true"
+          className="absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 blur-[100px]"
+        />
         <CursorGlow />
 
         <div className="relative z-10 mx-auto max-w-4xl px-6 pt-20 text-center">
@@ -51,7 +55,7 @@ export function Hero() {
             <h1 className="text-display-lg text-white">
               Software, AI &amp; security
               <br />
-              built for what&apos;s <span className="text-accent-300">next</span>
+              built for what&apos;s <span className="font-serif italic text-accent-300">next</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
               Hima Technologies combines expertise in software development,

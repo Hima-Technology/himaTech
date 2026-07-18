@@ -82,6 +82,7 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
         sans: ["var(--font-body)", "sans-serif"],
+        serif: ["var(--font-serif)", "serif"],
       },
       fontSize: {
         "display-xl": ["4.5rem", { lineHeight: "1.05", letterSpacing: "-0.02em" }],
