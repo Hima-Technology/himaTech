@@ -1,15 +1,18 @@
+"use client";
+
+import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
-import { visionTool } from "@sanity/vision";
-import { projectId, dataset } from "./src/sanity/env";
-import { schemaTypes } from "./src/sanity/schemaTypes";
+import { projectId, dataset, apiVersion } from "./src/sanity/env";
+import { schema } from "./src/sanity/schemaTypes";
+import { structure } from "./src/sanity/structure";
 
 export default defineConfig({
   name: "himatech",
   title: "Hima Technologies",
+  basePath: "/studio",
   projectId: projectId || "",
   dataset,
-  basePath: "/studio",
-  plugins: [structureTool(), visionTool()],
-  schema: { types: schemaTypes },
+  schema,
+  plugins: [structureTool({ structure }), visionTool({ defaultApiVersion: apiVersion })],
 });
