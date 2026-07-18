@@ -29,7 +29,7 @@ export function FeatureCard({ icon: Icon, title, children, image, delay = 0 }: F
             <Icon className="h-6 w-6" />
           </div>
           <h3 className="font-display text-lg text-brand-900">{title}</h3>
-          <p className="mt-2 font-medium text-neutral-500">{children}</p>
+          <p className="mt-2 font-medium text-neutral-600">{children}</p>
         </div>
       </div>
     </RevealOnScroll>

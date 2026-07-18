@@ -20,7 +20,7 @@ export function Testimonials({ items = [] }: { items?: Testimonial[] }) {
               <p className="text-neutral-700">&ldquo;{item.quote}&rdquo;</p>
               <footer className="mt-4 text-sm font-semibold text-brand-900">
                 {item.name}
-                <span className="block font-normal text-neutral-500">{item.role}</span>
+                <span className="block font-normal text-neutral-600">{item.role}</span>
               </footer>
             </blockquote>
           ))}

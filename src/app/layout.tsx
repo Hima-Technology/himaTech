@@ -17,7 +17,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Hima Technologies | Software Solutions in Zanzibar",
+  metadataBase: new URL("https://www.himatech.co.tz"),
+  title: {
+    default: "Hima Technologies | Software Solutions in Zanzibar",
+    template: "%s | Hima Technologies",
+  },
   description: "Zanzibar-based tech firm specializing in software development. We deliver cutting-edge solutions to drive digital transformation for businesses.",
   keywords: [
     "Zanzibar tech company",
@@ -33,14 +37,6 @@ export const metadata: Metadata = {
     description: "Forward-thinking tech solutions for East African businesses. Expertise in AI, cybersecurity, and software development.",
     url: "https://www.himatech.co.tz",
     siteName: "Hima Technologies",
-    images: [
-      {
-        url: "https://www.himatech.co.tz/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Hima Technologies - Digital Solutions",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
@@ -48,7 +44,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Hima Technologies | Software Solutions in Zanzibar",
     description: "Innovative tech solutions from Zanzibar to the world",
-    images: ["https://www.himatech.co.tz/twitter-card.jpg"],
   },
 };
 

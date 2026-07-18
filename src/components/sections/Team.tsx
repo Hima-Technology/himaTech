@@ -69,7 +69,7 @@ export async function Team() {
                 </div>
                 <h3 className="font-display text-lg text-brand-900">{member.name}</h3>
                 <p className="mt-1 text-sm font-semibold text-accent-600">{member.title}</p>
-                <p className="mt-3 text-sm text-neutral-500">{member.description}</p>
+                <p className="mt-3 text-sm text-neutral-600">{member.description}</p>
               </div>
             </RevealOnScroll>
           ))}

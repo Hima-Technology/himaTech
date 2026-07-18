@@ -34,7 +34,7 @@ export default async function ProductsPage() {
           ) : (
             <div className="py-12 text-center">
               <h3 className="text-xl font-medium text-neutral-700">No products available at the moment</h3>
-              <p className="mt-2 text-neutral-500">Please check back later</p>
+              <p className="mt-2 text-neutral-600">Please check back later</p>
             </div>
           )}
         </Container>

@@ -34,7 +34,7 @@ export function ProductWebsiteCard({ product }: { product: Product }) {
       </ul>
 
       <div className="mt-6 flex items-center justify-between border-t border-neutral-100 pt-4">
-        <span className="text-sm text-neutral-500">{product.author || "HimaTech Team"}</span>
+        <span className="text-sm text-neutral-600">{product.author || "HimaTech Team"}</span>
         <a
           href={product.url}
           target="_blank"

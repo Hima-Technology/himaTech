@@ -29,7 +29,7 @@ export async function Process() {
               <div className="relative">
                 <p className="font-display text-4xl text-brand-100">{String(idx + 1).padStart(2, "0")}</p>
                 <h3 className="mt-2 font-display text-lg text-brand-900">{step.title}</h3>
-                <p className="mt-2 font-medium text-neutral-500">{step.description}</p>
+                <p className="mt-2 font-medium text-neutral-600">{step.description}</p>
               </div>
             </RevealOnScroll>
           ))}

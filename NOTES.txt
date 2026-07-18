@@ -1,7 +1,0 @@
-to build new version
-
-```bash
-$ npm run build
-```
-
-The output will be in out directory

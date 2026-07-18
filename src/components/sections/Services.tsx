@@ -84,7 +84,7 @@ export async function Services() {
                     <Icon className="h-6 w-6" />
                   </div>
                   <h3 className="font-display text-lg text-brand-900">{service.title}</h3>
-                  <p className="mt-2 font-medium text-neutral-500">{service.description}</p>
+                  <p className="mt-2 font-medium text-neutral-600">{service.description}</p>
                 </div>
               </RevealOnScroll>
             );

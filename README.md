@@ -1,94 +1,67 @@
-# [NextJS Tailwind App Presentation Page](http://demos.creative-tim.com/nextjs-tailwind-app-presentation-page?ref=readme-ntapp) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?url=https://www.creative-tim.com/product/nextjs-tailwind-app-presentation-page&text=Check%20Material%20Tailwind%202%20Template%20made%20by%20@CreativeTim%20#webdesign%20#template%20#materialdesign%20#react%20https://www.creative-tim.com/product/nextjs-tailwind-app-presentation-page)
+# Hima Technologies — Marketing Site
 
-![version](https://img.shields.io/badge/version-1.0.0-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/nextjs-tailwind-app-presentation-page.svg)](https://github.com/creativetimofficial/nextjs-tailwind-app-presentation-page/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/nextjs-tailwind-app-presentation-page.svg)](https://github.com/creativetimofficial/nextjs-tailwind-app-presentation-page/issues?q=is%3Aissue+is%3Aclosed)
+Next.js 15 marketing site for Hima Technologies (Zanzibar), backed by a
+Sanity CMS. See `codev/specs/1-cms-relaunch.md` and
+`codev/plans/1-cms-relaunch.md` for the background and phased build plan.
 
-![Image](https://s3.amazonaws.com/creativetim_bucket/products/741/original/material-tailwind-react-application-template-thumbnail.jpg?1697629129)
+## Stack
 
-Introducing Tailwind App Presentation Page, a sleek and feature-rich app presentation template built on the foundation of Tailwind CSS and Material Tailwind.
+- **Next.js 15** (App Router) + React 19 + TypeScript
+- **Tailwind CSS** with a custom design token system (`tailwind.config.ts`)
+- **Sanity** for content (services, products, team, process, pricing,
+  testimonials, FAQs), with an embedded Studio at `/studio`
+- **Resend** for the contact form
+- **Framer Motion** for scroll reveals
 
-Are you in search of a professionally designed and highly customizable app presentation template tailored for app developers, startups, and businesses to showcase your mobile or web application in a captivating way? Look no further! We are excited to present to you our Free App Presentation Page Template, meticulously crafted to cater to the needs of app developers like you.
+## Getting Started
 
-This template, designed with Tailwind CSS and Material Tailwind, offers effortless customization to align perfectly with your app's unique branding. The free app presentation template includes essential features such as hero, features, FAQ, stats, and testimonial sections.
+```bash
+npm install
+npm run dev
+```
 
-**Documentation built by Developers**
+Open http://localhost:3000. Every content section falls back to real
+static copy when Sanity isn't configured yet, so the site works
+out of the box.
 
-Each element is well presented in very complex documentation.
+## Connecting Sanity CMS
 
-You can read more about the [documentation here](https://www.material-tailwind.com/docs/react/installation).
+1. `npx sanity login` then `npx sanity init` (creates a free project)
+2. Copy `.env.example` to `.env.local` and fill in:
+   - `NEXT_PUBLIC_SANITY_PROJECT_ID`
+   - `NEXT_PUBLIC_SANITY_DATASET` (defaults to `production`)
+   - `SANITY_API_TOKEN` — a write token from sanity.io/manage, needed only for seeding
+3. `npm run seed` — pushes the real content (services, team, process,
+   pricing drafts, product catalog) into your project
+4. Visit `/studio` to edit content directly
 
-**HELPFUL LINKS**
+**Before real launch**, review and confirm in Studio: the draft pricing
+tiers, process steps are placeholders based on common structure and
+should be confirmed against actual HimaTech offerings; testimonials
+stay hidden until real client quotes are added and `siteSettings.showTestimonials`
+is turned on.
 
-- View [Github Repository](https://github.com/creativetimofficial/nextjs-tailwind-app-presentation-page)
-- Check [FAQ Page](https://www.creative-tim.com/faq)
+## Contact Form
 
-## [Demo](https://creative-tim.com/product/nextjs-tailwind-app-presentation-page)
+Set `RESEND_API_KEY` in `.env.local` to enable email delivery from
+`/contact-us`. Without it, submissions are logged to the server console
+instead of failing silently.
 
-## Quick start
+## Scripts
 
-Quick start options:
+- `npm run dev` — start the dev server
+- `npm run build` — production build (type-checked, linted)
+- `npm run seed` — seed Sanity with real content
+- `npm run typecheck` — `tsc --noEmit`
 
-- Download from [Creative Tim](https://www.creative-tim.com/product/nextjs-tailwind-app-presentation-page?ref=readme-ntapp).
+## Project Structure
 
-## Terminal Commands
-
-1. Download and Install NodeJs LTS version from [NodeJs Official Page](https://nodejs.org/en/download/).
-2. Navigate to the root ./ directory of the product and run `npm install` to install our local dependencies.
-
-## Documentation
-
-The documentation for the Material Dashboard is hosted at our [website](https://www.material-tailwind.com/docs/react/installation?ref=readme-ntapp).
-
-## Browser Support
-
-At present, we officially aim to support the last two versions of the following browsers:
-
-<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/firefox.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/edge.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/safari.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/opera.png" width="64" height="64">
-
-## Resources
-
-- [Live Preview](https://demos.creative-tim.com/nextjs-tailwind-app-presentation-page?ref=readme-ntapp)
-- [Download Page](https://www.creative-tim.com/product/nextjs-tailwind-app-presentation-page?ref=readme-ntapp)
-- Documentation is [here](https://www.material-tailwind.com/docs/react/installation?ref=readme-ntapp)
-- [License Agreement](https://www.creative-tim.com/license?ref=readme-ntapp)
-- [Support](https://www.creative-tim.com/contact-us?ref=readme-ntapp)
-- Issues: [Github Issues Page](https://github.com/creativetimofficial/nextjs-tailwind-app-presentation-page/issues)
-- [Nepcha Analytics](https://nepcha.com?ref=readme) - Analytics tool for your website
-
-## Reporting Issues
-
-We use GitHub Issues as the official bug tracker for the NextJS Tailwind App Presentation Page. Here are some advices for our users that want to report an issue:
-
-1. Make sure that you are using the latest version of the NextJS Tailwind App Presentation Page. Check the CHANGELOG from your dashboard on our [website](https://www.creative-tim.com/product/nextjs-tailwind-app-presentation-page?ref=readme-ntapp).
-2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
-3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
-
-## Technical Support or Questions
-
-If you have questions or need help integrating the product please [contact us](https://www.creative-tim.com/contact-us?ref=readme-ntapp) instead of opening an issue.
-
-## Licensing
-
-- Copyright 2023 [Creative Tim](https://www.creative-tim.com?ref=readme-ntapp)
-- Creative Tim [license](https://www.creative-tim.com/license?ref=readme-ntapp)
-
-## Useful Links
-
-- [More products](https://www.creative-tim.com/templates?ref=readme-ntapp) from Creative Tim
-
-- [Tutorials](https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w)
-
-- [Freebies](https://www.creative-tim.com/bootstrap-themes/free?ref=readme-ntapp) from Creative Tim
-
-- [Affiliate Program](https://www.creative-tim.com/affiliates/new?ref=readme-ntapp) (earn money)
-
-##### Social Media
-
-Twitter: <https://twitter.com/CreativeTim>
-
-Facebook: <https://www.facebook.com/CreativeTim>
-
-Dribbble: <https://dribbble.com/creativetim>
-
-Google+: <https://plus.google.com/+CreativetimPage>
-
-Instagram: <https://instagram.com/creativetimofficial>
+```
+src/app/(site)/     marketing pages (share the Navbar/Footer layout)
+src/app/studio/      embedded Sanity Studio (no site chrome)
+src/app/api/contact/ contact form email handler
+src/components/      Navbar, Footer, and shared UI primitives (ui/)
+src/components/sections/  homepage sections (Hero, Services, Pricing, ...)
+src/sanity/          schemas, client, GROQ queries
+scripts/seed-sanity.ts    content seed script
+```

@@ -62,7 +62,7 @@ export async function Pricing() {
                 )}
               >
                 <h3 className="font-display text-xl">{tier.name}</h3>
-                <p className={cn("mt-2 text-sm", tier.highlighted ? "text-white/70" : "text-neutral-500")}>
+                <p className={cn("mt-2 text-sm", tier.highlighted ? "text-white/70" : "text-neutral-600")}>
                   {tier.description}
                 </p>
                 <ul className="mt-6 flex-1 space-y-3 text-sm">
