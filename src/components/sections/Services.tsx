@@ -92,7 +92,7 @@ export async function Services() {
                     <div className="grid h-12 w-12 place-content-center rounded-xl bg-white text-black">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <span className="font-display text-sm text-neutral-600 font-semibold">
+                    <span className="font-display text-sm text-neutral-500 font-semibold">
                       /{String(idx + 1).padStart(2, "0")}
                     </span>
                   </div>

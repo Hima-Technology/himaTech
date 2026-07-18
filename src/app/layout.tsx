@@ -55,6 +55,22 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Hima Technologies",
+  url: "https://www.himatech.co.tz",
+  logo: "https://www.himatech.co.tz/icon.png",
+  email: "info@himatech.co.tz",
+  telephone: "+255628404865",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Zanzibar",
+    addressCountry: "TZ",
+  },
+  sameAs: [],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -62,7 +78,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${playfair.variable}`}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

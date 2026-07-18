@@ -8,12 +8,7 @@ import { Magnetic } from "@/components/ui/Magnetic";
 import { CursorGlow } from "@/components/ui/CursorGlow";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { Marquee } from "@/components/ui/Marquee";
-
-const STATS = [
-  { value: "50+", label: "Projects Delivered" },
-  { value: "15+", label: "Team Members" },
-  { value: "5+", label: "Years of Innovation" },
-];
+import { SITE_STATS } from "@/lib/site-stats";
 
 const STACK = [
   { src: "/image/NextJS.webp", alt: "Next.js" },
@@ -85,7 +80,7 @@ export function Hero() {
       {/* Grid Stats section */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 mt-20">
         <div className="grid grid-cols-1 divide-y divide-white/10 border-t border-b border-white/10 py-8 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
-          {STATS.map((stat, i) => (
+          {SITE_STATS.map((stat) => (
             <div key={stat.label} className="text-center px-4 py-4 sm:py-0">
               <p className="font-display text-4xl md:text-5xl font-bold text-white tracking-tight">
                 <AnimatedCounter value={stat.value} />

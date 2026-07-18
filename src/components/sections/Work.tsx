@@ -1,9 +1,7 @@
-import Link from "next/link";
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { Badge } from "@/components/ui/Badge";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { Button } from "@/components/ui/Button";
 import { products as fallbackProducts } from "@/lib/products-data";
@@ -36,27 +34,19 @@ export async function Work() {
               <TiltCard className="h-full">
                 <a
                   href={product.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group flex h-full flex-col rounded-3xl border border-white/10 bg-[#0c0c0c]/60 p-8 transition-all duration-300 hover:border-white/20 hover:bg-[#0c0c0c]/90"
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-xs font-semibold text-neutral-300">
-                      {product.category}
-                    </span>
-                  </div>
-                  
-                  {/* Mock image placeholder box that looks like a high-end UI mockup container */}
-                  <div className="mt-6 aspect-[4/3] rounded-2xl bg-neutral-900 border border-white/5 overflow-hidden relative flex items-center justify-center group-hover:border-white/10 transition-colors">
-                    <div className="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-white/5 opacity-40" />
-                    <div className="text-[10px] font-mono tracking-widest text-neutral-600 uppercase">
-                      UI/UX Mockup
-                    </div>
-                  </div>
+                  <span className="w-fit rounded-full bg-white/5 border border-white/10 px-3 py-1 text-xs font-semibold text-neutral-300">
+                    {product.category}
+                  </span>
 
                   <h3 className="mt-6 font-display text-xl font-bold text-white tracking-tight">{product.title}</h3>
                   <p className="mt-2 flex-1 text-sm text-neutral-400 leading-relaxed font-medium">{product.description}</p>
-                  
+
                   <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-white group-hover:underline decoration-white decoration-2 underline-offset-4">
-                    View project
+                    Visit site
                     <HiOutlineArrowUpRight className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </span>
                 </a>

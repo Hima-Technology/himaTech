@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { HiCheck } from "react-icons/hi";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import Team from "@/components/sections/Team";
+import { SITE_STATS } from "@/lib/site-stats";
 
 export const metadata: Metadata = {
   title: "About Us | Hima Technologies",
@@ -10,30 +11,22 @@ export const metadata: Metadata = {
     "Founded in Zanzibar, Hima Technologies combines expertise in software development, AI, data analytics, and cybersecurity.",
 };
 
-const STATS = [
-  { value: "100+", label: "Projects Launched" },
-  { value: "5+", label: "Years of Experience" },
-  { value: "25+", label: "Happy Clients" },
-];
-
-const EXPERIENCE = [
+const WHY_CHOOSE_US = [
   {
-    role: "Senior Enterprise Solutions",
-    period: "2023 - Present",
-    company: "Zanzibar Digital Hub",
-    description: "Designing large-scale architecture, databases, and microservices for East African business growth.",
+    title: "Expert Team",
+    description: "Our talented team brings years of experience and deep technical expertise to every project.",
   },
   {
-    role: "Full Stack Engineering",
-    period: "2020 - 2023",
-    company: "Stone Town Tech Systems",
-    description: "Collaborated on web platforms, high-performance backends, and custom CMS integrations.",
+    title: "Custom Solutions",
+    description: "We tailor our services to meet your unique business needs and goals.",
   },
   {
-    role: "Interface & UI Design",
-    period: "2018 - 2020",
-    company: "Island Creative Studio",
-    description: "Designed responsive user layouts, wireframes, and custom web vector illustrations.",
+    title: "Proven Track Record",
+    description: "We've successfully delivered projects across various industries and scales.",
+  },
+  {
+    title: "Ongoing Support",
+    description: "We provide continuous support and maintenance to ensure your success.",
   },
 ];
 
@@ -82,7 +75,7 @@ export default function AboutUs() {
             </div>
             
             <div className="grid grid-cols-1 divide-y divide-white/10 border-t border-b border-white/10 py-6 sm:grid-cols-3 sm:divide-y-0 sm:divide-x align-middle my-auto">
-              {STATS.map((stat) => (
+              {SITE_STATS.map((stat) => (
                 <div key={stat.label} className="text-center px-4 py-4 sm:py-0">
                   <p className="font-display text-4xl font-bold text-white tracking-tight">{stat.value}</p>
                   <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-neutral-500">{stat.label}</p>
@@ -93,44 +86,30 @@ export default function AboutUs() {
         </Container>
       </section>
 
-      {/* Timeline Section */}
+      {/* Why Choose Us */}
       <section className="py-24 border-b border-white/10 bg-black">
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
-            <div className="lg:col-span-1">
-              <SectionHeading
-                align="left"
-                eyebrow="Our Experience"
-                title={
-                  <>
-                    Our Expertise That{" "}
-                    <span className="font-serif italic text-accent-400 font-light block">
-                      Creatively Evolves
-                    </span>
-                  </>
-                }
-              />
-              <p className="mt-4 text-sm text-neutral-400 leading-relaxed font-medium max-w-sm">
-                We’ve grown through every challenge and collaboration. Each step has sharpened our skills and broadened our impact.
-              </p>
-            </div>
-
-            <div className="lg:col-span-2 space-y-12">
-              {EXPERIENCE.map((exp, idx) => (
-                <RevealOnScroll key={exp.role} delay={idx * 0.05}>
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pb-8 border-b border-white/10 last:border-b-0 last:pb-0">
-                    <div className="md:col-span-1 text-sm font-semibold text-neutral-500 uppercase tracking-wider">
-                      {exp.period}
-                    </div>
-                    <div className="md:col-span-3">
-                      <h3 className="font-display text-xl font-bold text-white tracking-tight">{exp.role}</h3>
-                      <p className="text-xs font-semibold text-neutral-400 mt-1 uppercase tracking-wider">{exp.company}</p>
-                      <p className="mt-3 text-sm text-neutral-400 leading-relaxed font-medium">{exp.description}</p>
-                    </div>
-                  </div>
-                </RevealOnScroll>
-              ))}
-            </div>
+          <SectionHeading
+            eyebrow="Why Choose Us"
+            title={
+              <>
+                Why Choose{" "}
+                <span className="font-serif italic text-accent-400 font-light">Hima Technologies</span>
+              </>
+            }
+          />
+          <div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-2">
+            {WHY_CHOOSE_US.map((item) => (
+              <div key={item.title} className="flex gap-4">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-white text-black">
+                  <HiCheck className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="font-display text-lg font-bold text-white tracking-tight">{item.title}</h3>
+                  <p className="mt-1 text-sm text-neutral-400 leading-relaxed font-medium">{item.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </Container>
       </section>

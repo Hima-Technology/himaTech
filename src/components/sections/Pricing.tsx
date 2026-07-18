@@ -8,42 +8,30 @@ import { getPricingTiers } from "@/sanity/queries";
 
 const FALLBACK_TIERS = [
   {
-    name: "Starter Plan",
-    price: "$2,500+",
-    period: "/ Project",
-    description: "For early-stage ideas or small projects.",
-    features: [
-      "Discovery session & roadmap",
-      "Basic frontend development",
-      "2 rounds of revisions",
-      "1-week turnaround"
-    ],
+    name: "Starter",
+    description: "For a focused website or a first product prototype.",
+    features: ["Marketing website or MVP", "Up to 8 pages/screens", "Content management", "1 round of revisions"],
     highlighted: false,
   },
   {
-    name: "Growth Plan",
-    price: "$6,500+",
-    period: "/ Project",
-    description: "For growing brands or MVP launches.",
+    name: "Growth",
+    description: "For custom software or a full product build.",
     features: [
-      "End-to-end design & dev",
-      "Responsive frontend & CMS",
-      "Light brand styling",
-      "SEO-ready & launch support",
-      "2-3 weeks delivery"
+      "Custom web or mobile application",
+      "API & third-party integrations",
+      "Dedicated project lead",
+      "Weekly progress check-ins",
     ],
     highlighted: true,
   },
   {
-    name: "Custom Plan",
-    price: "Custom",
-    period: "",
-    description: "For complex products or long-term builds.",
+    name: "Enterprise",
+    description: "For ongoing engineering, security, and AI partnership.",
     features: [
-      "Full product design + development",
-      "Feature-rich platforms or apps",
-      "Advanced backend integrations",
-      "Dedicated team & PM"
+      "Continuous development retainer",
+      "Cybersecurity & compliance support",
+      "AI/data analytics workstreams",
+      "Priority support & SLAs",
     ],
     highlighted: false,
   },
@@ -57,16 +45,14 @@ export async function Pricing() {
     <section className="bg-black py-24 border-b border-white/10">
       <Container>
         <SectionHeading
-          eyebrow="Pricing Plan"
+          eyebrow="Pricing"
           title={
             <>
               Plans{" "}
-              <span className="font-serif italic text-accent-400 font-light">
-                That Scale With You
-              </span>
+              <span className="font-serif italic text-accent-400 font-light">That Scale With You</span>
             </>
           }
-          description="Whether you're launching a startup or growing a product, we’ve got a plan that fits your stage — no fluff, just what you need."
+          description="Every engagement is quoted after a discovery call — these tiers give you a starting shape, not a fixed price."
         />
 
         <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -88,19 +74,8 @@ export async function Pricing() {
                     </span>
                   )}
                 </div>
-                
-                <div className="mt-6 flex items-baseline gap-1 text-white">
-                  <span className="font-display text-4xl md:text-5xl font-extrabold tracking-tight">
-                    {"price" in tier ? (tier.price as string) : "$6,500+"}
-                  </span>
-                  <span className="text-sm font-semibold text-neutral-400">
-                    {"period" in tier ? (tier.period as string) : "/ Project"}
-                  </span>
-                </div>
 
-                <p className="mt-4 text-sm text-neutral-400 font-medium">
-                  {tier.description}
-                </p>
+                <p className="mt-4 text-sm text-neutral-400 font-medium">{tier.description}</p>
 
                 <ul className="mt-8 flex-1 space-y-4 text-sm">
                   {tier.features.map((feature) => (
@@ -116,7 +91,7 @@ export async function Pricing() {
                   variant={tier.highlighted ? "primary" : "secondary"}
                   className="mt-8 w-full"
                 >
-                  Get Started
+                  Get a Quote
                 </Button>
               </div>
             </RevealOnScroll>

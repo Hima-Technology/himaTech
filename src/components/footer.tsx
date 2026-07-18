@@ -77,29 +77,12 @@ export async function Footer() {
 
           <div className="space-y-4">
             <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-neutral-500">
-              Socials
+              Services
             </h4>
             <ul className="space-y-2 text-sm text-neutral-400 font-medium">
-              <li>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
-                  X (Twitter)
-                </a>
-              </li>
-              <li>
-                <a href="https://behance.net" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
-                  Behance
-                </a>
-              </li>
-              <li>
-                <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
-                  Dribbble
-                </a>
-              </li>
+              {SERVICES.map((service) => (
+                <li key={service}>{service}</li>
+              ))}
             </ul>
           </div>
         </div>
@@ -109,8 +92,8 @@ export async function Footer() {
             &copy; {CURRENT_YEAR} Hima Technologies. All Rights Reserved.
           </p>
           <div className="flex gap-4">
-            <Link href="/" className="hover:text-white transition">Privacy Policy</Link>
-            <Link href="/" className="hover:text-white transition">Terms of Service</Link>
+            <Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-white transition">Terms of Service</Link>
           </div>
         </div>
       </div>
