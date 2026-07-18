@@ -49,7 +49,7 @@ export default function AboutUs() {
           </span>
           <h1 className="mt-6 font-display text-5xl font-bold tracking-tight md:text-7xl">
             Who We Are |{" "}
-            <span className="font-serif italic text-neutral-400 font-light block sm:inline">
+            <span className="font-serif italic text-accent-400 font-light block sm:inline">
               HimaTech
             </span>
           </h1>
@@ -70,7 +70,7 @@ export default function AboutUs() {
                 title={
                   <>
                     Your Growth,{" "}
-                    <span className="font-serif italic text-neutral-400 font-light">
+                    <span className="font-serif italic text-accent-400 font-light">
                       Our Mission
                     </span>
                   </>
@@ -104,7 +104,7 @@ export default function AboutUs() {
                 title={
                   <>
                     Our Expertise That{" "}
-                    <span className="font-serif italic text-neutral-400 font-light block">
+                    <span className="font-serif italic text-accent-400 font-light block">
                       Creatively Evolves
                     </span>
                   </>

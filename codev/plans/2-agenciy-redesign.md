@@ -40,8 +40,14 @@ Same scope as `codev/specs/2-agenciy-redesign.md`.
   - Perform production build (`npm run build`).
 
 ## Phase 6: Hero Viewport Fit & Background Animations
-- **Status**: in-progress
+- **Status**: completed
 - **Tasks**:
   - Add floating background glow keyframes in `src/app/globals.css` using brand color scales.
   - Re-adjust `src/components/sections/Hero.tsx` wrapper to use `min-h-screen` flex-col structure, spacing everything dynamically up to "Our Tech Stack".
   - Perform typechecks, lint checks, and run build verification.
+
+## Phase 7: Stylish Font Color Theme Alignment
+- **Status**: in-progress
+- **Tasks**:
+  - Replace `text-neutral-400` with `text-accent-400` in all stylish font occurrences in Hero, Services, Process, Work, Team, Testimonials, About, Products, and Contact pages.
+  - Run typecheck and verify build succeeds.

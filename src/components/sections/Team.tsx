@@ -59,7 +59,7 @@ export async function Team() {
           title={
             <>
               Meet Our{" "}
-              <span className="font-serif italic text-neutral-400 font-light">
+              <span className="font-serif italic text-accent-400 font-light">
                 Team Members
               </span>
             </>

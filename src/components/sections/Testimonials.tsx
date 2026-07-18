@@ -22,7 +22,7 @@ export function Testimonials({ items = [] }: { items?: Testimonial[] }) {
             <>
               Hear from the Clients{" "}
               <br className="hidden sm:inline" />
-              <span className="font-serif italic text-neutral-400 font-light">
+              <span className="font-serif italic text-accent-400 font-light">
                 We&apos;ve Partnered With
               </span>
             </>

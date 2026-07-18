@@ -61,7 +61,7 @@ export async function Pricing() {
           title={
             <>
               Plans{" "}
-              <span className="font-serif italic text-neutral-400 font-light">
+              <span className="font-serif italic text-accent-400 font-light">
                 That Scale With You
               </span>
             </>

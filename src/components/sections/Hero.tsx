@@ -56,7 +56,7 @@ export function Hero() {
           
           <h1 className="text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-8xl leading-[1.1]">
             Create,{" "}
-            <span className="font-serif italic text-neutral-400 font-light block sm:inline">
+            <span className="font-serif italic text-accent-400 font-light block sm:inline">
               Impactful
             </span>
             <br />

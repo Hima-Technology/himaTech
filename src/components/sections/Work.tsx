@@ -22,7 +22,7 @@ export async function Work() {
           title={
             <>
               Our Featured{" "}
-              <span className="font-serif italic text-neutral-400 font-light">
+              <span className="font-serif italic text-accent-400 font-light">
                 Projects
               </span>
             </>

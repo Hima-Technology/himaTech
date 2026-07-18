@@ -42,3 +42,4 @@ The user wants to redesign the himaTech website and apply the exact visual style
 - [ ] Responsive layouts work perfectly on mobile, tablet, and desktop viewports.
 - [ ] Hero layout fits the screen viewport exactly (`min-h-screen` flex box spacing everything up to the "Our Tech Stack" marquee).
 - [ ] Background features gentle moving color animations (drifting glow blobs) using the brand's `hima-blue` accent scheme (#0A2463, #3A5AB0, #071648) without modifying other color parameters.
+- [ ] Stylish italic serif text elements use the brand blue accent color (text-accent-400) to harmonize with the background color animations.

@@ -40,7 +40,7 @@ export default async function ContactUs() {
           </span>
           <h1 className="mt-6 font-display text-5xl font-bold tracking-tight md:text-7xl">
             Let&apos;s Create{" "}
-            <span className="font-serif italic text-neutral-400 font-light block sm:inline">
+            <span className="font-serif italic text-accent-400 font-light block sm:inline">
               Together
             </span>
           </h1>

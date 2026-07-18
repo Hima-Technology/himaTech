@@ -23,7 +23,7 @@ export async function Process() {
             <>
               The Journey to a{" "}
               <br className="sm:hidden" />
-              <span className="font-serif italic text-neutral-400 font-light">
+              <span className="font-serif italic text-accent-400 font-light">
                 Successful Product
               </span>
             </>

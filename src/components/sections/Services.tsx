@@ -74,7 +74,7 @@ export async function Services() {
           title={
             <>
               What{" "}
-              <span className="font-serif italic text-neutral-400 font-light">
+              <span className="font-serif italic text-accent-400 font-light">
                 We Do
               </span>
             </>
