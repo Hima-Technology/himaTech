@@ -10,7 +10,7 @@
 
 # next.js
 /.next/
-# /out/
+/out/
 
 # production
 /build
@@ -34,14 +34,17 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-package-lock.json
+bun.lock
 pnpm-lock.yaml
 yarn.lock
-cache/*\n!cache/.gitkeep
-cache/*\n!cache/.gitkeep
+cache/*
+!cache/.gitkeep
 
 # Codev
 .agent-farm/
 .consult/
 codev/.update-hashes.json
 .builders/
+
+# Claude
+.claude/settings.local.json

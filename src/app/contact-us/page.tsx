@@ -1,380 +1,157 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-  Typography,
-  Card,
-  CardBody,
-  Input,
-  Textarea,
-  Button,
-} from "@material-tailwind/react";
+import { useState } from "react";
+import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker } from "react-icons/hi";
+import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+
+const CONTACT_ITEMS = [
+  { icon: HiOutlineMail, label: "Email", value: "info@himatech.co.tz", href: "mailto:info@himatech.co.tz" },
+  { icon: HiOutlinePhone, label: "Phone", value: "+255 628 404 865", href: "tel:+255628404865" },
+  { icon: HiOutlineLocationMarker, label: "Location", value: "Zanzibar, Tanzania", href: undefined },
+];
+
+type Status = "idle" | "submitting" | "success" | "error";
 
 export default function ContactUs() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
+  const [status, setStatus] = useState<Status>("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message! We'll get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("submitting");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      setStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
-    <div className="page-transition min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="relative bg-gray-900 py-20 text-white">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-4xl text-center">
-            <Typography
-              variant="h1"
-              className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              Contact Us
-            </Typography>
-            <Typography
-              variant="lead"
-              className="text-lg text-gray-300 md:text-xl"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              We&apos;d love to hear from you. Get in touch with our team.
-            </Typography>
-          </div>
-        </div>
+    <div className="page-transition">
+      <section className="bg-brand-950 pb-20 pt-40 text-center text-white">
+        <Container>
+          <h1 className="font-display text-display-lg">Contact Us</h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
+            We&apos;d love to hear from you. Get in touch with our team.
+          </p>
+        </Container>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2">
-            {/* Contact Information */}
+      <section className="py-20">
+        <Container>
+          <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2">
             <div>
-              <Typography
-                variant="h2"
-                className="mb-6 text-3xl font-bold text-gray-900"
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-              >
-                Get in Touch
-              </Typography>
-              <Typography
-                className="mb-8 text-lg text-gray-700"
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-              >
-                Have a question or want to work together? We&apos;re here to help!
-                Fill out the form and we&apos;ll respond as soon as possible.
-              </Typography>
+              <h2 className="font-display text-2xl text-brand-900">Get in Touch</h2>
+              <p className="mt-4 text-lg text-neutral-600">
+                Have a question or want to work together? Fill out the form and we&apos;ll respond
+                within one business day.
+              </p>
 
-              <div className="space-y-6">
-                {/* Email */}
-                <Card
-                  className="hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  <CardBody
-                    className="flex items-start gap-4"
-                    placeholder={undefined}
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
-                  >
-                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100">
-                      <svg
-                        className="h-6 w-6 text-blue-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                        />
-                      </svg>
+              <div className="mt-8 space-y-5">
+                {CONTACT_ITEMS.map((item) => (
+                  <div key={item.label} className="flex items-start gap-4 rounded-xl bg-neutral-50 p-5">
+                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-brand-900 text-white">
+                      <item.icon className="h-5 w-5" />
                     </div>
                     <div>
-                      <Typography
-                        variant="h6"
-                        className="mb-1 font-bold text-gray-900"
-                        placeholder={undefined}
-                        onPointerEnterCapture={undefined}
-                        onPointerLeaveCapture={undefined}
-                      >
-                        Email
-                      </Typography>
-                      <Typography
-                        className="text-gray-700"
-                        placeholder={undefined}
-                        onPointerEnterCapture={undefined}
-                        onPointerLeaveCapture={undefined}
-                      >
-                        info@himatechnologies.com
-                      </Typography>
+                      <p className="text-sm font-semibold text-brand-900">{item.label}</p>
+                      {item.href ? (
+                        <a href={item.href} className="text-neutral-600 hover:text-accent-600">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="text-neutral-600">{item.value}</p>
+                      )}
                     </div>
-                  </CardBody>
-                </Card>
-
-                {/* Phone */}
-                <Card
-                  className="hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  <CardBody
-                    className="flex items-start gap-4"
-                    placeholder={undefined}
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
-                  >
-                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-green-100">
-                      <svg
-                        className="h-6 w-6 text-green-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <Typography
-                        variant="h6"
-                        className="mb-1 font-bold text-gray-900"
-                        placeholder={undefined}
-                        onPointerEnterCapture={undefined}
-                        onPointerLeaveCapture={undefined}
-                      >
-                        Phone
-                      </Typography>
-                      <Typography
-                        className="text-gray-700"
-                        placeholder={undefined}
-                        onPointerEnterCapture={undefined}
-                        onPointerLeaveCapture={undefined}
-                      >
-                        +1 (555) 123-4567
-                      </Typography>
-                    </div>
-                  </CardBody>
-                </Card>
-
-                {/* Location */}
-                <Card
-                  className="hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  <CardBody
-                    className="flex items-start gap-4"
-                    placeholder={undefined}
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
-                  >
-                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-purple-100">
-                      <svg
-                        className="h-6 w-6 text-purple-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <Typography
-                        variant="h6"
-                        className="mb-1 font-bold text-gray-900"
-                        placeholder={undefined}
-                        onPointerEnterCapture={undefined}
-                        onPointerLeaveCapture={undefined}
-                      >
-                        Location
-                      </Typography>
-                      <Typography
-                        className="text-gray-700"
-                        placeholder={undefined}
-                        onPointerEnterCapture={undefined}
-                        onPointerLeaveCapture={undefined}
-                      >
-                        123 Tech Street, Innovation City, TC 12345
-                      </Typography>
-                    </div>
-                  </CardBody>
-                </Card>
-              </div>
-
-              {/* Social Media */}
-              <div className="mt-8">
-                <Typography
-                  variant="h6"
-                  className="mb-4 font-bold text-gray-900"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  Follow Us
-                </Typography>
-                <div className="flex gap-4">
-                  <a
-                    href="#"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500 text-white transition-all duration-300 hover:bg-blue-600 hover:scale-110"
-                  >
-                    <i className="fa-brands fa-twitter" />
-                  </a>
-                  <a
-                    href="#"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-700 text-white transition-all duration-300 hover:bg-blue-800 hover:scale-110"
-                  >
-                    <i className="fa-brands fa-facebook" />
-                  </a>
-                  <a
-                    href="#"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-pink-500 text-white transition-all duration-300 hover:bg-pink-600 hover:scale-110"
-                  >
-                    <i className="fa-brands fa-instagram" />
-                  </a>
-                  <a
-                    href="#"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white transition-all duration-300 hover:bg-blue-700 hover:scale-110"
-                  >
-                    <i className="fa-brands fa-linkedin" />
-                  </a>
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div>
-              <Card
-                className="shadow-xl"
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-              >
-                <CardBody
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  <Typography
-                    variant="h3"
-                    className="mb-6 text-2xl font-bold text-gray-900"
-                    placeholder={undefined}
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
-                  >
-                    Send us a Message
-                  </Typography>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                      <Input
-                        label="Your Name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        crossOrigin={undefined}
-                        onPointerEnterCapture={undefined}
-                        onPointerLeaveCapture={undefined}
-                      />
-                    </div>
-                    <div>
-                      <Input
-                        label="Your Email"
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        crossOrigin={undefined}
-                        onPointerEnterCapture={undefined}
-                        onPointerLeaveCapture={undefined}
-                      />
-                    </div>
-                    <div>
-                      <Input
-                        label="Subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        required
-                        crossOrigin={undefined}
-                        onPointerEnterCapture={undefined}
-                        onPointerLeaveCapture={undefined}
-                      />
-                    </div>
-                    <div>
-                      <Textarea
-                        label="Your Message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        rows={6}
-                        onPointerEnterCapture={undefined}
-                        onPointerLeaveCapture={undefined}
-                      />
-                    </div>
-                    <Button
-                      type="submit"
-                      color="blue"
-                      size="lg"
-                      className="w-full"
-                      placeholder={undefined}
-                      onPointerEnterCapture={undefined}
-                      onPointerLeaveCapture={undefined}
-                    >
-                      Send Message
-                    </Button>
-                  </form>
-                </CardBody>
-              </Card>
-            </div>
+            <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl bg-white p-8 shadow-soft-lg">
+              <h2 className="font-display text-xl text-brand-900">Send us a Message</h2>
+              <div>
+                <label htmlFor="name" className="text-sm font-semibold text-neutral-700">
+                  Your Name
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="mt-1.5 w-full rounded-md border border-neutral-200 px-4 py-2.5 focus-visible:border-accent-500"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="text-sm font-semibold text-neutral-700">
+                  Your Email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="mt-1.5 w-full rounded-md border border-neutral-200 px-4 py-2.5 focus-visible:border-accent-500"
+                />
+              </div>
+              <div>
+                <label htmlFor="subject" className="text-sm font-semibold text-neutral-700">
+                  Subject
+                </label>
+                <input
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="mt-1.5 w-full rounded-md border border-neutral-200 px-4 py-2.5 focus-visible:border-accent-500"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="text-sm font-semibold text-neutral-700">
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  className="mt-1.5 w-full rounded-md border border-neutral-200 px-4 py-2.5 focus-visible:border-accent-500"
+                />
+              </div>
+              <Button type="submit" size="lg" className="w-full" disabled={status === "submitting"}>
+                {status === "submitting" ? "Sending..." : "Send Message"}
+              </Button>
+              {status === "success" && (
+                <p className="text-sm font-medium text-success-600">
+                  Thanks — we&apos;ll get back to you soon.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-sm font-medium text-accent-700">
+                  Something went wrong. Please email us directly at info@himatech.co.tz.
+                </p>
+              )}
+            </form>
           </div>
-        </div>
+        </Container>
       </section>
     </div>
   );

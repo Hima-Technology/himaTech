@@ -1,189 +1,116 @@
-import React from "react";
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
-
-import {
-  Navbar as MTNavbar,
-  Collapse,
-  IconButton,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
 import Image from "next/image";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import * as Dialog from "@radix-ui/react-dialog";
+import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
+import { cn } from "@/lib/cn";
+import { Button } from "@/components/ui/Button";
 
-interface NavItemProps {
-  children: React.ReactNode;
-  href?: string;
-  target?: string;
-}
-function NavItem({ children, href = "/", target }: NavItemProps) {
-  return (
-    <li>
-      <Link href={href} target={target || "_self"} className="font-medium">
-        {children}
-      </Link>
-    </li>
-  );
-}
+const NAV_LINKS = [
+  { href: "/", label: "Home" },
+  { href: "/about-us", label: "About Us" },
+  { href: "/#services", label: "Services" },
+  { href: "/Our-Products", label: "Products" },
+  { href: "/contact-us", label: "Contact" },
+];
 
 export function Navbar() {
-  const [open, setOpen] = React.useState(false);
-  const [isScrolling, setIsScrolling] = React.useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  function handleOpen() {
-    setOpen((cur) => !cur);
-  }
-
-  React.useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpen(false)
-    );
-  }, []);
-
-  React.useEffect(() => {
-    function handleScroll() {
-      if (window.scrollY > 0) {
-        setIsScrolling(true);
-      } else {
-        setIsScrolling(false);
-      }
-    }
-
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 8);
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <MTNavbar
-      fullWidth
-      shadow={false}
-      blurred={false}
-      color={isScrolling ? "white" : "transparent"}
-      className="fixed top-0 z-50 border-0"
-      placeholder={undefined}
-      onPointerEnterCapture={undefined}
-      onPointerLeaveCapture={undefined}
+    <header
+      className={cn(
+        "fixed top-0 z-50 w-full transition duration-250",
+        scrolled
+          ? "bg-white/95 shadow-soft backdrop-blur-sm"
+          : "bg-transparent"
+      )}
     >
-      <div className="container mx-auto flex items-center justify-between">
-        <Link href="/">
+      <div className="container flex h-20 items-center justify-between">
+        <Link href="/" className="relative z-10">
           <Image
-            width={200}
-            height={100}
+            src={scrolled ? "/logos/Hima-dark.webp" : "/logos/Hima-white.webp"}
             alt="Hima Technologies"
-            src={
-              isScrolling ? "/logos/Hima-dark.webp" : "/logos/Hima-white.webp"
-            }
-            className="cursor-pointer"
+            width={160}
+            height={40}
+            className="h-9 w-auto"
+            priority
           />
         </Link>
+
         <ul
-          className={`ml-10 hidden items-center gap-6 lg:flex ${
-            isScrolling ? "text-gray-900" : "text-white"
-          }`}
-        >
-          <NavItem href="/">Home</NavItem>
-          <NavItem href="/about-us">About Us</NavItem>
-          <NavItem href="/contact-us">Contact Us</NavItem>
-          <NavItem href="/Our-Products">Our Products</NavItem>
-        </ul>
-        <div className="hidden gap-2 lg:flex lg:items-center">
-          <IconButton
-            variant="text"
-            color={isScrolling ? "gray" : "white"}
-            size="sm"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            <i className="fa-brands fa-twitter text-base" />
-          </IconButton>
-          <IconButton
-            variant="text"
-            color={isScrolling ? "gray" : "white"}
-            size="sm"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            <i className="fa-brands fa-facebook text-base" />
-          </IconButton>
-          <IconButton
-            variant="text"
-            color={isScrolling ? "gray" : "white"}
-            size="sm"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            <i className="fa-brands fa-instagram text-base" />
-          </IconButton>
-        </div>
-        <IconButton
-          variant="text"
-          color={isScrolling ? "gray" : "white"}
-          onClick={handleOpen}
-          className="ml-auto inline-block lg:hidden"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
-          {open ? (
-            <XMarkIcon strokeWidth={2} className="h-6 w-6" />
-          ) : (
-            <Bars3Icon strokeWidth={2} className="h-6 w-6" />
+          className={cn(
+            "hidden items-center gap-8 text-sm font-semibold lg:flex",
+            scrolled ? "text-neutral-700" : "text-white"
           )}
-        </IconButton>
-      </div>
-      <Collapse open={open}>
-        <div className="container mx-auto mt-4 rounded-lg border-t border-blue-gray-50 bg-white px-6 py-5">
-          <ul className="flex flex-col gap-4 text-blue-gray-900">
-            <NavItem href="/">Home</NavItem>
-            <NavItem href="/about-us">About Us</NavItem>
-            <NavItem href="/contact-us">Contact Us</NavItem>
-            <NavItem href="/Our-Products">Our Products</NavItem>
-          </ul>
-          <div className="mt-4 flex items-center gap-2">
-            <IconButton
-              variant="text"
-              color="gray"
-              size="sm"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              <i className="fa-brands fa-twitter text-base" />
-            </IconButton>
-            <IconButton
-              variant="text"
-              color="gray"
-              size="sm"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              <i className="fa-brands fa-facebook text-base" />
-            </IconButton>
-            <IconButton
-              variant="text"
-              color="gray"
-              size="sm"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              <i className="fa-brands fa-instagram text-base" />
-            </IconButton>
-            {/* <a href="https://www.material-tailwind.com/blocks" target="_blank">
-              <Button color="gray" size="sm" className="ml-auto">
-                Blocks
-              </Button>
-            </a> */}
-          </div>
+        >
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href} className="transition hover:text-accent-500">
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <div className="hidden lg:block">
+          <Button href="/contact-us" size="md">
+            Get in Touch
+          </Button>
         </div>
-      </Collapse>
-    </MTNavbar>
+
+        <Dialog.Root open={open} onOpenChange={setOpen}>
+          <Dialog.Trigger asChild>
+            <button
+              aria-label="Toggle menu"
+              className={cn(
+                "z-10 rounded-md p-2 lg:hidden",
+                scrolled ? "text-neutral-900" : "text-white"
+              )}
+            >
+              <HiOutlineMenu size={26} />
+            </button>
+          </Dialog.Trigger>
+          <Dialog.Portal>
+            <Dialog.Overlay className="fixed inset-0 z-50 bg-brand-950/60 backdrop-blur-sm" />
+            <Dialog.Content className="fixed right-0 top-0 z-50 h-full w-full max-w-sm bg-white p-8 shadow-soft-lg">
+              <div className="flex items-center justify-between">
+                <Dialog.Title className="font-display text-lg text-brand-900">
+                  Menu
+                </Dialog.Title>
+                <Dialog.Close asChild>
+                  <button aria-label="Close menu" className="rounded-md p-2 text-neutral-700">
+                    <HiOutlineX size={24} />
+                  </button>
+                </Dialog.Close>
+              </div>
+              <ul className="mt-10 flex flex-col gap-6 text-lg font-semibold text-brand-900">
+                {NAV_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} onClick={() => setOpen(false)}>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Button href="/contact-us" size="lg" className="mt-10 w-full" onClick={() => setOpen(false)}>
+                Get in Touch
+              </Button>
+            </Dialog.Content>
+          </Dialog.Portal>
+        </Dialog.Root>
+      </div>
+    </header>
   );
 }
 

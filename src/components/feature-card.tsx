@@ -1,65 +1,38 @@
 "use client";
 
 import Image from "next/image";
-import { Typography, Card, CardBody } from "@material-tailwind/react";
+import type { ReactNode } from "react";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 interface FeatureCardProps {
   icon: React.ElementType;
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
   image: string;
+  delay?: number;
 }
 
-export function FeatureCard({
-  icon: Icon,
-  title,
-  children,
-  image,
-}: FeatureCardProps) {
+export function FeatureCard({ icon: Icon, title, children, image, delay = 0 }: FeatureCardProps) {
   return (
-    <Card
-      className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-      placeholder={undefined}
-      onPointerEnterCapture={undefined}
-      onPointerLeaveCapture={undefined}
-    >
-      <div className="relative h-48 w-full overflow-hidden">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover object-center"
-        />
-      </div>
-      <CardBody
-        className="grid justify-start"
-        placeholder={undefined}
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      >
-        <div className="mb-4 grid h-12 w-12 place-content-center rounded-lg bg-gray-900 p-2.5 text-left text-white">
-          <Icon className="h-6 w-6" />
+    <RevealOnScroll delay={delay}>
+      <div className="group h-full overflow-hidden rounded-xl bg-white shadow-soft transition duration-250 hover:-translate-y-1 hover:shadow-soft-md">
+        <div className="relative h-44 w-full overflow-hidden">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover object-center transition duration-250 group-hover:scale-105"
+          />
         </div>
-        <Typography
-          variant="h5"
-          color="blue-gray"
-          className="mb-2"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
-          {title}
-        </Typography>
-        <Typography
-          className="font-normal !text-gray-500"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
-          {children}
-        </Typography>
-      </CardBody>
-    </Card>
+        <div className="p-6">
+          <div className="mb-4 grid h-12 w-12 place-content-center rounded-lg bg-brand-900 text-white">
+            <Icon className="h-6 w-6" />
+          </div>
+          <h3 className="font-display text-lg text-brand-900">{title}</h3>
+          <p className="mt-2 font-medium text-neutral-500">{children}</p>
+        </div>
+      </div>
+    </RevealOnScroll>
   );
 }
 

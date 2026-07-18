@@ -1,351 +1,120 @@
-"use client";
+import type { Metadata } from "next";
+import { HiOutlineLightBulb, HiOutlineEye, HiOutlineHeart, HiCheck } from "react-icons/hi";
+import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import Team from "@/components/sections/Team";
 
-import React from "react";
-import { Typography, Card, CardBody } from "@material-tailwind/react";
+export const metadata: Metadata = {
+  title: "About Us | Hima Technologies",
+  description:
+    "Founded in Zanzibar, Hima Technologies combines expertise in software development, AI, data analytics, and cybersecurity.",
+};
+
+const VALUES = [
+  {
+    icon: HiOutlineLightBulb,
+    title: "Our Mission",
+    description:
+      "To empower businesses with innovative technology solutions that drive growth, efficiency, and success in the digital age.",
+  },
+  {
+    icon: HiOutlineEye,
+    title: "Our Vision",
+    description:
+      "To be a leading force in East African technology innovation, recognized for excellence, creativity, and transformative solutions.",
+  },
+  {
+    icon: HiOutlineHeart,
+    title: "Our Values",
+    description:
+      "Innovation, integrity, collaboration, and customer-centricity guide everything we do and every solution we create.",
+  },
+];
+
+const WHY_CHOOSE_US = [
+  {
+    title: "Expert Team",
+    description: "Our talented team brings years of experience and deep technical expertise to every project.",
+  },
+  {
+    title: "Custom Solutions",
+    description: "We tailor our services to meet your unique business needs and goals.",
+  },
+  {
+    title: "Proven Track Record",
+    description: "We've successfully delivered projects across various industries and scales.",
+  },
+  {
+    title: "Ongoing Support",
+    description: "We provide continuous support and maintenance to ensure your success.",
+  },
+];
 
 export default function AboutUs() {
   return (
-    <div className="page-transition min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="relative bg-gray-900 py-20 text-white">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-4xl text-center">
-            <Typography
-              variant="h1"
-              className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              About Hima Technologies
-            </Typography>
-            <Typography
-              variant="lead"
-              className="text-lg text-gray-300 md:text-xl"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              Innovating the future through cutting-edge technology solutions
-            </Typography>
-          </div>
-        </div>
+    <div className="page-transition">
+      <section className="bg-brand-950 pb-20 pt-40 text-center text-white">
+        <Container>
+          <h1 className="font-display text-display-lg">About Hima Technologies</h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
+            Innovating the future through cutting-edge technology solutions.
+          </p>
+        </Container>
       </section>
 
-      {/* Company Overview */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-4xl">
-            <Typography
-              variant="h2"
-              className="mb-6 text-center text-3xl font-bold text-gray-900"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              Who We Are
-            </Typography>
-            <Typography
-              className="mb-8 text-center text-lg leading-relaxed text-gray-700"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              Hima Technologies is a forward-thinking technology company dedicated to
-              delivering innovative solutions that transform businesses and empower
-              organizations to achieve their goals. With a team of experienced
-              professionals and a passion for excellence, we specialize in creating
-              custom software, digital products, and technology services that drive
-              real results.
-            </Typography>
-          </div>
-        </div>
+      <section className="py-20">
+        <Container className="max-w-3xl text-center">
+          <SectionHeading eyebrow="Who We Are" title="Founded in Zanzibar, built for East Africa" />
+          <p className="mt-6 text-lg leading-relaxed text-neutral-600">
+            Hima Technologies is a forward-thinking technology company dedicated to delivering
+            innovative solutions that transform businesses and empower organizations to achieve
+            their goals. Founded in Zanzibar by a team of forward-thinking innovators, we combine
+            expertise in software development, artificial intelligence, data analytics, and
+            cybersecurity — harnessing cutting-edge solutions to drive meaningful impact across
+            industries and ensure businesses stay ahead in an ever-evolving digital landscape.
+          </p>
+        </Container>
       </section>
 
-      {/* Mission, Vision, Values */}
-      <section className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
+      <section className="bg-neutral-50 py-20">
+        <Container>
           <div className="grid gap-8 md:grid-cols-3">
-            {/* Mission */}
-            <Card
-              className="hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              <CardBody
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-              >
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-500">
-                  <svg
-                    className="h-8 w-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
+            {VALUES.map((value, idx) => (
+              <RevealOnScroll key={value.title} delay={idx * 0.05}>
+                <div className="h-full rounded-xl bg-white p-8 shadow-soft">
+                  <div className="mb-4 grid h-14 w-14 place-content-center rounded-full bg-brand-900 text-white">
+                    <value.icon className="h-7 w-7" />
+                  </div>
+                  <h3 className="font-display text-lg text-brand-900">{value.title}</h3>
+                  <p className="mt-2 text-neutral-600">{value.description}</p>
                 </div>
-                <Typography
-                  variant="h5"
-                  className="mb-3 font-bold text-gray-900"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  Our Mission
-                </Typography>
-                <Typography
-                  className="text-gray-700"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  To empower businesses with innovative technology solutions that
-                  drive growth, efficiency, and success in the digital age.
-                </Typography>
-              </CardBody>
-            </Card>
-
-            {/* Vision */}
-            <Card
-              className="hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              <CardBody
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-              >
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-500">
-                  <svg
-                    className="h-8 w-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    />
-                  </svg>
-                </div>
-                <Typography
-                  variant="h5"
-                  className="mb-3 font-bold text-gray-900"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  Our Vision
-                </Typography>
-                <Typography
-                  className="text-gray-700"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  To be a global leader in technology innovation, recognized for
-                  excellence, creativity, and transformative solutions.
-                </Typography>
-              </CardBody>
-            </Card>
-
-            {/* Values */}
-            <Card
-              className="hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              <CardBody
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-              >
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-purple-500">
-                  <svg
-                    className="h-8 w-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    />
-                  </svg>
-                </div>
-                <Typography
-                  variant="h5"
-                  className="mb-3 font-bold text-gray-900"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  Our Values
-                </Typography>
-                <Typography
-                  className="text-gray-700"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  Innovation, integrity, collaboration, and customer-centricity
-                  guide everything we do and every solution we create.
-                </Typography>
-              </CardBody>
-            </Card>
+              </RevealOnScroll>
+            ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <Typography
-            variant="h2"
-            className="mb-12 text-center text-3xl font-bold text-gray-900"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            Why Choose Hima Technologies?
-          </Typography>
-          <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
-                  <span className="text-2xl">✓</span>
+      <section className="py-20">
+        <Container>
+          <SectionHeading title="Why Choose Hima Technologies?" />
+          <div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-2">
+            {WHY_CHOOSE_US.map((item) => (
+              <div key={item.title} className="flex gap-4">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-accent-50 text-accent-600">
+                  <HiCheck className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="font-display text-lg text-brand-900">{item.title}</h3>
+                  <p className="mt-1 text-neutral-600">{item.description}</p>
                 </div>
               </div>
-              <div>
-                <Typography
-                  variant="h6"
-                  className="mb-2 font-bold text-gray-900"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  Expert Team
-                </Typography>
-                <Typography
-                  className="text-gray-700"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  Our talented team brings years of experience and deep technical
-                  expertise to every project.
-                </Typography>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
-                  <span className="text-2xl">✓</span>
-                </div>
-              </div>
-              <div>
-                <Typography
-                  variant="h6"
-                  className="mb-2 font-bold text-gray-900"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  Custom Solutions
-                </Typography>
-                <Typography
-                  className="text-gray-700"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  We tailor our services to meet your unique business needs and
-                  goals.
-                </Typography>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
-                  <span className="text-2xl">✓</span>
-                </div>
-              </div>
-              <div>
-                <Typography
-                  variant="h6"
-                  className="mb-2 font-bold text-gray-900"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  Proven Track Record
-                </Typography>
-                <Typography
-                  className="text-gray-700"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  We&apos;ve successfully delivered projects across various industries
-                  and scales.
-                </Typography>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
-                  <span className="text-2xl">✓</span>
-                </div>
-              </div>
-              <div>
-                <Typography
-                  variant="h6"
-                  className="mb-2 font-bold text-gray-900"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  Ongoing Support
-                </Typography>
-                <Typography
-                  className="text-gray-700"
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  We provide continuous support and maintenance to ensure your
-                  success.
-                </Typography>
-              </div>
-            </div>
+            ))}
           </div>
-        </div>
+        </Container>
       </section>
+
+      <Team />
     </div>
   );
 }

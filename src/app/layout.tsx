@@ -1,11 +1,19 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
-import { FixedPlugin, Layout } from "@/components";
+import { Space_Grotesk, Inter } from "next/font/google";
+import { Layout } from "@/components";
 
-const roboto = Roboto({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700", "900"],
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -51,22 +59,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
-        <link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
-      </head>
-      <body className={roboto.className}>
-        <Layout>
-          {children}
-          {/* <FixedPlugin /> */}
-        </Layout>
+    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
+      <body className="font-sans">
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

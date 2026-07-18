@@ -1,95 +1,94 @@
-"use client";
-import { FiMail, FiPhone, FiMapPin, FiTwitter, FiLinkedin, FiFacebook, FiGithub } from "react-icons/fi";
+import Link from "next/link";
+import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker } from "react-icons/hi";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
+const QUICK_LINKS = [
+  { href: "/", label: "Home" },
+  { href: "/about-us", label: "About Us" },
+  { href: "/#services", label: "Services" },
+  { href: "/Our-Products", label: "Products" },
+  { href: "/contact-us", label: "Contact" },
+];
+
+const SERVICES = [
+  "Software Development",
+  "AI Solutions",
+  "Data Analytics",
+  "Cybersecurity",
+  "IT Consulting",
+];
+
 export function Footer() {
   return (
-    <footer className="mt-20 bg-gray-900 px-8 pt-12 text-white font-sans">
-      <div className="container mx-auto">
+    <footer className="bg-brand-950 px-6 pt-16 text-white">
+      <div className="container">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3 lg:grid-cols-4">
-          {/* Company Info */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold tracking-tight">HimaTech</h3>
-            <p className="text-gray-400 font-normal leading-relaxed">
-              Cutting-edge technology solutions for Zanzibar and beyond.
+          <div className="space-y-4 lg:col-span-1">
+            <h3 className="font-display text-xl">Hima Technologies</h3>
+            <p className="leading-relaxed text-white/60">
+              Founded in Zanzibar. Software development, AI, data analytics
+              and cybersecurity for businesses across East Africa and beyond.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FiTwitter size={20} className="opacity-75 hover:opacity-100" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FiLinkedin size={20} className="opacity-75 hover:opacity-100" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FiFacebook size={20} className="opacity-75 hover:opacity-100" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FiGithub size={20} className="opacity-75 hover:opacity-100" />
-              </a>
-            </div>
           </div>
 
-          {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold tracking-tight">Quick Links</h4>
-            <ul className="space-y-2 text-gray-400 font-medium">
-              <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Services</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Case Studies</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+            <h4 className="font-display text-sm uppercase tracking-widest text-white/50">
+              Quick Links
+            </h4>
+            <ul className="space-y-2 font-medium text-white/70">
+              {QUICK_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="transition hover:text-accent-400">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Services */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold tracking-tight">Services</h4>
-            <ul className="space-y-2 text-gray-400 font-medium">
-              <li><a href="#" className="hover:text-white transition-colors">Web Development</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Mobile Apps</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Cloud Solutions</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Cybersecurity</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">AI Solutions</a></li>
+            <h4 className="font-display text-sm uppercase tracking-widest text-white/50">
+              Services
+            </h4>
+            <ul className="space-y-2 font-medium text-white/70">
+              {SERVICES.map((service) => (
+                <li key={service}>{service}</li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold tracking-tight">Contact Us</h4>
-            <div className="space-y-3 text-gray-400 font-medium">
+            <h4 className="font-display text-sm uppercase tracking-widest text-white/50">
+              Contact
+            </h4>
+            <div className="space-y-3 font-medium text-white/70">
+              <a
+                href="mailto:info@himatech.co.tz"
+                className="flex items-start gap-3 transition hover:text-accent-400"
+              >
+                <HiOutlineMail className="mt-0.5 flex-shrink-0" />
+                info@himatech.co.tz
+              </a>
+              <a
+                href="tel:+255628404865"
+                className="flex items-start gap-3 transition hover:text-accent-400"
+              >
+                <HiOutlinePhone className="mt-0.5 flex-shrink-0" />
+                +255 628 404 865
+              </a>
               <div className="flex items-start gap-3">
-                <FiMail className="mt-1 flex-shrink-0 opacity-75" />
-                <a href="mailto:info@himatech.co.tz" className="hover:text-white transition-colors">
-                  info@himatech.co.tz
-                </a>
-              </div>
-              <div className="flex items-start gap-3">
-                <FiPhone className="mt-1 flex-shrink-0 opacity-75" />
-                <a href="tel:+255628404865" className="hover:text-white transition-colors">
-                  +255 628 404 865
-                </a>
-              </div>
-              <div className="flex items-start gap-3">
-                <FiMapPin className="mt-1 flex-shrink-0 opacity-75" />
-                <span>Zanzibar</span>
+                <HiOutlineLocationMarker className="mt-0.5 flex-shrink-0" />
+                Zanzibar, Tanzania
               </div>
             </div>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-16 border-t border-gray-800 pt-8 pb-12">
-          <div className="flex flex-col items-center justify-between md:flex-row">
-            <p className="text-gray-400 text-sm font-medium">
-              &copy; {CURRENT_YEAR} Hima Technologies. All rights reserved.
-            </p>
-            <div className="mt-4 md:mt-0 flex space-x-6">
-              <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors font-medium">Privacy Policy</a>
-              <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors font-medium">Terms of Service</a>
-              <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors font-medium">Cookies</a>
-            </div>
-          </div>
+        <div className="mt-16 border-t border-white/10 py-8">
+          <p className="text-center text-sm text-white/50">
+            &copy; {CURRENT_YEAR} Hima Technologies. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

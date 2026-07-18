@@ -1,4 +1,5 @@
-import React from 'react';
+import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
 
 interface CTAProps {
   title?: string;
@@ -6,20 +7,23 @@ interface CTAProps {
   buttonText?: string;
 }
 
-export default function CTA({ title, description, buttonText }: CTAProps) {
+export function CTA({ title, description, buttonText }: CTAProps) {
   return (
-    <section className="bg-gray-100 py-16">
-      <div className="container mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">
-          {title || 'Ready to get started?'}
+    <section className="bg-accent-500 py-20">
+      <Container className="text-center">
+        <h2 className="font-display text-display-sm text-white">
+          {title || "Ready to get started?"}
         </h2>
-        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">
           {description || "Let's discuss how we can help your business grow."}
         </p>
-        <button className="bg-blue-gray-900 hover:bg-primary-700 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
-          {buttonText || 'Contact Us'}
-        </button>
-      </div>
+        <Button href="/contact-us" variant="secondary" size="lg" className="mt-8">
+          {buttonText || "Contact Us"}
+        </Button>
+      </Container>
     </section>
   );
 }
+
+export default CTA;
+
