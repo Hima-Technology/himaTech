@@ -1,5 +1,5 @@
 import { createClient } from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 import type { Image } from "sanity";
 import { projectId, dataset, apiVersion, isSanityConfigured } from "./env";
 
@@ -7,7 +7,7 @@ export const client = isSanityConfigured
   ? createClient({ projectId, dataset, apiVersion, useCdn: true })
   : null;
 
-const builder = client ? imageUrlBuilder(client) : null;
+const builder = client ? createImageUrlBuilder(client) : null;
 
 export function urlFor(source: Image) {
   if (!builder) throw new Error("Sanity is not configured");
