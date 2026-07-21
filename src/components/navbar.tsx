@@ -40,60 +40,30 @@ export function Navbar() {
       <div className="container flex h-20 items-center justify-between">
         <Link
           href="/"
-          className={cn(
-            "relative z-10 font-display text-xl font-bold tracking-tight flex items-center gap-2",
-            scrolled ? "text-black dark:text-white" : "text-white"
-          )}
+          className="relative z-10 font-display text-xl font-bold tracking-tight flex items-center gap-2 text-black dark:text-white"
         >
-          {/* Not-scrolled navbar always sits over a permanently-dark hero band, so
-              the white logo is correct regardless of theme; scrolled state flips
-              with the theme since it's over the page's own background. */}
-          {scrolled ? (
-            <>
-              <Image
-                src="/logos/Hima-dark.webp"
-                alt="Hima Technologies"
-                width={140}
-                height={32}
-                className="h-8 w-auto dark:hidden"
-                priority
-              />
-              <Image
-                src="/logos/Hima-white.webp"
-                alt="Hima Technologies"
-                width={140}
-                height={32}
-                className="hidden h-8 w-auto dark:block"
-                priority
-              />
-            </>
-          ) : (
-            <Image
-              src="/logos/Hima-white.webp"
-              alt="Hima Technologies"
-              width={140}
-              height={32}
-              className="h-8 w-auto"
-              priority
-            />
-          )}
+          <Image
+            src="/logos/Hima-dark.webp"
+            alt="Hima Technologies"
+            width={140}
+            height={32}
+            className="h-8 w-auto dark:hidden"
+            priority
+          />
+          <Image
+            src="/logos/Hima-white.webp"
+            alt="Hima Technologies"
+            width={140}
+            height={32}
+            className="hidden h-8 w-auto dark:block"
+            priority
+          />
         </Link>
 
-        <ul
-          className={cn(
-            "hidden items-center gap-8 text-sm font-medium lg:flex",
-            scrolled ? "text-neutral-600 dark:text-neutral-400" : "text-white/80"
-          )}
-        >
+        <ul className="hidden items-center gap-8 text-sm font-medium lg:flex text-neutral-600 dark:text-neutral-400">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
-              <Link
-                href={link.href}
-                className={cn(
-                  "transition",
-                  scrolled ? "hover:text-black dark:hover:text-white" : "hover:text-white"
-                )}
-              >
+              <Link href={link.href} className="transition hover:text-black dark:hover:text-white">
                 {link.label}
               </Link>
             </li>
@@ -101,30 +71,17 @@ export function Navbar() {
         </ul>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <ThemeToggle
-            className={cn(
-              "rounded-full p-2 transition",
-              scrolled ? "text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10" : "text-white hover:bg-white/10"
-            )}
-          />
+          <ThemeToggle className="rounded-full p-2 transition text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10" />
           <Button href="/contact-us" variant="primary" size="md">
             Let&apos;s Chat!
           </Button>
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
-          <ThemeToggle
-            className={cn(
-              "rounded-full p-2 transition",
-              scrolled ? "text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10" : "text-white hover:bg-white/10"
-            )}
-          />
+          <ThemeToggle className="rounded-full p-2 transition text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10" />
           <Dialog.Root open={open} onOpenChange={setOpen}>
             <Dialog.Trigger asChild>
-              <button
-                aria-label="Toggle menu"
-                className={cn("z-10 rounded-md p-2", scrolled ? "text-black dark:text-white" : "text-white")}
-              >
+              <button aria-label="Toggle menu" className="z-10 rounded-md p-2 text-black dark:text-white">
                 <HiOutlineMenu size={26} />
               </button>
             </Dialog.Trigger>

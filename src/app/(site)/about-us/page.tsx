@@ -33,20 +33,19 @@ const WHY_CHOOSE_US = [
 export default function AboutUs() {
   return (
     <div className="bg-white text-black min-h-screen pt-20 dark:bg-black dark:text-white">
-      {/* Hero — always dark, regardless of site theme (see navbar.tsx for why) */}
-      <section className="relative py-24 overflow-hidden border-b border-white/10 bg-black text-white">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
+      <section className="relative py-24 overflow-hidden border-b border-black/10 dark:border-white/10">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000012_1px,transparent_1px),linear-gradient(to_bottom,#00000012_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff1f_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1f_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
         <Container className="text-center relative z-10">
-          <span className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-300">
+          <span className="inline-block rounded-full border border-black/10 bg-black/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:border-white/10 dark:bg-white/5 dark:text-neutral-300">
             About Us
           </span>
           <h1 className="mt-6 font-display text-5xl font-bold tracking-tight md:text-7xl">
             Who We Are |{" "}
-            <span className="font-serif italic text-accent-400 font-light block sm:inline">
+            <span className="font-serif italic text-accent-600 font-light block sm:inline dark:text-accent-400">
               HimaTech
             </span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg text-neutral-400 leading-relaxed font-medium">
+          <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg text-neutral-600 leading-relaxed font-medium dark:text-neutral-400">
             We help ambitious brands and startups build digital products that stand out and scale. We believe in working smart, building fast, and designing with purpose.
           </p>
         </Container>

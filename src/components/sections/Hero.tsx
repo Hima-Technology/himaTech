@@ -23,18 +23,18 @@ const STACK = [
 
 export function Hero() {
   return (
-    <div className="relative w-full bg-black overflow-hidden pt-32 pb-16">
+    <div className="relative w-full bg-white dark:bg-black overflow-hidden pt-32 pb-16">
       {/* Background grid overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
-      
-      {/* Drifting background glows using the brand colors */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000012_1px,transparent_1px),linear-gradient(to_bottom,#00000012_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff1f_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
+
+      {/* Traveling glow lights — move across the hero in a slow loop */}
       <div
         aria-hidden="true"
-        className="absolute -top-20 left-1/4 h-[350px] w-[350px] rounded-full bg-accent-900/15 blur-[120px] animate-[float-blob-1_25s_ease-in-out_infinite] pointer-events-none"
+        className="absolute left-1/2 top-1/2 h-[380px] w-[380px] rounded-full bg-accent-400/25 dark:bg-accent-900/20 blur-[120px] animate-glow-travel pointer-events-none"
       />
       <div
         aria-hidden="true"
-        className="absolute top-1/4 right-1/4 h-[400px] w-[400px] rounded-full bg-accent-950/30 blur-[130px] animate-[float-blob-2_30s_ease-in-out_infinite] pointer-events-none"
+        className="absolute left-1/2 top-1/2 h-[320px] w-[320px] rounded-full bg-accent-300/20 dark:bg-accent-950/35 blur-[110px] animate-glow-travel-reverse pointer-events-none"
       />
       <Sparkles />
       <CursorGlow />
@@ -46,21 +46,21 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="space-y-6"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium tracking-wider text-neutral-300 backdrop-blur-sm">
+          <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/5 px-4 py-1.5 text-xs font-medium tracking-wider text-neutral-700 backdrop-blur-sm dark:border-white/10 dark:bg-white/5 dark:text-neutral-300">
             <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
             Software Development &amp; AI Partner
           </span>
-          
-          <h1 className="text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-8xl leading-[1.1]">
+
+          <h1 className="text-5xl font-bold tracking-tight text-black md:text-7xl lg:text-8xl leading-[1.1] dark:text-white">
             Create,{" "}
-            <span className="font-serif italic text-accent-400 font-light block sm:inline">
+            <span className="font-serif italic text-accent-600 font-light block sm:inline dark:text-accent-400">
               Impactful
             </span>
             <br />
             Digital Solutions
           </h1>
 
-          <p className="mx-auto max-w-2xl text-base text-neutral-400 md:text-lg leading-relaxed">
+          <p className="mx-auto max-w-2xl text-base text-neutral-600 md:text-lg leading-relaxed dark:text-neutral-400">
             We build high-performance software, AI systems, and secure digital
             platforms with intention, clarity, and care for ambitious businesses.
           </p>
@@ -81,13 +81,13 @@ export function Hero() {
 
       {/* Grid Stats section */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 mt-20">
-        <div className="grid grid-cols-1 divide-y divide-white/10 border-t border-b border-white/10 py-8 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
+        <div className="grid grid-cols-1 divide-y divide-black/10 border-t border-b border-black/10 py-8 sm:grid-cols-3 sm:divide-y-0 sm:divide-x dark:divide-white/10 dark:border-white/10">
           {SITE_STATS.map((stat) => (
             <div key={stat.label} className="text-center px-4 py-4 sm:py-0">
-              <p className="font-display text-4xl md:text-5xl font-bold text-white tracking-tight">
+              <p className="font-display text-4xl md:text-5xl font-bold text-black tracking-tight dark:text-white">
                 <AnimatedCounter value={stat.value} />
               </p>
-              <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-neutral-500">
+              <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-500">
                 {stat.label}
               </p>
             </div>
@@ -96,7 +96,7 @@ export function Hero() {
       </div>
 
       <div className="mx-auto max-w-5xl px-6 mt-16">
-        <p className="mb-6 text-center text-xs font-semibold uppercase tracking-wider text-neutral-500">
+        <p className="mb-6 text-center text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-500">
           Our Tech Stack
         </p>
         <Marquee>

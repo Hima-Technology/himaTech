@@ -114,6 +114,8 @@ const config: Config = {
         float: "float 6s ease-in-out infinite",
         marquee: "marquee 28s linear infinite",
         twinkle: "twinkle 3s ease-in-out infinite",
+        "glow-travel": "glowTravel 16s ease-in-out infinite",
+        "glow-travel-reverse": "glowTravel 20s ease-in-out infinite reverse",
       },
       keyframes: {
         fadeUp: {
@@ -131,6 +133,12 @@ const config: Config = {
         twinkle: {
           "0%, 100%": { opacity: "0.15", transform: "scale(0.85)" },
           "50%": { opacity: "1", transform: "scale(1.15)" },
+        },
+        glowTravel: {
+          "0%, 100%": { transform: "translate(-42vw, -8vh) scale(1)" },
+          "25%": { transform: "translate(-10vw, 10vh) scale(1.15)" },
+          "50%": { transform: "translate(38vw, -4vh) scale(0.9)" },
+          "75%": { transform: "translate(6vw, 12vh) scale(1.1)" },
         },
       },
     },
