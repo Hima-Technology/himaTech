@@ -23,7 +23,7 @@ const STACK = [
 
 export function Hero() {
   return (
-    <div className="relative w-full bg-white dark:bg-black overflow-hidden pt-32 pb-16">
+    <div className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden bg-white pt-20 pb-12 dark:bg-black">
       {/* Background grid overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000012_1px,transparent_1px),linear-gradient(to_bottom,#00000012_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff1f_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
 
@@ -112,6 +112,10 @@ export function Hero() {
             </div>
           ))}
         </Marquee>
+      </div>
+
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce text-neutral-400 dark:text-neutral-500">
+        <HiOutlineChevronDown size={24} />
       </div>
     </div>
   );
