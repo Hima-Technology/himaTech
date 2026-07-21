@@ -32,9 +32,9 @@ const WHY_CHOOSE_US = [
 
 export default function AboutUs() {
   return (
-    <div className="bg-black text-white min-h-screen pt-20">
-      {/* Hero */}
-      <section className="relative py-24 overflow-hidden border-b border-white/10">
+    <div className="bg-white text-black min-h-screen pt-20 dark:bg-black dark:text-white">
+      {/* Hero — always dark, regardless of site theme (see navbar.tsx for why) */}
+      <section className="relative py-24 overflow-hidden border-b border-white/10 bg-black text-white">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
         <Container className="text-center relative z-10">
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-300">
@@ -53,7 +53,7 @@ export default function AboutUs() {
       </section>
 
       {/* Mission & Stats */}
-      <section className="py-24 border-b border-white/10 bg-[#030303]">
+      <section className="py-24 border-b border-black/10 bg-neutral-50 dark:border-white/10 dark:bg-[#030303]">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
             <div>
@@ -63,22 +63,22 @@ export default function AboutUs() {
                 title={
                   <>
                     Your Growth,{" "}
-                    <span className="font-serif italic text-accent-400 font-light">
+                    <span className="font-serif italic text-accent-600 font-light dark:text-accent-400">
                       Our Mission
                     </span>
                   </>
                 }
               />
-              <p className="mt-6 text-sm md:text-base text-neutral-400 leading-relaxed font-medium">
+              <p className="mt-6 text-sm md:text-base text-neutral-600 leading-relaxed font-medium dark:text-neutral-400">
                 We craft digital solutions that not only look good but perform exceptionally. Our team thrives on innovation and turning bold ideas into meaningful impact. Based in Zanzibar, we combine regional insights with global engineering standards.
               </p>
             </div>
-            
-            <div className="grid grid-cols-1 divide-y divide-white/10 border-t border-b border-white/10 py-6 sm:grid-cols-3 sm:divide-y-0 sm:divide-x align-middle my-auto">
+
+            <div className="grid grid-cols-1 divide-y divide-black/10 border-t border-b border-black/10 py-6 sm:grid-cols-3 sm:divide-y-0 sm:divide-x align-middle my-auto dark:divide-white/10 dark:border-white/10">
               {SITE_STATS.map((stat) => (
                 <div key={stat.label} className="text-center px-4 py-4 sm:py-0">
-                  <p className="font-display text-4xl font-bold text-white tracking-tight">{stat.value}</p>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-neutral-500">{stat.label}</p>
+                  <p className="font-display text-4xl font-bold text-black tracking-tight dark:text-white">{stat.value}</p>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-500">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -87,26 +87,26 @@ export default function AboutUs() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-24 border-b border-white/10 bg-black">
+      <section className="py-24 border-b border-black/10 bg-white dark:border-white/10 dark:bg-black">
         <Container>
           <SectionHeading
             eyebrow="Why Choose Us"
             title={
               <>
                 Why Choose{" "}
-                <span className="font-serif italic text-accent-400 font-light">Hima Technologies</span>
+                <span className="font-serif italic text-accent-600 font-light dark:text-accent-400">Hima Technologies</span>
               </>
             }
           />
           <div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-2">
             {WHY_CHOOSE_US.map((item) => (
               <div key={item.title} className="flex gap-4">
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-white text-black">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-black text-white dark:bg-white dark:text-black">
                   <HiCheck className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="font-display text-lg font-bold text-white tracking-tight">{item.title}</h3>
-                  <p className="mt-1 text-sm text-neutral-400 leading-relaxed font-medium">{item.description}</p>
+                  <h3 className="font-display text-lg font-bold text-black tracking-tight dark:text-white">{item.title}</h3>
+                  <p className="mt-1 text-sm text-neutral-600 leading-relaxed font-medium dark:text-neutral-400">{item.description}</p>
                 </div>
               </div>
             ))}

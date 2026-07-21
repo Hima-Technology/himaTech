@@ -25,15 +25,15 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-neutral-500">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-500">
           {eyebrow}
         </p>
       )}
-      <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl leading-[1.15]">
+      <h2 className="text-3xl font-bold tracking-tight text-black md:text-5xl lg:text-6xl leading-[1.15] dark:text-white">
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-sm md:text-base text-neutral-400 leading-relaxed max-w-2xl mx-auto">
+        <p className="mt-4 text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl mx-auto">
           {description}
         </p>
       )}

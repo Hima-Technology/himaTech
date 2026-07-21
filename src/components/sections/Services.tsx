@@ -67,14 +67,14 @@ export async function Services() {
   const services = cmsServices && cmsServices.length > 0 ? cmsServices : FALLBACK_SERVICES;
 
   return (
-    <section id="services" className="py-24 bg-black border-b border-white/10">
+    <section id="services" className="py-24 bg-white border-b border-black/10 dark:bg-black dark:border-white/10">
       <Container>
         <SectionHeading
           eyebrow="Our Services"
           title={
             <>
               What{" "}
-              <span className="font-serif italic text-accent-400 font-light">
+              <span className="font-serif italic text-accent-600 font-light dark:text-accent-400">
                 We Do
               </span>
             </>
@@ -87,17 +87,17 @@ export async function Services() {
             const Icon = ICONS[service.icon] || HiOutlineSparkles;
             return (
               <RevealOnScroll key={service.title} delay={idx * 0.05}>
-                <TiltCard className="h-full rounded-2xl border border-white/10 bg-[#0c0c0c]/60 p-8 hover:bg-[#0c0c0c]/90 transition-all duration-300 hover:border-white/20">
+                <TiltCard className="h-full rounded-2xl border border-black/10 bg-neutral-50 p-8 hover:bg-neutral-100 transition-all duration-300 hover:border-black/20 dark:border-white/10 dark:bg-[#0c0c0c]/60 dark:hover:bg-[#0c0c0c]/90 dark:hover:border-white/20">
                   <div className="flex items-start justify-between">
-                    <div className="grid h-12 w-12 place-content-center rounded-xl bg-white text-black">
+                    <div className="grid h-12 w-12 place-content-center rounded-xl bg-black text-white dark:bg-white dark:text-black">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <span className="font-display text-sm text-neutral-500 font-semibold">
+                    <span className="font-display text-sm text-neutral-600 font-semibold dark:text-neutral-500">
                       /{String(idx + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <h3 className="mt-6 font-display text-xl font-bold text-white tracking-tight">{service.title}</h3>
-                  <p className="mt-3 text-sm text-neutral-400 leading-relaxed font-medium">{service.description}</p>
+                  <h3 className="mt-6 font-display text-xl font-bold text-black tracking-tight dark:text-white">{service.title}</h3>
+                  <p className="mt-3 text-sm text-neutral-600 leading-relaxed font-medium dark:text-neutral-400">{service.description}</p>
                 </TiltCard>
               </RevealOnScroll>
             );

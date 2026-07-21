@@ -15,7 +15,7 @@ export async function Process() {
   const steps = cmsSteps && cmsSteps.length > 0 ? cmsSteps : FALLBACK_STEPS;
 
   return (
-    <section className="bg-black py-24 border-b border-white/10">
+    <section className="bg-white py-24 border-b border-black/10 dark:bg-black dark:border-white/10">
       <Container>
         <SectionHeading
           eyebrow="Our Process"
@@ -23,7 +23,7 @@ export async function Process() {
             <>
               The Journey to a{" "}
               <br className="sm:hidden" />
-              <span className="font-serif italic text-accent-400 font-light">
+              <span className="font-serif italic text-accent-600 font-light dark:text-accent-400">
                 Successful Product
               </span>
             </>
@@ -34,10 +34,10 @@ export async function Process() {
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, idx) => (
             <RevealOnScroll key={step.title} delay={idx * 0.05}>
-              <div className="relative pt-6 border-t border-white/10">
-                <p className="font-display text-2xl font-bold text-neutral-600">/{String(idx + 1).padStart(2, "0")}</p>
-                <h3 className="mt-4 font-display text-xl font-bold text-white tracking-tight">{step.title}</h3>
-                <p className="mt-3 text-sm text-neutral-400 leading-relaxed font-medium">{step.description}</p>
+              <div className="relative pt-6 border-t border-black/10 dark:border-white/10">
+                <p className="font-display text-2xl font-bold text-neutral-600 dark:text-neutral-400">/{String(idx + 1).padStart(2, "0")}</p>
+                <h3 className="mt-4 font-display text-xl font-bold text-black tracking-tight dark:text-white">{step.title}</h3>
+                <p className="mt-3 text-sm text-neutral-600 leading-relaxed font-medium dark:text-neutral-400">{step.description}</p>
               </div>
             </RevealOnScroll>
           ))}
