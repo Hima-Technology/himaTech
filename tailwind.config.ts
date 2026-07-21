@@ -113,6 +113,7 @@ const config: Config = {
         "fade-up": "fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         float: "float 6s ease-in-out infinite",
         marquee: "marquee 28s linear infinite",
+        twinkle: "twinkle 3s ease-in-out infinite",
       },
       keyframes: {
         fadeUp: {
@@ -126,6 +127,10 @@ const config: Config = {
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-100%)" },
+        },
+        twinkle: {
+          "0%, 100%": { opacity: "0.15", transform: "scale(0.85)" },
+          "50%": { opacity: "1", transform: "scale(1.15)" },
         },
       },
     },

@@ -8,6 +8,7 @@ import { Magnetic } from "@/components/ui/Magnetic";
 import { CursorGlow } from "@/components/ui/CursorGlow";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { Marquee } from "@/components/ui/Marquee";
+import { Sparkles } from "@/components/ui/Sparkles";
 import { SITE_STATS } from "@/lib/site-stats";
 
 const STACK = [
@@ -35,6 +36,7 @@ export function Hero() {
         aria-hidden="true"
         className="absolute top-1/4 right-1/4 h-[400px] w-[400px] rounded-full bg-accent-950/30 blur-[130px] animate-[float-blob-2_30s_ease-in-out_infinite] pointer-events-none"
       />
+      <Sparkles />
       <CursorGlow />
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
