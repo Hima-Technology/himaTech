@@ -4,8 +4,8 @@ import { cn } from "@/lib/cn";
 type Tone = "accent" | "neutral";
 
 const tones: Record<Tone, string> = {
-  accent: "bg-accent-50 text-accent-700",
-  neutral: "bg-neutral-100 text-neutral-700",
+  accent: "glass-badge--aqua",
+  neutral: "",
 };
 
 export function Badge({
@@ -13,14 +13,5 @@ export function Badge({
   className,
   ...props
 }: HTMLAttributes<HTMLSpanElement> & { tone?: Tone }) {
-  return (
-    <span
-      className={cn(
-        "inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-wide",
-        tones[tone],
-        className
-      )}
-      {...props}
-    />
-  );
+  return <span className={cn("glass glass-badge", tones[tone], className)} {...props} />;
 }

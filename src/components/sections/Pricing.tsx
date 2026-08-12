@@ -2,9 +2,10 @@ import { HiCheck } from "react-icons/hi";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { JellyCard } from "@/components/ui/JellyCard";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
-import { getPricingTiers } from "@/sanity/queries";
+import { getPricingTiers } from "@/lib/cms/queries";
 
 const FALLBACK_TIERS = [
   {
@@ -42,7 +43,7 @@ export async function Pricing() {
   const tiers = cmsTiers && cmsTiers.length > 0 ? cmsTiers : FALLBACK_TIERS;
 
   return (
-    <section className="bg-white py-24 border-b border-black/10 dark:bg-black dark:border-white/10">
+    <section className="py-24">
       <Container>
         <SectionHeading
           eyebrow="Pricing"
@@ -58,20 +59,16 @@ export async function Pricing() {
         <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
           {tiers.map((tier, idx) => (
             <RevealOnScroll key={tier.name} delay={idx * 0.05}>
-              <div
+              <JellyCard
                 className={cn(
-                  "flex h-full flex-col rounded-3xl p-8 transition-all duration-300",
-                  tier.highlighted
-                    ? "bg-neutral-100 border border-black/20 shadow-[0_0_40px_rgba(0,0,0,0.08)] scale-100 lg:scale-[1.03] dark:bg-[#141414] dark:border-white/20 dark:shadow-[0_0_40px_rgba(255,255,255,0.05)]"
-                    : "border border-black/10 bg-neutral-50 hover:bg-neutral-100 hover:border-black/20 dark:border-white/10 dark:bg-[#0c0c0c]/60 dark:hover:bg-[#0c0c0c]/80 dark:hover:border-white/20"
+                  "glass glass-card glass-card--tension flex h-full flex-col",
+                  tier.highlighted ? "glass--bright scale-100 lg:scale-[1.03]" : ""
                 )}
               >
                 <div className="flex items-center justify-between">
                   <h3 className="font-display text-lg font-bold text-black uppercase tracking-wider dark:text-white">{tier.name}</h3>
                   {tier.highlighted && (
-                    <span className="rounded-full bg-black px-3 py-1 text-xs font-semibold text-white dark:bg-white dark:text-black">
-                      Popular
-                    </span>
+                    <span className="glass glass-badge glass-badge--amber">Popular</span>
                   )}
                 </div>
 
@@ -93,7 +90,7 @@ export async function Pricing() {
                 >
                   Get a Quote
                 </Button>
-              </div>
+              </JellyCard>
             </RevealOnScroll>
           ))}
         </div>

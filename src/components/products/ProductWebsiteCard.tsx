@@ -1,5 +1,6 @@
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
 import { HiCheck } from "react-icons/hi";
+import { JellyCard } from "@/components/ui/JellyCard";
 
 type Product = {
   title: string;
@@ -12,8 +13,8 @@ type Product = {
 
 export function ProductWebsiteCard({ product }: { product: Product }) {
   return (
-    <article className="group flex h-full flex-col rounded-3xl border border-black/10 bg-neutral-50 p-6 transition-all duration-300 hover:border-black/20 hover:bg-neutral-100 dark:border-white/10 dark:bg-[#0c0c0c]/60 dark:hover:border-white/20 dark:hover:bg-[#0c0c0c]/90">
-      <span className="w-fit rounded-full bg-black/5 border border-black/10 px-3 py-1 text-xs font-semibold text-neutral-700 dark:bg-white/5 dark:border-white/10 dark:text-neutral-300">
+    <JellyCard as="article" className="glass glass-card glass-card--tension group flex h-full flex-col">
+      <span className="glass glass-badge glass-badge--aqua w-fit">
         {product.category}
       </span>
 
@@ -49,7 +50,7 @@ export function ProductWebsiteCard({ product }: { product: Product }) {
           Visit <HiOutlineArrowUpRight className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       </div>
-    </article>
+    </JellyCard>
   );
 }
 

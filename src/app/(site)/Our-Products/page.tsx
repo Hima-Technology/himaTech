@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import CTA from "@/components/sections/CTA";
-import ProductWebsiteCard from "@/components/products/ProductWebsiteCard";
+import ProductsGrid from "@/components/products/ProductsGrid";
 import { products as fallbackProducts, productsMeta as meta } from "@/lib/products-data";
-import { getCmsProducts } from "@/sanity/queries";
+import { getCmsProducts } from "@/lib/cms/queries";
 
 export const metadata: Metadata = {
   title: "Our Products | Hima Technologies",
@@ -15,11 +15,10 @@ export default async function ProductsPage() {
   const products = cmsProducts && cmsProducts.length > 0 ? cmsProducts : fallbackProducts;
 
   return (
-    <div className="bg-white text-black min-h-screen pt-20 dark:bg-black dark:text-white">
-      <section className="relative py-24 overflow-hidden border-b border-black/10 bg-neutral-50 dark:border-white/10 dark:bg-[#030303]">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000012_1px,transparent_1px),linear-gradient(to_bottom,#00000012_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff1f_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1f_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
+    <div className="min-h-screen pt-20">
+      <section className="relative py-24 overflow-hidden">
         <Container className="text-center relative z-10">
-          <span className="inline-block rounded-full border border-black/10 bg-black/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:border-white/10 dark:bg-white/5 dark:text-neutral-300">
+          <span className="glass glass-badge glass-badge--violet">
             Our Work
           </span>
           <h1 className="mt-6 font-display text-5xl font-bold tracking-tight md:text-7xl">
@@ -34,16 +33,12 @@ export default async function ProductsPage() {
         </Container>
       </section>
 
-      <section className="py-24 bg-white dark:bg-black">
+      <section className="py-24">
         <Container>
           {products.length > 0 ? (
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {products.map((product) => (
-                <ProductWebsiteCard key={product.title} product={product} />
-              ))}
-            </div>
+            <ProductsGrid products={products} />
           ) : (
-            <div className="py-20 text-center border border-black/10 rounded-3xl bg-neutral-50 dark:border-white/10 dark:bg-[#0c0c0c]/40">
+            <div className="glass glass-card py-20 text-center">
               <h3 className="text-xl font-bold text-black tracking-tight dark:text-white">No projects available at the moment</h3>
               <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">Please check back later</p>
             </div>

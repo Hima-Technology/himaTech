@@ -12,7 +12,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { TiltCard } from "@/components/ui/TiltCard";
-import { getServices } from "@/sanity/queries";
+import { getServices } from "@/lib/cms/queries";
 
 const ICONS: Record<string, IconType> = {
   HiOutlineCode,
@@ -67,7 +67,7 @@ export async function Services() {
   const services = cmsServices && cmsServices.length > 0 ? cmsServices : FALLBACK_SERVICES;
 
   return (
-    <section id="services" className="py-24 bg-white border-b border-black/10 dark:bg-black dark:border-white/10">
+    <section id="services" className="py-24">
       <Container>
         <SectionHeading
           eyebrow="Our Services"
@@ -87,9 +87,9 @@ export async function Services() {
             const Icon = ICONS[service.icon] || HiOutlineSparkles;
             return (
               <RevealOnScroll key={service.title} delay={idx * 0.05}>
-                <TiltCard className="h-full rounded-2xl border border-black/10 bg-neutral-50 p-8 hover:bg-neutral-100 transition-all duration-300 hover:border-black/20 dark:border-white/10 dark:bg-[#0c0c0c]/60 dark:hover:bg-[#0c0c0c]/90 dark:hover:border-white/20">
+                <TiltCard className="glass glass-card h-full">
                   <div className="flex items-start justify-between">
-                    <div className="grid h-12 w-12 place-content-center rounded-xl bg-black text-white dark:bg-white dark:text-black">
+                    <div className="grid h-12 w-12 place-content-center rounded-xl bg-gradient-to-br from-[#5e7bcb] to-[#26418c] text-white shadow-[0_4px_16px_rgba(58,90,176,0.4)]">
                       <Icon className="h-6 w-6" />
                     </div>
                     <span className="font-display text-sm text-neutral-600 font-semibold dark:text-neutral-500">

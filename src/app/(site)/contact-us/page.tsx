@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker } from "react-icons/hi";
 import { Container } from "@/components/ui/Container";
+import { JellyCard } from "@/components/ui/JellyCard";
 import { ContactForm } from "@/components/ContactForm";
-import { getSiteSettings } from "@/sanity/queries";
+import { getSiteSettings } from "@/lib/cms/queries";
 
 export const metadata: Metadata = {
   title: "Contact Us | Hima Technologies",
@@ -30,11 +31,10 @@ export default async function ContactUs() {
   ];
 
   return (
-    <div className="bg-white text-black min-h-screen pt-20 dark:bg-black dark:text-white">
-      <section className="relative py-24 overflow-hidden border-b border-black/10 bg-neutral-50 dark:border-white/10 dark:bg-[#030303]">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000012_1px,transparent_1px),linear-gradient(to_bottom,#00000012_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff1f_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1f_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
+    <div className="min-h-screen pt-20">
+      <section className="relative py-24 overflow-hidden">
         <Container className="text-center relative z-10">
-          <span className="inline-block rounded-full border border-black/10 bg-black/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:border-white/10 dark:bg-white/5 dark:text-neutral-300">
+          <span className="glass glass-badge glass-badge--violet">
             Contact Us
           </span>
           <h1 className="mt-6 font-display text-5xl font-bold tracking-tight md:text-7xl">
@@ -49,7 +49,7 @@ export default async function ContactUs() {
         </Container>
       </section>
 
-      <section className="py-24 bg-white dark:bg-black">
+      <section className="py-24">
         <Container>
           <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2 lg:gap-20">
             <div className="flex flex-col justify-center">
@@ -60,8 +60,8 @@ export default async function ContactUs() {
 
               <div className="mt-10 space-y-4">
                 {contactItems.map((item) => (
-                  <div key={item.label} className="flex items-start gap-4 rounded-2xl border border-black/10 bg-neutral-50 p-5 hover:border-black/20 transition-all duration-300 dark:border-white/10 dark:bg-[#0c0c0c]/60 dark:hover:border-white/20">
-                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-black text-white dark:bg-white dark:text-black">
+                  <JellyCard key={item.label} className="glass glass-card glass-card--tension flex items-start gap-4 !p-5">
+                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#5e7bcb] to-[#26418c] text-white shadow-[0_4px_16px_rgba(58,90,176,0.4)]">
                       <item.icon className="h-5 w-5" />
                     </div>
                     <div>
@@ -74,7 +74,7 @@ export default async function ContactUs() {
                         <p className="text-sm font-semibold text-neutral-700 mt-1 dark:text-neutral-300">{item.value}</p>
                       )}
                     </div>
-                  </div>
+                  </JellyCard>
                 ))}
               </div>
             </div>

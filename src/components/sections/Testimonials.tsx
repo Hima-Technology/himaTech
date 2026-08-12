@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { JellyCard } from "@/components/ui/JellyCard";
 
 interface Testimonial {
   quote: string;
@@ -8,13 +9,13 @@ interface Testimonial {
 }
 
 /**
- * Renders client testimonials when added via Sanity (see codev/specs/1-cms-relaunch.md).
+ * Renders client testimonials when added via the CMS (see codev/specs/1-cms-relaunch.md).
  */
 export function Testimonials({ items = [] }: { items?: Testimonial[] }) {
   if (items.length === 0) return null;
 
   return (
-    <section className="bg-white py-24 border-b border-black/10 dark:bg-black dark:border-white/10">
+    <section className="py-24">
       <Container>
         <SectionHeading
           eyebrow="Testimonials"
@@ -32,13 +33,13 @@ export function Testimonials({ items = [] }: { items?: Testimonial[] }) {
 
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
-            <blockquote key={item.name} className="rounded-3xl border border-black/10 bg-neutral-50 p-8 hover:border-black/20 transition-all duration-300 dark:border-white/10 dark:bg-[#0c0c0c]/60 dark:hover:border-white/20">
+            <JellyCard key={item.name} as="blockquote" className="glass glass-card glass-card--tension">
               <p className="text-neutral-700 text-sm leading-relaxed font-medium dark:text-neutral-300">&ldquo;{item.quote}&rdquo;</p>
               <footer className="mt-6 text-sm font-semibold text-black tracking-tight dark:text-white">
                 {item.name}
                 <span className="block text-xs font-normal text-neutral-600 mt-1 dark:text-neutral-500">{item.role}</span>
               </footer>
-            </blockquote>
+            </JellyCard>
           ))}
         </div>
       </Container>

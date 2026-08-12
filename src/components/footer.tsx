@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker } from "react-icons/hi";
-import { getSiteSettings } from "@/sanity/queries";
+import { getSiteSettings } from "@/lib/cms/queries";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -29,11 +29,12 @@ export async function Footer() {
   };
 
   return (
-    <footer className="bg-white border-t border-black/10 px-6 py-16 text-black dark:bg-black dark:border-white/10 dark:text-white">
+    <footer className="px-6 py-16">
       <div className="container">
+        <div className="glass rounded-3xl p-8 md:p-12">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           <div className="space-y-4 col-span-1 md:col-span-1">
-            <h3 className="font-display text-xl font-bold tracking-tight">Hima Technologies</h3>
+            <h3 className="font-display text-xl font-bold tracking-tight">Himma Technologies</h3>
             <p className="leading-relaxed text-neutral-600 text-sm max-w-xs dark:text-neutral-400">
               We Build Brands, websites and digital experiences with intention, clarity and care.
             </p>
@@ -95,6 +96,7 @@ export async function Footer() {
             <Link href="/privacy-policy" className="hover:text-black dark:hover:text-white transition">Privacy Policy</Link>
             <Link href="/terms-of-service" className="hover:text-black dark:hover:text-white transition">Terms of Service</Link>
           </div>
+        </div>
         </div>
       </div>
     </footer>

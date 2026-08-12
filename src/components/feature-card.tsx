@@ -15,7 +15,7 @@ interface FeatureCardProps {
 export function FeatureCard({ icon: Icon, title, children, image, delay = 0 }: FeatureCardProps) {
   return (
     <RevealOnScroll delay={delay}>
-      <div className="group h-full overflow-hidden rounded-xl bg-white shadow-soft transition duration-250 hover:-translate-y-1 hover:shadow-soft-md">
+      <div className="glass group h-full overflow-hidden rounded-xl transition duration-250 hover:-translate-y-1">
         <div className="relative h-44 w-full overflow-hidden">
           <Image
             src={image}

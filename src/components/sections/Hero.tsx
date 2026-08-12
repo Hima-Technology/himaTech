@@ -1,8 +1,9 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import { HiOutlinePhone, HiOutlineArrowRight, HiOutlineChevronDown } from "react-icons/hi";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Magnetic } from "@/components/ui/Magnetic";
 import { CursorGlow } from "@/components/ui/CursorGlow";
@@ -22,34 +23,31 @@ const STACK = [
 ];
 
 export function Hero() {
-  return (
-    <div className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden bg-white pt-20 pb-12 dark:bg-black">
-      {/* Background grid overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000012_1px,transparent_1px),linear-gradient(to_bottom,#00000012_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff1f_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
+  const gridY = useTransform(scrollYProgress, [0, 1], [0, 60]);
 
-      {/* Traveling glow lights — move across the hero in a slow loop */}
-      <div
-        aria-hidden="true"
-        className="absolute left-1/2 top-1/2 h-[380px] w-[380px] rounded-full bg-accent-400/25 dark:bg-accent-900/20 blur-[120px] animate-glow-travel pointer-events-none"
+  return (
+    <div ref={ref} className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden pt-20 pb-12">
+      {/* Background grid overlay */}
+      <motion.div
+        style={{ y: gridY }}
+        className="absolute inset-0 bg-[linear-gradient(to_right,#00000012_1px,transparent_1px),linear-gradient(to_bottom,#00000012_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff1f_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none"
       />
-      <div
-        aria-hidden="true"
-        className="absolute left-1/2 top-1/2 h-[320px] w-[320px] rounded-full bg-accent-300/20 dark:bg-accent-950/35 blur-[110px] animate-glow-travel-reverse pointer-events-none"
-      />
+
       <Sparkles />
       <CursorGlow />
 
-      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+      <motion.div style={{ y: heroY, opacity: heroOpacity, scale: heroScale }} className="relative z-10 mx-auto max-w-5xl px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="space-y-6"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/5 px-4 py-1.5 text-xs font-medium tracking-wider text-neutral-700 backdrop-blur-sm dark:border-white/10 dark:bg-white/5 dark:text-neutral-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
-            Software Development &amp; AI Partner
-          </span>
 
           <h1 className="text-5xl font-bold tracking-tight text-black md:text-7xl lg:text-8xl leading-[1.1] dark:text-white">
             Create,{" "}
@@ -77,11 +75,11 @@ export function Hero() {
             </Button>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Grid Stats section */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 mt-20">
-        <div className="grid grid-cols-1 divide-y divide-black/10 border-t border-b border-black/10 py-8 sm:grid-cols-3 sm:divide-y-0 sm:divide-x dark:divide-white/10 dark:border-white/10">
+        <div className=" grid grid-cols-1 divide-y divide-black/10 rounded-3xl py-8 sm:grid-cols-3 sm:divide-y-0 sm:divide-x dark:divide-white/10">
           {SITE_STATS.map((stat) => (
             <div key={stat.label} className="text-center px-4 py-4 sm:py-0">
               <p className="font-display text-4xl md:text-5xl font-bold text-black tracking-tight dark:text-white">

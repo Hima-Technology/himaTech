@@ -5,7 +5,7 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { Button } from "@/components/ui/Button";
 import { products as fallbackProducts } from "@/lib/products-data";
-import { getCmsProducts } from "@/sanity/queries";
+import { getCmsProducts } from "@/lib/cms/queries";
 
 export async function Work() {
   const cmsProducts = await getCmsProducts();
@@ -13,7 +13,7 @@ export async function Work() {
   const highlights = products.slice(0, 3);
 
   return (
-    <section className="bg-white py-24 border-b border-black/10 dark:bg-black dark:border-white/10">
+    <section className="py-24">
       <Container>
         <SectionHeading
           eyebrow="Our Projects"
@@ -36,9 +36,9 @@ export async function Work() {
                   href={product.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex h-full flex-col rounded-3xl border border-black/10 bg-neutral-50 p-8 transition-all duration-300 hover:border-black/20 hover:bg-neutral-100 dark:border-white/10 dark:bg-[#0c0c0c]/60 dark:hover:border-white/20 dark:hover:bg-[#0c0c0c]/90"
+                  className="glass glass-card group flex h-full flex-col"
                 >
-                  <span className="w-fit rounded-full bg-black/5 border border-black/10 px-3 py-1 text-xs font-semibold text-neutral-700 dark:bg-white/5 dark:border-white/10 dark:text-neutral-300">
+                  <span className="glass glass-badge glass-badge--aqua w-fit">
                     {product.category}
                   </span>
 

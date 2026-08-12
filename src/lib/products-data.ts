@@ -9,8 +9,48 @@ export interface ProductData {
 }
 
 export const products: ProductData[] = [
+  // {
+  //   id: 1,
+  //   title: "Pamoja Youth Initiative",
+  //   description:
+  //     "A digital home for a Tanzanian youth empowerment initiative, showcasing its programs and connecting the community online.",
+  //   category: "Web Development",
+  //   features: ["Custom website", "Responsive design", "Program showcase"],
+  //   url: "https://www.pamoja.or.tz/",
+  //   author: "Web Team",
+  // },
   {
-    id: 1,
+    id: 2,
+    title: "Zanzibar Youth Forum",
+    description:
+      "Official website for the Zanzibar Youth Forum, giving the organization a professional online presence to reach and engage youth.",
+    category: "Web Development",
+    features: ["Custom website", "Responsive design", "Content management"],
+    url: "https://www.zanzibaryouthforum.org/",
+    author: "Web Team",
+  },
+  {
+    id: 3,
+    title: "UKUEM",
+    description:
+      "Official website and members portal for UKUEM, streamlining membership management and community engagement online.",
+    category: "Web Development",
+    features: ["Custom website", "Members portal", "Responsive design"],
+    url: "https://ukuem.org/",
+    author: "Web Team",
+  },
+  {
+    id: 4,
+    title: "Zanvista Tours",
+    description:
+      "A tour and travel booking website for Zanvista, helping visitors discover and book Zanzibar tour experiences.",
+    category: "Web Development",
+    features: ["Custom website", "Responsive design", "Tour showcase"],
+    url: "https://zanvistatours.com/",
+    author: "Web Team",
+  },
+  {
+    id: 5,
     title: "Cybersecurity Suite",
     description:
       "Enterprise-grade security solutions protecting your digital assets 24/7 with real-time threat intelligence.",
@@ -20,7 +60,7 @@ export const products: ProductData[] = [
     author: "Security Team",
   },
   {
-    id: 2,
+    id: 6,
     title: "AI Solutions",
     description: "Custom AI models that learn and adapt to your business needs, delivering intelligent automation.",
     category: "Artificial Intelligence",
@@ -29,7 +69,7 @@ export const products: ProductData[] = [
     author: "AI Research Team",
   },
   {
-    id: 3,
+    id: 7,
     title: "Data Analytics",
     description: "Transform complex data into clear, actionable insights with our powerful analytics platform.",
     category: "Business Intelligence",
@@ -38,7 +78,7 @@ export const products: ProductData[] = [
     author: "Data Team",
   },
   {
-    id: 4,
+    id: 8,
     title: "Custom Software",
     description: "Tailor-made applications designed specifically for your business processes and workflows.",
     category: "Software Development",
@@ -47,22 +87,13 @@ export const products: ProductData[] = [
     author: "Development Team",
   },
   {
-    id: 5,
+    id: 9,
     title: "Cloud Solutions",
     description: "Scalable, secure cloud infrastructure optimized for performance and cost-efficiency.",
     category: "Cloud Services",
     features: ["Cloud migration", "Hybrid cloud", "Disaster recovery", "Cost optimization"],
     url: "https://google.com",
     author: "Cloud Team",
-  },
-  {
-    id: 6,
-    title: "Website Development",
-    description: "Beautiful, high-performance websites designed to engage visitors and drive conversions.",
-    category: "Web Solutions",
-    features: ["Responsive design", "SEO optimized", "E-commerce ready", "CMS integration"],
-    url: "https://www.himatech.co.tz",
-    author: "Web Team",
   },
 ];
 

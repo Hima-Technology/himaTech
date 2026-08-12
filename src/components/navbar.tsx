@@ -71,14 +71,14 @@ export function Navbar() {
         </ul>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <ThemeToggle className="rounded-full p-2 transition text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10" />
+          <ThemeToggle />
           <Button href="/contact-us" variant="primary" size="md">
             Let&apos;s Chat!
           </Button>
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
-          <ThemeToggle className="rounded-full p-2 transition text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10" />
+          <ThemeToggle />
           <Dialog.Root open={open} onOpenChange={setOpen}>
             <Dialog.Trigger asChild>
               <button aria-label="Toggle menu" className="z-10 rounded-md p-2 text-black dark:text-white">

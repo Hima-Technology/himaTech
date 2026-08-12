@@ -3,9 +3,10 @@ import Services from "@/components/sections/Services";
 import Process from "@/components/sections/Process";
 import Pricing from "@/components/sections/Pricing";
 import Work from "@/components/sections/Work";
+import Partners from "@/components/sections/Partners";
 import Testimonials from "@/components/sections/Testimonials";
 import CTA from "@/components/sections/CTA";
-import { getSiteSettings, getTestimonials } from "@/sanity/queries";
+import { getSiteSettings, getTestimonials } from "@/lib/cms/queries";
 
 export default async function Home() {
   const [settings, testimonials] = await Promise.all([getSiteSettings(), getTestimonials()]);
@@ -18,6 +19,7 @@ export default async function Home() {
       <Process />
       <Pricing />
       <Work />
+      <Partners />
       {showTestimonials && <Testimonials items={testimonials ?? []} />}
       <CTA
         title="Ready to build something great?"

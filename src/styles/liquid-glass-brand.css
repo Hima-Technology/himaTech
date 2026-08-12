@@ -1,0 +1,121 @@
+/* ==========================================================================
+   BRAND OVERRIDES for the Liquid Glass kit (src/styles/liquid-glass.css)
+
+   Back to the kit's own original multi-hue accent palette (aqua/violet/
+   rose/amber/lime) — no brand recolor. Only two things carried over from
+   earlier fixes:
+     - Badges/buttons are solid pills with white text instead of
+       low-opacity tinted-glass-with-colored-text (that was too low
+       contrast to read at the badge's tiny uppercase size).
+     - Glass surfaces are more transparent than the kit's default.
+   Loaded after liquid-glass.css so these rules win the cascade.
+   ========================================================================== */
+
+:root {
+  --accent-lime: #ffd27f; /* no green — folded into amber */
+
+  /* More see-through glass surfaces (kit default is more opaque) */
+  --glass-white: rgba(255, 255, 255, 0.07);
+  --glass-white-md: rgba(255, 255, 255, 0.13);
+  --glass-white-lg: rgba(255, 255, 255, 0.2);
+  --glass-dark: rgba(0, 0, 0, 0.12);
+  --glass-dark-md: rgba(0, 0, 0, 0.18);
+}
+
+[data-theme="light"] {
+  --accent-lime: #b45309;
+
+  --glass-white: rgba(255, 255, 255, 0.42);
+  --glass-white-md: rgba(255, 255, 255, 0.58);
+  --glass-white-lg: rgba(255, 255, 255, 0.72);
+  --glass-dark: rgba(0, 0, 0, 0.04);
+  --glass-dark-md: rgba(15, 23, 42, 0.06);
+}
+
+/* Badge text is tiny + uppercase, so tinted-glass-with-colored-text reads
+   too low-contrast. Solid pill + white text instead, same hue per tier as
+   the kit's own tokens. Matches the kit's own [data-theme="light"] badge
+   specificity so ours always wins there too. */
+/* Focus outline defaults to the kit's aqua accent — swap it for a neutral
+   ring so it doesn't read as a stray blue border. */
+:focus-visible,
+.glass-btn:focus-visible,
+.glass-nav__item:focus-visible,
+.glass-toggle__opt:focus-visible {
+  outline-color: rgba(240, 235, 225, 0.5);
+}
+
+/* One color for every badge (eyebrows, category tags, Hero kicker) except
+   the Pricing "Popular" badge, which keeps its own color to stand out. */
+.glass-badge--aqua,
+.glass-badge--violet,
+.glass-badge--rose,
+[data-theme="light"] .glass-badge--aqua,
+[data-theme="light"] .glass-badge--violet,
+[data-theme="light"] .glass-badge--rose {
+  background: rgb(94, 123, 203);
+  border-color: rgba(94, 123, 203, 0.6);
+  box-shadow: none;
+  color: #fff;
+}
+.glass-badge--amber,
+.glass-badge--lime,
+[data-theme="light"] .glass-badge--amber,
+[data-theme="light"] .glass-badge--lime {
+  background: #e6731bce;
+  border-color: rgba(180, 83, 9, 0.6);
+  box-shadow: none;
+  color: #fff;
+}
+
+/* Left ambient blob — replace with the primary color */
+.lg-scene__blob--1 {
+  background: radial-gradient(circle, rgb(94, 123, 203), rgb(38, 65, 140));
+}
+
+/* Same simple structure as .glass-btn--ghost (background + border +
+   shadow, no extra layers) — just a white tint instead of the neutral
+   glass tint, so primary reads distinctly from secondary. */
+.glass-btn--primary {
+  background: rgb(94, 123, 203);
+  border: 1px solid rgba(94, 123, 203, 0.6);
+  box-shadow: var(--shadow-glass);
+  color: #fafafa;
+}
+.glass-btn--primary:hover {
+  box-shadow: none;
+  transform: translateY(-2px);
+}
+
+.glass-btn--accent {
+  background: linear-gradient(135deg, #b490f5 0%, #f7a8c4 100%);
+  border: 1px solid rgba(180, 144, 245, 0.55);
+  box-shadow: 0 4px 24px rgba(180, 144, 245, 0.3), var(--reflection-inner);
+  color: #fff;
+}
+
+/* Cards that aren't already cursor-reactive (no TiltCard wrapper) get a
+   jelly squash/stretch on hover (see JellyCard.tsx) instead of the plain
+   lift. This just supplies the glow/brighten that goes with it. */
+.glass-card--tension:hover {
+  box-shadow: var(--shadow-float);
+  background: var(--glass-white-md);
+}
+
+/* "7 · Breathing Blur" — an actual in-and-out breath (blur deepens then
+   relaxes back), not a static hover state. Plays once per hover, like the
+   jelly squash — no infinite loop. */
+@keyframes lg-breathing-blur {
+  0%,
+  100% {
+    backdrop-filter: var(--blur-md);
+    -webkit-backdrop-filter: var(--blur-md);
+  }
+  45% {
+    backdrop-filter: var(--blur-lg);
+    -webkit-backdrop-filter: var(--blur-lg);
+  }
+}
+.glass-card:hover {
+  animation: lg-breathing-blur 1.3s var(--ease-glass) 1;
+}

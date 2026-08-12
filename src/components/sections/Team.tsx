@@ -2,7 +2,8 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-import { getTeamMembers } from "@/sanity/queries";
+import { JellyCard } from "@/components/ui/JellyCard";
+import { getTeamMembers } from "@/lib/cms/queries";
 
 const LOCAL_PHOTOS = ["/image/usamah.webp", "/image/seif.webp", "/image/hussein.webp", "/image/ahmad.webp"];
 
@@ -20,13 +21,13 @@ const FALLBACK_MEMBERS = [
     title: "Mobile & Backend Developer",
     description: "Versatile developer specializing in robust mobile applications and scalable backend systems.",
   },
-  {
-    img: "/image/hussein.webp",
-    name: "Hussein Ali Abdulrahman",
-    title: "Senior Data Analyst & Advisor",
-    description:
-      "Experienced data analyst with remarkable insight and strategic thinking, transforming complex data into actionable intelligence.",
-  },
+  // {
+  //   img: "/image/hussein.webp",
+  //   name: "Hussein Ali Abdulrahman",
+  //   title: "Senior Data Analyst & Advisor",
+  //   description:
+  //     "Experienced data analyst with remarkable insight and strategic thinking, transforming complex data into actionable intelligence.",
+  // },
   {
     img: "/image/ahmad.webp",
     name: "Ahmad Sadri Abdullah",
@@ -40,7 +41,7 @@ export async function Team() {
   const cmsMembers = await getTeamMembers();
   // Real headshots live locally and aren't uploaded by the seed script yet —
   // pair CMS text with the matching local photo by seed order until photos
-  // are added directly in Sanity Studio.
+  // are added directly in the Strapi admin panel.
   const members =
     cmsMembers && cmsMembers.length > 0
       ? cmsMembers.map((m, idx) => ({
@@ -52,7 +53,7 @@ export async function Team() {
       : FALLBACK_MEMBERS;
 
   return (
-    <section className="bg-white py-24 border-b border-black/10 dark:bg-black dark:border-white/10">
+    <section className="py-24">
       <Container>
         <SectionHeading
           eyebrow="Team Members"
@@ -70,7 +71,7 @@ export async function Team() {
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {members.map((member, idx) => (
             <RevealOnScroll key={member.name} delay={idx * 0.05}>
-              <div className="group rounded-3xl border border-black/10 bg-neutral-50 p-6 hover:bg-neutral-100 hover:border-black/20 transition-all duration-300 dark:border-white/10 dark:bg-[#0c0c0c]/60 dark:hover:bg-[#0c0c0c]/90 dark:hover:border-white/20">
+              <JellyCard className="glass glass-card glass-card--tension group">
                 <div className="relative aspect-square w-full mb-6 overflow-hidden rounded-2xl border border-black/5 bg-neutral-200 dark:border-white/5 dark:bg-neutral-900">
                   <Image
                     src={member.img}
@@ -82,7 +83,7 @@ export async function Team() {
                 <h3 className="font-display text-lg font-bold text-black tracking-tight dark:text-white">{member.name}</h3>
                 <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400">{member.title}</p>
                 <p className="mt-3 text-sm text-neutral-600 leading-relaxed font-medium dark:text-neutral-500">{member.description}</p>
-              </div>
+              </JellyCard>
             </RevealOnScroll>
           ))}
         </div>
