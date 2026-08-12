@@ -20,6 +20,16 @@ export const products: ProductData[] = [
   //   author: "Web Team",
   // },
   {
+    id: 1,
+    title: "Minbar",
+    description:
+      "A web platform built and hosted by Himma Technologies, delivering a clean, responsive online presence.",
+    category: "Web Development",
+    features: ["Custom website", "Responsive design"],
+    url: "https://minbar.himatech.co.tz/",
+    author: "Web Team",
+  },
+  {
     id: 2,
     title: "Zanzibar Youth Forum",
     description:
